@@ -45,6 +45,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContractForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContractForm.Designer.cs">
+      <DependentUpon>ContractForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrewForm.Designer.cs">
+      <DependentUpon>CrewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartureForm.Designer.cs">
+      <DependentUpon>DepartureForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,6 +71,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ContractForm.resx">
+      <DependentUpon>ContractForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrewForm.resx">
+      <DependentUpon>CrewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartureForm.resx">
+      <DependentUpon>DepartureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

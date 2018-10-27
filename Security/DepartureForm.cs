@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Security
 {
-    public partial class mainForm : Form
+    public partial class DepartureForm : Form
     {
-        public mainForm()
+        public DepartureForm()
         {
             InitializeComponent();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
