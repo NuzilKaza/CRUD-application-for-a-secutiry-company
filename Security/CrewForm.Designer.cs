@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.crewIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.leaderTextBox = new System.Windows.Forms.TextBox();
+            this.carModelTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.okButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -48,12 +48,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Номер";
             // 
-            // numericUpDown1
+            // crewIdNumericUpDown
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(66, 12);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(71, 22);
-            this.numericUpDown1.TabIndex = 1;
+            this.crewIdNumericUpDown.Location = new System.Drawing.Point(66, 12);
+            this.crewIdNumericUpDown.Name = "crewIdNumericUpDown";
+            this.crewIdNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.crewIdNumericUpDown.TabIndex = 1;
             // 
             // label2
             // 
@@ -64,20 +64,22 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "ФИО командира";
             // 
-            // textBox1
+            // leaderTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(227, 22);
-            this.textBox1.TabIndex = 3;
+            this.leaderTextBox.Location = new System.Drawing.Point(12, 61);
+            this.leaderTextBox.MaxLength = 60;
+            this.leaderTextBox.Name = "leaderTextBox";
+            this.leaderTextBox.Size = new System.Drawing.Size(227, 22);
+            this.leaderTextBox.TabIndex = 2;
             // 
-            // textBox2
+            // carModelTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 107);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(227, 22);
-            this.textBox2.TabIndex = 5;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.carModelTextBox.Location = new System.Drawing.Point(12, 107);
+            this.carModelTextBox.MaxLength = 15;
+            this.carModelTextBox.Name = "carModelTextBox";
+            this.carModelTextBox.Size = new System.Drawing.Size(227, 22);
+            this.carModelTextBox.TabIndex = 4;
+            this.carModelTextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -89,45 +91,48 @@
             this.label3.Text = "Марка автомобиля";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // button1
+            // okButton
             // 
-            this.button1.Location = new System.Drawing.Point(83, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 27);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "ОК";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okButton.Location = new System.Drawing.Point(83, 145);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 27);
+            this.okButton.TabIndex = 6;
+            this.okButton.Text = "ОК";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // cancelButton
             // 
-            this.button2.Location = new System.Drawing.Point(164, 135);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 27);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(164, 145);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 27);
+            this.cancelButton.TabIndex = 7;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // CrewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(258, 175);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.ClientSize = new System.Drawing.Size(258, 183);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.okButton);
+            this.Controls.Add(this.carModelTextBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.leaderTextBox);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.numericUpDown1);
+            this.Controls.Add(this.crewIdNumericUpDown);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CrewForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Экипаж";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,12 +141,12 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown crewIdNumericUpDown;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox leaderTextBox;
+        private System.Windows.Forms.TextBox carModelTextBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }

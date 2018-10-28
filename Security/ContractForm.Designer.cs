@@ -29,61 +29,61 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.phoneMaskedTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.clientAdressTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.taxtNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
+            this.compensationNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.paymentNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.expirationDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.commencementDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.numericUpDown7 = new System.Windows.Forms.NumericUpDown();
-            this.label16 = new System.Windows.Forms.Label();
-            this.numericUpDown6 = new System.Windows.Forms.NumericUpDown();
-            this.label15 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.codeKeyCheckBox = new System.Windows.Forms.CheckBox();
+            this.balconyTypeComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.balconyCheckBox = new System.Windows.Forms.CheckBox();
+            this.doorTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.apartmentFloorNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label16 = new System.Windows.Forms.Label();
+            this.floorsCountNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label15 = new System.Windows.Forms.Label();
+            this.houseTypeComboBox = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.apartmentAddressTextBox = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.additionalRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.extensionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label11 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.okButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taxtNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compensationNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentNumericUpDown)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.apartmentFloorNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.floorsCountNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.maskedTextBox1);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.phoneMaskedTextBox);
+            this.groupBox1.Controls.Add(this.clientAdressTextBox);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.nameTextBox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -93,14 +93,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Клиент";
             // 
-            // textBox4
+            // phoneMaskedTextBox
             // 
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(144, 83);
-            this.textBox4.MaxLength = 10;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(272, 22);
-            this.textBox4.TabIndex = 5;
+            this.phoneMaskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.phoneMaskedTextBox.Location = new System.Drawing.Point(144, 53);
+            this.phoneMaskedTextBox.Mask = "8-900-000-00-00";
+            this.phoneMaskedTextBox.Name = "phoneMaskedTextBox";
+            this.phoneMaskedTextBox.Size = new System.Drawing.Size(272, 22);
+            this.phoneMaskedTextBox.TabIndex = 2;
+            // 
+            // clientAdressTextBox
+            // 
+            this.clientAdressTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.clientAdressTextBox.Location = new System.Drawing.Point(144, 83);
+            this.clientAdressTextBox.MaxLength = 60;
+            this.clientAdressTextBox.Name = "clientAdressTextBox";
+            this.clientAdressTextBox.Size = new System.Drawing.Size(272, 22);
+            this.clientAdressTextBox.TabIndex = 3;
             // 
             // label4
             // 
@@ -122,14 +131,14 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Телефон";
             // 
-            // textBox1
+            // nameTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(144, 27);
-            this.textBox1.MaxLength = 60;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(272, 22);
-            this.textBox1.TabIndex = 1;
+            this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nameTextBox.Location = new System.Drawing.Point(144, 27);
+            this.nameTextBox.MaxLength = 60;
+            this.nameTextBox.Name = "nameTextBox";
+            this.nameTextBox.Size = new System.Drawing.Size(272, 22);
+            this.nameTextBox.TabIndex = 1;
             // 
             // label1
             // 
@@ -143,15 +152,15 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.numericUpDown4);
+            this.groupBox2.Controls.Add(this.taxtNumericUpDown);
             this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.numericUpDown3);
+            this.groupBox2.Controls.Add(this.compensationNumericUpDown);
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.numericUpDown1);
+            this.groupBox2.Controls.Add(this.paymentNumericUpDown);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.dateTimePicker2);
+            this.groupBox2.Controls.Add(this.expirationDateTimePicker);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.commencementDateTimePicker);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox2.Location = new System.Drawing.Point(445, 12);
@@ -161,13 +170,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Условия договора";
             // 
-            // numericUpDown4
+            // taxtNumericUpDown
             // 
-            this.numericUpDown4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown4.Location = new System.Drawing.Point(260, 136);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(59, 22);
-            this.numericUpDown4.TabIndex = 15;
+            this.taxtNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.taxtNumericUpDown.Location = new System.Drawing.Point(260, 136);
+            this.taxtNumericUpDown.Name = "taxtNumericUpDown";
+            this.taxtNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.taxtNumericUpDown.TabIndex = 15;
             // 
             // label10
             // 
@@ -179,13 +188,13 @@
             this.label10.TabIndex = 14;
             this.label10.Text = "Штраф за ложный вызов";
             // 
-            // numericUpDown3
+            // compensationNumericUpDown
             // 
-            this.numericUpDown3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown3.Location = new System.Drawing.Point(260, 108);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(59, 22);
-            this.numericUpDown3.TabIndex = 13;
+            this.compensationNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.compensationNumericUpDown.Location = new System.Drawing.Point(260, 108);
+            this.compensationNumericUpDown.Name = "compensationNumericUpDown";
+            this.compensationNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.compensationNumericUpDown.TabIndex = 14;
             // 
             // label9
             // 
@@ -197,13 +206,13 @@
             this.label9.TabIndex = 12;
             this.label9.Text = "Компенсация при краже имущества";
             // 
-            // numericUpDown1
+            // paymentNumericUpDown
             // 
-            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown1.Location = new System.Drawing.Point(161, 80);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(59, 22);
-            this.numericUpDown1.TabIndex = 11;
+            this.paymentNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.paymentNumericUpDown.Location = new System.Drawing.Point(161, 80);
+            this.paymentNumericUpDown.Name = "paymentNumericUpDown";
+            this.paymentNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.paymentNumericUpDown.TabIndex = 13;
             // 
             // label8
             // 
@@ -211,17 +220,19 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.Location = new System.Drawing.Point(8, 82);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(149, 17);
+            this.label8.Size = new System.Drawing.Size(141, 17);
             this.label8.TabIndex = 4;
-            this.label8.Text = "Ежемесячная оплата";
+            this.label8.Text = "Ежемесячная плата";
             // 
-            // dateTimePicker2
+            // expirationDateTimePicker
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(161, 52);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(172, 22);
-            this.dateTimePicker2.TabIndex = 3;
+            this.expirationDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.expirationDateTimePicker.Location = new System.Drawing.Point(161, 52);
+            this.expirationDateTimePicker.MaxDate = new System.DateTime(2210, 12, 31, 0, 0, 0, 0);
+            this.expirationDateTimePicker.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.expirationDateTimePicker.Name = "expirationDateTimePicker";
+            this.expirationDateTimePicker.Size = new System.Drawing.Size(172, 22);
+            this.expirationDateTimePicker.TabIndex = 12;
             // 
             // label7
             // 
@@ -233,13 +244,15 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Окончание действия";
             // 
-            // dateTimePicker1
+            // commencementDateTimePicker
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(161, 24);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(172, 22);
-            this.dateTimePicker1.TabIndex = 1;
+            this.commencementDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.commencementDateTimePicker.Location = new System.Drawing.Point(161, 24);
+            this.commencementDateTimePicker.MaxDate = new System.DateTime(2210, 12, 31, 0, 0, 0, 0);
+            this.commencementDateTimePicker.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.commencementDateTimePicker.Name = "commencementDateTimePicker";
+            this.commencementDateTimePicker.Size = new System.Drawing.Size(172, 22);
+            this.commencementDateTimePicker.TabIndex = 11;
             // 
             // label6
             // 
@@ -253,19 +266,19 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.comboBox3);
+            this.groupBox3.Controls.Add(this.codeKeyCheckBox);
+            this.groupBox3.Controls.Add(this.balconyTypeComboBox);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Controls.Add(this.comboBox2);
+            this.groupBox3.Controls.Add(this.balconyCheckBox);
+            this.groupBox3.Controls.Add(this.doorTypeComboBox);
             this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.numericUpDown7);
+            this.groupBox3.Controls.Add(this.apartmentFloorNumericUpDown);
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.numericUpDown6);
+            this.groupBox3.Controls.Add(this.floorsCountNumericUpDown);
             this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.houseTypeComboBox);
             this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.apartmentAddressTextBox);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox3.Location = new System.Drawing.Point(12, 134);
@@ -275,18 +288,65 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Охраняемая квартира";
             // 
-            // comboBox2
+            // codeKeyCheckBox
             // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.codeKeyCheckBox.AutoSize = true;
+            this.codeKeyCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.codeKeyCheckBox.Location = new System.Drawing.Point(12, 195);
+            this.codeKeyCheckBox.Name = "codeKeyCheckBox";
+            this.codeKeyCheckBox.Size = new System.Drawing.Size(262, 21);
+            this.codeKeyCheckBox.TabIndex = 10;
+            this.codeKeyCheckBox.Text = "Кодовый замок на двери подъезда";
+            this.codeKeyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // balconyTypeComboBox
+            // 
+            this.balconyTypeComboBox.Enabled = false;
+            this.balconyTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.balconyTypeComboBox.FormattingEnabled = true;
+            this.balconyTypeComboBox.Items.AddRange(new object[] {
             "деревянный",
             "кирпичный",
             "панельный"});
-            this.comboBox2.Location = new System.Drawing.Point(91, 135);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(143, 24);
-            this.comboBox2.TabIndex = 24;
+            this.balconyTypeComboBox.Location = new System.Drawing.Point(190, 165);
+            this.balconyTypeComboBox.Name = "balconyTypeComboBox";
+            this.balconyTypeComboBox.Size = new System.Drawing.Size(143, 24);
+            this.balconyTypeComboBox.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Enabled = false;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(94, 168);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 17);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Тип балкона";
+            // 
+            // balconyCheckBox
+            // 
+            this.balconyCheckBox.AutoSize = true;
+            this.balconyCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.balconyCheckBox.Location = new System.Drawing.Point(12, 168);
+            this.balconyCheckBox.Name = "balconyCheckBox";
+            this.balconyCheckBox.Size = new System.Drawing.Size(78, 21);
+            this.balconyCheckBox.TabIndex = 8;
+            this.balconyCheckBox.Text = "Балкон";
+            this.balconyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // doorTypeComboBox
+            // 
+            this.doorTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.doorTypeComboBox.FormattingEnabled = true;
+            this.doorTypeComboBox.Items.AddRange(new object[] {
+            "деревянный",
+            "кирпичный",
+            "панельный"});
+            this.doorTypeComboBox.Location = new System.Drawing.Point(91, 135);
+            this.doorTypeComboBox.Name = "doorTypeComboBox";
+            this.doorTypeComboBox.Size = new System.Drawing.Size(143, 24);
+            this.doorTypeComboBox.TabIndex = 8;
             // 
             // label17
             // 
@@ -298,13 +358,23 @@
             this.label17.TabIndex = 23;
             this.label17.Text = "Тип двери";
             // 
-            // numericUpDown7
+            // apartmentFloorNumericUpDown
             // 
-            this.numericUpDown7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown7.Location = new System.Drawing.Point(194, 107);
-            this.numericUpDown7.Name = "numericUpDown7";
-            this.numericUpDown7.Size = new System.Drawing.Size(59, 22);
-            this.numericUpDown7.TabIndex = 22;
+            this.apartmentFloorNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.apartmentFloorNumericUpDown.Location = new System.Drawing.Point(194, 107);
+            this.apartmentFloorNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.apartmentFloorNumericUpDown.Name = "apartmentFloorNumericUpDown";
+            this.apartmentFloorNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.apartmentFloorNumericUpDown.TabIndex = 7;
+            this.apartmentFloorNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label16
             // 
@@ -316,13 +386,23 @@
             this.label16.TabIndex = 21;
             this.label16.Text = "Этаж квартиры в доме";
             // 
-            // numericUpDown6
+            // floorsCountNumericUpDown
             // 
-            this.numericUpDown6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numericUpDown6.Location = new System.Drawing.Point(194, 79);
-            this.numericUpDown6.Name = "numericUpDown6";
-            this.numericUpDown6.Size = new System.Drawing.Size(59, 22);
-            this.numericUpDown6.TabIndex = 20;
+            this.floorsCountNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.floorsCountNumericUpDown.Location = new System.Drawing.Point(194, 79);
+            this.floorsCountNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.floorsCountNumericUpDown.Name = "floorsCountNumericUpDown";
+            this.floorsCountNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.floorsCountNumericUpDown.TabIndex = 6;
+            this.floorsCountNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label15
             // 
@@ -334,18 +414,18 @@
             this.label15.TabIndex = 19;
             this.label15.Text = "Количество этажей в доме";
             // 
-            // comboBox1
+            // houseTypeComboBox
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.houseTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.houseTypeComboBox.FormattingEnabled = true;
+            this.houseTypeComboBox.Items.AddRange(new object[] {
             "деревянный",
             "кирпичный",
             "панельный"});
-            this.comboBox1.Location = new System.Drawing.Point(77, 49);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(143, 24);
-            this.comboBox1.TabIndex = 18;
+            this.houseTypeComboBox.Location = new System.Drawing.Point(77, 49);
+            this.houseTypeComboBox.Name = "houseTypeComboBox";
+            this.houseTypeComboBox.Size = new System.Drawing.Size(157, 24);
+            this.houseTypeComboBox.TabIndex = 5;
             // 
             // label14
             // 
@@ -357,14 +437,14 @@
             this.label14.TabIndex = 17;
             this.label14.Text = "Тип дома";
             // 
-            // textBox6
+            // apartmentAddressTextBox
             // 
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox6.Location = new System.Drawing.Point(77, 21);
-            this.textBox6.MaxLength = 10;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(272, 22);
-            this.textBox6.TabIndex = 12;
+            this.apartmentAddressTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.apartmentAddressTextBox.Location = new System.Drawing.Point(77, 21);
+            this.apartmentAddressTextBox.MaxLength = 60;
+            this.apartmentAddressTextBox.Name = "apartmentAddressTextBox";
+            this.apartmentAddressTextBox.Size = new System.Drawing.Size(272, 22);
+            this.apartmentAddressTextBox.TabIndex = 4;
             // 
             // label13
             // 
@@ -376,67 +456,13 @@
             this.label13.TabIndex = 11;
             this.label13.Text = "Адрес";
             // 
-            // checkBox1
+            // additionalRichTextBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox1.Location = new System.Drawing.Point(12, 168);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(78, 21);
-            this.checkBox1.TabIndex = 25;
-            this.checkBox1.Text = "Балкон";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "деревянный",
-            "кирпичный",
-            "панельный"});
-            this.comboBox3.Location = new System.Drawing.Point(190, 165);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(143, 24);
-            this.comboBox3.TabIndex = 27;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(94, 168);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 17);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Тип балкона";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox2.Location = new System.Drawing.Point(12, 195);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(262, 21);
-            this.checkBox2.TabIndex = 28;
-            this.checkBox2.Text = "Кодовый замок на двери подъезда";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(445, 210);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(427, 164);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(144, 53);
-            this.maskedTextBox1.Mask = "8-900-000-00-00";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(272, 22);
-            this.maskedTextBox1.TabIndex = 6;
+            this.additionalRichTextBox.Location = new System.Drawing.Point(445, 210);
+            this.additionalRichTextBox.Name = "additionalRichTextBox";
+            this.additionalRichTextBox.Size = new System.Drawing.Size(427, 164);
+            this.additionalRichTextBox.TabIndex = 16;
+            this.additionalRichTextBox.Text = "";
             // 
             // label5
             // 
@@ -448,14 +474,16 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Дополнительные условия";
             // 
-            // dateTimePicker3
+            // extensionDateTimePicker
             // 
-            this.dateTimePicker3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dateTimePicker3.Location = new System.Drawing.Point(265, 381);
-            this.dateTimePicker3.Name = "dateTimePicker3";
-            this.dateTimePicker3.Size = new System.Drawing.Size(163, 22);
-            this.dateTimePicker3.TabIndex = 17;
-            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
+            this.extensionDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.extensionDateTimePicker.Location = new System.Drawing.Point(265, 381);
+            this.extensionDateTimePicker.MaxDate = new System.DateTime(2210, 12, 31, 0, 0, 0, 0);
+            this.extensionDateTimePicker.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.extensionDateTimePicker.Name = "extensionDateTimePicker";
+            this.extensionDateTimePicker.Size = new System.Drawing.Size(174, 22);
+            this.extensionDateTimePicker.TabIndex = 17;
+            this.extensionDateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
             // label11
             // 
@@ -468,35 +496,37 @@
             this.label11.Text = "Продление действия договора";
             this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
-            // button1
+            // okButton
             // 
-            this.button1.Location = new System.Drawing.Point(716, 382);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 24);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "ОК";
-            this.button1.UseVisualStyleBackColor = true;
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okButton.Location = new System.Drawing.Point(716, 382);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 24);
+            this.okButton.TabIndex = 18;
+            this.okButton.Text = "ОК";
+            this.okButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // cancelButton
             // 
-            this.button2.Location = new System.Drawing.Point(797, 382);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 24);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Отмена";
-            this.button2.UseVisualStyleBackColor = true;
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(797, 382);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 24);
+            this.cancelButton.TabIndex = 19;
+            this.cancelButton.Text = "Отмена";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 422);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dateTimePicker3);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.okButton);
+            this.Controls.Add(this.extensionDateTimePicker);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.additionalRichTextBox);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -504,18 +534,19 @@
             this.MinimizeBox = false;
             this.Name = "ContractForm";
             this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Договор";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.taxtNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.compensationNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.paymentNumericUpDown)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.apartmentFloorNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.floorsCountNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -524,43 +555,43 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox clientAdressTextBox;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.NumericUpDown taxtNumericUpDown;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
+        private System.Windows.Forms.NumericUpDown compensationNumericUpDown;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown paymentNumericUpDown;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker expirationDateTimePicker;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker commencementDateTimePicker;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox doorTypeComboBox;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.NumericUpDown numericUpDown7;
+        private System.Windows.Forms.NumericUpDown apartmentFloorNumericUpDown;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.NumericUpDown numericUpDown6;
+        private System.Windows.Forms.NumericUpDown floorsCountNumericUpDown;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox houseTypeComboBox;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox apartmentAddressTextBox;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
+        private System.Windows.Forms.CheckBox codeKeyCheckBox;
+        private System.Windows.Forms.ComboBox balconyTypeComboBox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.CheckBox balconyCheckBox;
+        private System.Windows.Forms.RichTextBox additionalRichTextBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.DateTimePicker extensionDateTimePicker;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.Button cancelButton;
     }
 }

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.refreshContractsButton1 = new System.Windows.Forms.Button();
+            this.refreshContractsButton = new System.Windows.Forms.Button();
             this.editContractButton = new System.Windows.Forms.Button();
             this.addContractButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.contractsCountLabel = new System.Windows.Forms.Label();
             this.contractsDataGridView = new System.Windows.Forms.DataGridView();
             this.contractAddressTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,12 +42,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button2 = new System.Windows.Forms.Button();
+            this.departuresCountLabel = new System.Windows.Forms.Label();
+            this.refreshDeparturesButton = new System.Windows.Forms.Button();
+            this.departuresDataGridView = new System.Windows.Forms.DataGridView();
+            this.editDepartureButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.addDepartureButton = new System.Windows.Forms.Button();
+            this.crewIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.finishDepartureDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.startDepartureDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -54,6 +56,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.crewsCountLabel = new System.Windows.Forms.Label();
             this.deleteCrewButton = new System.Windows.Forms.Button();
             this.refreshCrewsButton = new System.Windows.Forms.Button();
             this.editCrewButton = new System.Windows.Forms.Button();
@@ -64,8 +67,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departuresDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crewsDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -74,18 +77,18 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(5, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(982, 738);
+            this.tabControl1.Size = new System.Drawing.Size(952, 799);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.refreshContractsButton1);
+            this.tabPage1.Controls.Add(this.refreshContractsButton);
             this.tabPage1.Controls.Add(this.editContractButton);
             this.tabPage1.Controls.Add(this.addContractButton);
-            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.contractsCountLabel);
             this.tabPage1.Controls.Add(this.contractsDataGridView);
             this.tabPage1.Controls.Add(this.contractAddressTextBox);
             this.tabPage1.Controls.Add(this.label2);
@@ -94,19 +97,19 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(974, 709);
+            this.tabPage1.Size = new System.Drawing.Size(929, 770);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Договоры";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // refreshContractsButton1
+            // refreshContractsButton
             // 
-            this.refreshContractsButton1.Location = new System.Drawing.Point(774, 148);
-            this.refreshContractsButton1.Name = "refreshContractsButton1";
-            this.refreshContractsButton1.Size = new System.Drawing.Size(136, 30);
-            this.refreshContractsButton1.TabIndex = 8;
-            this.refreshContractsButton1.Text = "Обновить";
-            this.refreshContractsButton1.UseVisualStyleBackColor = true;
+            this.refreshContractsButton.Location = new System.Drawing.Point(774, 148);
+            this.refreshContractsButton.Name = "refreshContractsButton";
+            this.refreshContractsButton.Size = new System.Drawing.Size(136, 30);
+            this.refreshContractsButton.TabIndex = 8;
+            this.refreshContractsButton.Text = "Обновить";
+            this.refreshContractsButton.UseVisualStyleBackColor = true;
             // 
             // editContractButton
             // 
@@ -126,14 +129,14 @@
             this.addContractButton.Text = "Добавить";
             this.addContractButton.UseVisualStyleBackColor = true;
             // 
-            // label3
+            // contractsCountLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Найдено";
+            this.contractsCountLabel.AutoSize = true;
+            this.contractsCountLabel.Location = new System.Drawing.Point(6, 56);
+            this.contractsCountLabel.Name = "contractsCountLabel";
+            this.contractsCountLabel.Size = new System.Drawing.Size(66, 17);
+            this.contractsCountLabel.TabIndex = 5;
+            this.contractsCountLabel.Text = "Найдено";
             // 
             // contractsDataGridView
             // 
@@ -187,58 +190,69 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(974, 709);
+            this.tabPage2.Size = new System.Drawing.Size(944, 770);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Выезды";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.departuresCountLabel);
+            this.groupBox2.Controls.Add(this.refreshDeparturesButton);
+            this.groupBox2.Controls.Add(this.departuresDataGridView);
+            this.groupBox2.Controls.Add(this.editDepartureButton);
             this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.numericUpDown1);
+            this.groupBox2.Controls.Add(this.addDepartureButton);
+            this.groupBox2.Controls.Add(this.crewIdNumericUpDown);
             this.groupBox2.Controls.Add(this.finishDepartureDateTimePicker);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.startDepartureDateTimePicker);
             this.groupBox2.Controls.Add(this.departureAdressTextBox);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(6, 322);
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(953, 381);
+            this.groupBox2.Size = new System.Drawing.Size(932, 450);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Выезды";
             // 
-            // button1
+            // departuresCountLabel
             // 
-            this.button1.Location = new System.Drawing.Point(795, 161);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(136, 30);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Обновить";
-            this.button1.UseVisualStyleBackColor = true;
+            this.departuresCountLabel.AutoSize = true;
+            this.departuresCountLabel.Location = new System.Drawing.Point(6, 102);
+            this.departuresCountLabel.Name = "departuresCountLabel";
+            this.departuresCountLabel.Size = new System.Drawing.Size(66, 17);
+            this.departuresCountLabel.TabIndex = 14;
+            this.departuresCountLabel.Text = "Найдено";
             // 
-            // dataGridView1
+            // refreshDeparturesButton
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 89);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(780, 286);
-            this.dataGridView1.TabIndex = 13;
+            this.refreshDeparturesButton.Location = new System.Drawing.Point(792, 197);
+            this.refreshDeparturesButton.Name = "refreshDeparturesButton";
+            this.refreshDeparturesButton.Size = new System.Drawing.Size(136, 30);
+            this.refreshDeparturesButton.TabIndex = 15;
+            this.refreshDeparturesButton.Text = "Обновить";
+            this.refreshDeparturesButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // departuresDataGridView
             // 
-            this.button2.Location = new System.Drawing.Point(795, 125);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(136, 30);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Изменить";
-            this.button2.UseVisualStyleBackColor = true;
+            this.departuresDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.departuresDataGridView.GridColor = System.Drawing.Color.DarkGray;
+            this.departuresDataGridView.Location = new System.Drawing.Point(6, 125);
+            this.departuresDataGridView.Name = "departuresDataGridView";
+            this.departuresDataGridView.RowTemplate.Height = 24;
+            this.departuresDataGridView.Size = new System.Drawing.Size(780, 319);
+            this.departuresDataGridView.TabIndex = 13;
+            // 
+            // editDepartureButton
+            // 
+            this.editDepartureButton.Location = new System.Drawing.Point(792, 161);
+            this.editDepartureButton.Name = "editDepartureButton";
+            this.editDepartureButton.Size = new System.Drawing.Size(136, 30);
+            this.editDepartureButton.TabIndex = 14;
+            this.editDepartureButton.Text = "Изменить";
+            this.editDepartureButton.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -247,27 +261,39 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(110, 17);
             this.label7.TabIndex = 12;
-            this.label7.Text = "Номер бригады";
+            this.label7.Text = "Номер экипажа";
             // 
-            // button3
+            // addDepartureButton
             // 
-            this.button3.Location = new System.Drawing.Point(795, 89);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(136, 30);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Добавить";
-            this.button3.UseVisualStyleBackColor = true;
+            this.addDepartureButton.Location = new System.Drawing.Point(792, 125);
+            this.addDepartureButton.Name = "addDepartureButton";
+            this.addDepartureButton.Size = new System.Drawing.Size(136, 30);
+            this.addDepartureButton.TabIndex = 13;
+            this.addDepartureButton.Text = "Добавить";
+            this.addDepartureButton.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
+            // crewIdNumericUpDown
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(116, 33);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(55, 22);
-            this.numericUpDown1.TabIndex = 11;
+            this.crewIdNumericUpDown.Location = new System.Drawing.Point(116, 33);
+            this.crewIdNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.crewIdNumericUpDown.Name = "crewIdNumericUpDown";
+            this.crewIdNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.crewIdNumericUpDown.TabIndex = 11;
+            this.crewIdNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // finishDepartureDateTimePicker
             // 
-            this.finishDepartureDateTimePicker.Location = new System.Drawing.Point(308, 61);
+            this.finishDepartureDateTimePicker.Location = new System.Drawing.Point(341, 63);
+            this.finishDepartureDateTimePicker.MaxDate = new System.DateTime(2210, 12, 31, 0, 0, 0, 0);
+            this.finishDepartureDateTimePicker.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.finishDepartureDateTimePicker.Name = "finishDepartureDateTimePicker";
             this.finishDepartureDateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.finishDepartureDateTimePicker.TabIndex = 10;
@@ -275,7 +301,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(260, 66);
+            this.label6.Location = new System.Drawing.Point(293, 68);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 17);
             this.label6.TabIndex = 9;
@@ -283,7 +309,9 @@
             // 
             // startDepartureDateTimePicker
             // 
-            this.startDepartureDateTimePicker.Location = new System.Drawing.Point(54, 61);
+            this.startDepartureDateTimePicker.Location = new System.Drawing.Point(56, 63);
+            this.startDepartureDateTimePicker.MaxDate = new System.DateTime(2210, 12, 31, 0, 0, 0, 0);
+            this.startDepartureDateTimePicker.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.startDepartureDateTimePicker.Name = "startDepartureDateTimePicker";
             this.startDepartureDateTimePicker.Size = new System.Drawing.Size(200, 22);
             this.startDepartureDateTimePicker.TabIndex = 8;
@@ -307,7 +335,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 66);
+            this.label5.Location = new System.Drawing.Point(8, 68);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(42, 17);
             this.label5.TabIndex = 4;
@@ -315,21 +343,31 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.crewsCountLabel);
             this.groupBox1.Controls.Add(this.deleteCrewButton);
             this.groupBox1.Controls.Add(this.refreshCrewsButton);
             this.groupBox1.Controls.Add(this.editCrewButton);
             this.groupBox1.Controls.Add(this.addCrewButton);
             this.groupBox1.Controls.Add(this.crewsDataGridView);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(0, 462);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(671, 310);
+            this.groupBox1.Size = new System.Drawing.Size(932, 302);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Экипажи";
             // 
+            // crewsCountLabel
+            // 
+            this.crewsCountLabel.AutoSize = true;
+            this.crewsCountLabel.Location = new System.Drawing.Point(6, 25);
+            this.crewsCountLabel.Name = "crewsCountLabel";
+            this.crewsCountLabel.Size = new System.Drawing.Size(66, 17);
+            this.crewsCountLabel.TabIndex = 13;
+            this.crewsCountLabel.Text = "Найдено";
+            // 
             // deleteCrewButton
             // 
-            this.deleteCrewButton.Location = new System.Drawing.Point(528, 104);
+            this.deleteCrewButton.Location = new System.Drawing.Point(528, 117);
             this.deleteCrewButton.Name = "deleteCrewButton";
             this.deleteCrewButton.Size = new System.Drawing.Size(136, 30);
             this.deleteCrewButton.TabIndex = 12;
@@ -338,7 +376,7 @@
             // 
             // refreshCrewsButton
             // 
-            this.refreshCrewsButton.Location = new System.Drawing.Point(528, 140);
+            this.refreshCrewsButton.Location = new System.Drawing.Point(528, 153);
             this.refreshCrewsButton.Name = "refreshCrewsButton";
             this.refreshCrewsButton.Size = new System.Drawing.Size(136, 30);
             this.refreshCrewsButton.TabIndex = 11;
@@ -347,7 +385,7 @@
             // 
             // editCrewButton
             // 
-            this.editCrewButton.Location = new System.Drawing.Point(528, 68);
+            this.editCrewButton.Location = new System.Drawing.Point(528, 81);
             this.editCrewButton.Name = "editCrewButton";
             this.editCrewButton.Size = new System.Drawing.Size(136, 30);
             this.editCrewButton.TabIndex = 10;
@@ -356,7 +394,7 @@
             // 
             // addCrewButton
             // 
-            this.addCrewButton.Location = new System.Drawing.Point(528, 32);
+            this.addCrewButton.Location = new System.Drawing.Point(528, 45);
             this.addCrewButton.Name = "addCrewButton";
             this.addCrewButton.Size = new System.Drawing.Size(136, 30);
             this.addCrewButton.TabIndex = 9;
@@ -366,19 +404,20 @@
             // crewsDataGridView
             // 
             this.crewsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.crewsDataGridView.Location = new System.Drawing.Point(6, 32);
+            this.crewsDataGridView.Location = new System.Drawing.Point(6, 45);
             this.crewsDataGridView.Name = "crewsDataGridView";
             this.crewsDataGridView.RowTemplate.Height = 24;
-            this.crewsDataGridView.Size = new System.Drawing.Size(516, 272);
+            this.crewsDataGridView.Size = new System.Drawing.Size(516, 249);
             this.crewsDataGridView.TabIndex = 0;
             // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 762);
+            this.ClientSize = new System.Drawing.Size(962, 823);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "mainForm";
             this.Text = "Охрана квартир";
@@ -389,9 +428,10 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departuresDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crewsDataGridView)).EndInit();
             this.ResumeLayout(false);
 
@@ -406,10 +446,10 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button refreshContractsButton1;
+        private System.Windows.Forms.Button refreshContractsButton;
         private System.Windows.Forms.Button editContractButton;
         private System.Windows.Forms.Button addContractButton;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label contractsCountLabel;
         private System.Windows.Forms.DataGridView contractsDataGridView;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DateTimePicker startDepartureDateTimePicker;
@@ -424,12 +464,14 @@
         private System.Windows.Forms.DataGridView crewsDataGridView;
         private System.Windows.Forms.DateTimePicker finishDepartureDateTimePicker;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button refreshDeparturesButton;
+        private System.Windows.Forms.DataGridView departuresDataGridView;
+        private System.Windows.Forms.Button editDepartureButton;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Button addDepartureButton;
+        private System.Windows.Forms.NumericUpDown crewIdNumericUpDown;
+        private System.Windows.Forms.Label departuresCountLabel;
+        private System.Windows.Forms.Label crewsCountLabel;
     }
 }
 
