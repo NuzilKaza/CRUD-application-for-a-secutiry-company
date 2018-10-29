@@ -33,5 +33,16 @@ namespace Security.Properties {
                 return ((string)(this["connectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-SDDC805\\SQLEXPRESS;Initial Catalog=Security;Integrated Securi" +
+            "ty=True")]
+        public string SecurityConnectionString {
+            get {
+                return ((string)(this["SecurityConnectionString"]));
+            }
+        }
     }
 }

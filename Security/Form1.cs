@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,9 +18,10 @@ namespace Security
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void mainForm_Load(object sender, EventArgs e)
         {
 
         }
+
     }
 }

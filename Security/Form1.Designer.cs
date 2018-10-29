@@ -28,19 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.contractsTabPage = new System.Windows.Forms.TabPage();
             this.refreshContractsButton = new System.Windows.Forms.Button();
             this.editContractButton = new System.Windows.Forms.Button();
             this.addContractButton = new System.Windows.Forms.Button();
             this.contractsCountLabel = new System.Windows.Forms.Label();
             this.contractsDataGridView = new System.Windows.Forms.DataGridView();
+            this.номерДоговораDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.фИОКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.телефонКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contracts_viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.securityDataSet = new Security.SecurityDataSet();
             this.contractAddressTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.departuresTabPage = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.departuresCountLabel = new System.Windows.Forms.Label();
             this.refreshDeparturesButton = new System.Windows.Forms.Button();
@@ -62,10 +69,14 @@
             this.editCrewButton = new System.Windows.Forms.Button();
             this.addCrewButton = new System.Windows.Forms.Button();
             this.crewsDataGridView = new System.Windows.Forms.DataGridView();
+            this.contracts_viewTableAdapter = new Security.SecurityDataSetTableAdapters.contracts_viewTableAdapter();
+            this.tableAdapterManager = new Security.SecurityDataSetTableAdapters.TableAdapterManager();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.contractsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).BeginInit();
-            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.contracts_viewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.securityDataSet)).BeginInit();
+            this.departuresTabPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departuresDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).BeginInit();
@@ -75,32 +86,32 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.contractsTabPage);
+            this.tabControl1.Controls.Add(this.departuresTabPage);
             this.tabControl1.Location = new System.Drawing.Point(5, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(952, 799);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // contractsTabPage
             // 
-            this.tabPage1.Controls.Add(this.refreshContractsButton);
-            this.tabPage1.Controls.Add(this.editContractButton);
-            this.tabPage1.Controls.Add(this.addContractButton);
-            this.tabPage1.Controls.Add(this.contractsCountLabel);
-            this.tabPage1.Controls.Add(this.contractsDataGridView);
-            this.tabPage1.Controls.Add(this.contractAddressTextBox);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.nameTextBox);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(929, 770);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Договоры";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.contractsTabPage.Controls.Add(this.refreshContractsButton);
+            this.contractsTabPage.Controls.Add(this.editContractButton);
+            this.contractsTabPage.Controls.Add(this.addContractButton);
+            this.contractsTabPage.Controls.Add(this.contractsCountLabel);
+            this.contractsTabPage.Controls.Add(this.contractsDataGridView);
+            this.contractsTabPage.Controls.Add(this.contractAddressTextBox);
+            this.contractsTabPage.Controls.Add(this.label2);
+            this.contractsTabPage.Controls.Add(this.nameTextBox);
+            this.contractsTabPage.Controls.Add(this.label1);
+            this.contractsTabPage.Location = new System.Drawing.Point(4, 25);
+            this.contractsTabPage.Name = "contractsTabPage";
+            this.contractsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.contractsTabPage.Size = new System.Drawing.Size(944, 770);
+            this.contractsTabPage.TabIndex = 0;
+            this.contractsTabPage.Text = "Договоры";
+            this.contractsTabPage.UseVisualStyleBackColor = true;
             // 
             // refreshContractsButton
             // 
@@ -140,12 +151,59 @@
             // 
             // contractsDataGridView
             // 
+            this.contractsDataGridView.AutoGenerateColumns = false;
+            this.contractsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.contractsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.contractsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.номерДоговораDataGridViewTextBoxColumn,
+            this.фИОКлиентаDataGridViewTextBoxColumn,
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn,
+            this.телефонКлиентаDataGridViewTextBoxColumn});
+            this.contractsDataGridView.DataSource = this.contracts_viewBindingSource;
             this.contractsDataGridView.Location = new System.Drawing.Point(9, 76);
             this.contractsDataGridView.Name = "contractsDataGridView";
             this.contractsDataGridView.RowTemplate.Height = 24;
-            this.contractsDataGridView.Size = new System.Drawing.Size(745, 446);
+            this.contractsDataGridView.Size = new System.Drawing.Size(745, 688);
             this.contractsDataGridView.TabIndex = 4;
+            // 
+            // номерДоговораDataGridViewTextBoxColumn
+            // 
+            this.номерДоговораDataGridViewTextBoxColumn.DataPropertyName = "Номер договора";
+            this.номерДоговораDataGridViewTextBoxColumn.HeaderText = "Номер договора";
+            this.номерДоговораDataGridViewTextBoxColumn.Name = "номерДоговораDataGridViewTextBoxColumn";
+            this.номерДоговораDataGridViewTextBoxColumn.Width = 132;
+            // 
+            // фИОКлиентаDataGridViewTextBoxColumn
+            // 
+            this.фИОКлиентаDataGridViewTextBoxColumn.DataPropertyName = "ФИО клиента";
+            this.фИОКлиентаDataGridViewTextBoxColumn.HeaderText = "ФИО клиента";
+            this.фИОКлиентаDataGridViewTextBoxColumn.Name = "фИОКлиентаDataGridViewTextBoxColumn";
+            this.фИОКлиентаDataGridViewTextBoxColumn.Width = 118;
+            // 
+            // адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn
+            // 
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.DataPropertyName = "Адрес квартиры, указанной в договре";
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.HeaderText = "Адрес квартиры, указанной в договре";
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.Name = "адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn";
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.ReadOnly = true;
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.Width = 215;
+            // 
+            // телефонКлиентаDataGridViewTextBoxColumn
+            // 
+            this.телефонКлиентаDataGridViewTextBoxColumn.DataPropertyName = "Телефон клиента";
+            this.телефонКлиентаDataGridViewTextBoxColumn.HeaderText = "Телефон клиента";
+            this.телефонКлиентаDataGridViewTextBoxColumn.Name = "телефонКлиентаDataGridViewTextBoxColumn";
+            this.телефонКлиентаDataGridViewTextBoxColumn.Width = 142;
+            // 
+            // contracts_viewBindingSource
+            // 
+            this.contracts_viewBindingSource.DataMember = "contracts_view";
+            this.contracts_viewBindingSource.DataSource = this.securityDataSet;
+            // 
+            // securityDataSet
+            // 
+            this.securityDataSet.DataSetName = "SecurityDataSet";
+            this.securityDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // contractAddressTextBox
             // 
@@ -163,7 +221,6 @@
             this.label2.Size = new System.Drawing.Size(48, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Адрес";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // nameTextBox
             // 
@@ -183,17 +240,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "ФИО";
             // 
-            // tabPage2
+            // departuresTabPage
             // 
-            this.tabPage2.Controls.Add(this.groupBox2);
-            this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(944, 770);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Выезды";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.departuresTabPage.Controls.Add(this.groupBox2);
+            this.departuresTabPage.Controls.Add(this.groupBox1);
+            this.departuresTabPage.Location = new System.Drawing.Point(4, 25);
+            this.departuresTabPage.Name = "departuresTabPage";
+            this.departuresTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.departuresTabPage.Size = new System.Drawing.Size(944, 770);
+            this.departuresTabPage.TabIndex = 1;
+            this.departuresTabPage.Text = "Выезды";
+            this.departuresTabPage.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -410,6 +467,36 @@
             this.crewsDataGridView.Size = new System.Drawing.Size(516, 249);
             this.crewsDataGridView.TabIndex = 0;
             // 
+            // contracts_viewTableAdapter
+            // 
+            this.contracts_viewTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.Apartments_with_balcony1TableAdapter = null;
+            this.tableAdapterManager.Apartments_with_balconyTableAdapter = null;
+            this.tableAdapterManager.Apartments_without_balcony1TableAdapter = null;
+            this.tableAdapterManager.Apartments_without_balconyTableAdapter = null;
+            this.tableAdapterManager.Apartments1TableAdapter = null;
+            this.tableAdapterManager.ApartmentsTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.Clients1TableAdapter = null;
+            this.tableAdapterManager.ClientsTableAdapter = null;
+            this.tableAdapterManager.Connection = null;
+            this.tableAdapterManager.Contracts1TableAdapter = null;
+            this.tableAdapterManager.ContractsTableAdapter = null;
+            this.tableAdapterManager.Crews1TableAdapter = null;
+            this.tableAdapterManager.CrewsTableAdapter = null;
+            this.tableAdapterManager.Departures1TableAdapter = null;
+            this.tableAdapterManager.DeparturesTableAdapter = null;
+            this.tableAdapterManager.False_departures1TableAdapter = null;
+            this.tableAdapterManager.False_departuresTableAdapter = null;
+            this.tableAdapterManager.Houses1TableAdapter = null;
+            this.tableAdapterManager.HousesTableAdapter = null;
+            this.tableAdapterManager.True_departures1TableAdapter = null;
+            this.tableAdapterManager.True_departuresTableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Security.SecurityDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -421,11 +508,14 @@
             this.MaximizeBox = false;
             this.Name = "mainForm";
             this.Text = "Охрана квартир";
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.contractsTabPage.ResumeLayout(false);
+            this.contractsTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).EndInit();
-            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.contracts_viewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.securityDataSet)).EndInit();
+            this.departuresTabPage.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departuresDataGridView)).EndInit();
@@ -440,12 +530,12 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage contractsTabPage;
         private System.Windows.Forms.TextBox contractAddressTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage departuresTabPage;
         private System.Windows.Forms.Button refreshContractsButton;
         private System.Windows.Forms.Button editContractButton;
         private System.Windows.Forms.Button addContractButton;
@@ -472,6 +562,14 @@
         private System.Windows.Forms.NumericUpDown crewIdNumericUpDown;
         private System.Windows.Forms.Label departuresCountLabel;
         private System.Windows.Forms.Label crewsCountLabel;
+        private SecurityDataSet securityDataSet;
+        private System.Windows.Forms.BindingSource contracts_viewBindingSource;
+        private SecurityDataSetTableAdapters.contracts_viewTableAdapter contracts_viewTableAdapter;
+        private SecurityDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.DataGridViewTextBoxColumn номерДоговораDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn фИОКлиентаDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn телефонКлиентаDataGridViewTextBoxColumn;
     }
 }
 
