@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Security.TablesInformation;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,7 +28,20 @@ namespace Security
             // TODO: данная строка кода позволяет загрузить данные в таблицу "securityDataSet.contracts_view". При необходимости она может быть перемещена или удалена.
             this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
 
+            String[] crewColumnsNames = { "Номер экипажа", "Командир экипажа", "Марка автомобиля" };
+            RenameColumns(crewsDataGridView, crewColumnsNames);
+
+            String[] departuresColumnsNames = { "Номер выезда", "Номер экипажа", "Номер договора", "Дата и время выезда", "Ложный вызов" };
+            RenameColumns(departuresDataGridView, departuresColumnsNames);
         }
 
+        private void RenameColumns(DataGridView dataGridView, String[] columnsNames)
+        {
+            int columnIndex = 0;
+            foreach (DataGridViewColumn column in dataGridView.Columns)
+            {
+                column.HeaderText = columnsNames[columnIndex++];
+            }
+        }
     }
 }

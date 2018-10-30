@@ -76,6 +76,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SecurityDataSet1.xsd</DependentUpon>
     </Compile>
+    <Compile Include="TablesInformation\TableInfo.cs" />
     <EmbeddedResource Include="ContractForm.resx">
       <DependentUpon>ContractForm.cs</DependentUpon>
     </EmbeddedResource>
