@@ -20,6 +20,12 @@ namespace Security
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "securityDataSet.Departures". При необходимости она может быть перемещена или удалена.
+            this.departuresTableAdapter.Fill(this.securityDataSet.Departures);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "securityDataSet.Crews". При необходимости она может быть перемещена или удалена.
+            this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "securityDataSet.contracts_view". При необходимости она может быть перемещена или удалена.
+            this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
 
         }
 

@@ -37,12 +37,6 @@
             this.addContractButton = new System.Windows.Forms.Button();
             this.contractsCountLabel = new System.Windows.Forms.Label();
             this.contractsDataGridView = new System.Windows.Forms.DataGridView();
-            this.номерДоговораDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.фИОКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.телефонКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contracts_viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.securityDataSet = new Security.SecurityDataSet();
             this.contractAddressTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
@@ -69,19 +63,39 @@
             this.editCrewButton = new System.Windows.Forms.Button();
             this.addCrewButton = new System.Windows.Forms.Button();
             this.crewsDataGridView = new System.Windows.Forms.DataGridView();
+            this.securityDataSet = new Security.SecurityDataSet();
+            this.contracts_viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contracts_viewTableAdapter = new Security.SecurityDataSetTableAdapters.contracts_viewTableAdapter();
             this.tableAdapterManager = new Security.SecurityDataSetTableAdapters.TableAdapterManager();
+            this.номерДоговораDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.фИОКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.телефонКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.crewsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.crewsTableAdapter = new Security.SecurityDataSetTableAdapters.CrewsTableAdapter();
+            this.crewidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.crewleaderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.crewcarmodelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departuresBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.departuresTableAdapter = new Security.SecurityDataSetTableAdapters.DeparturesTableAdapter();
+            this.departureidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.crewidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departuredatetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.falsecallDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl1.SuspendLayout();
             this.contractsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contracts_viewBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.securityDataSet)).BeginInit();
             this.departuresTabPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departuresDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crewsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.securityDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contracts_viewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crewsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departuresBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -165,45 +179,6 @@
             this.contractsDataGridView.RowTemplate.Height = 24;
             this.contractsDataGridView.Size = new System.Drawing.Size(745, 688);
             this.contractsDataGridView.TabIndex = 4;
-            // 
-            // номерДоговораDataGridViewTextBoxColumn
-            // 
-            this.номерДоговораDataGridViewTextBoxColumn.DataPropertyName = "Номер договора";
-            this.номерДоговораDataGridViewTextBoxColumn.HeaderText = "Номер договора";
-            this.номерДоговораDataGridViewTextBoxColumn.Name = "номерДоговораDataGridViewTextBoxColumn";
-            this.номерДоговораDataGridViewTextBoxColumn.Width = 132;
-            // 
-            // фИОКлиентаDataGridViewTextBoxColumn
-            // 
-            this.фИОКлиентаDataGridViewTextBoxColumn.DataPropertyName = "ФИО клиента";
-            this.фИОКлиентаDataGridViewTextBoxColumn.HeaderText = "ФИО клиента";
-            this.фИОКлиентаDataGridViewTextBoxColumn.Name = "фИОКлиентаDataGridViewTextBoxColumn";
-            this.фИОКлиентаDataGridViewTextBoxColumn.Width = 118;
-            // 
-            // адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn
-            // 
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.DataPropertyName = "Адрес квартиры, указанной в договре";
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.HeaderText = "Адрес квартиры, указанной в договре";
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.Name = "адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn";
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.ReadOnly = true;
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.Width = 215;
-            // 
-            // телефонКлиентаDataGridViewTextBoxColumn
-            // 
-            this.телефонКлиентаDataGridViewTextBoxColumn.DataPropertyName = "Телефон клиента";
-            this.телефонКлиентаDataGridViewTextBoxColumn.HeaderText = "Телефон клиента";
-            this.телефонКлиентаDataGridViewTextBoxColumn.Name = "телефонКлиентаDataGridViewTextBoxColumn";
-            this.телефонКлиентаDataGridViewTextBoxColumn.Width = 142;
-            // 
-            // contracts_viewBindingSource
-            // 
-            this.contracts_viewBindingSource.DataMember = "contracts_view";
-            this.contracts_viewBindingSource.DataSource = this.securityDataSet;
-            // 
-            // securityDataSet
-            // 
-            this.securityDataSet.DataSetName = "SecurityDataSet";
-            this.securityDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // contractAddressTextBox
             // 
@@ -294,7 +269,16 @@
             // 
             // departuresDataGridView
             // 
+            this.departuresDataGridView.AutoGenerateColumns = false;
+            this.departuresDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.departuresDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.departuresDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.departureidDataGridViewTextBoxColumn,
+            this.crewidDataGridViewTextBoxColumn1,
+            this.contractidDataGridViewTextBoxColumn,
+            this.departuredatetimeDataGridViewTextBoxColumn,
+            this.falsecallDataGridViewCheckBoxColumn});
+            this.departuresDataGridView.DataSource = this.departuresBindingSource;
             this.departuresDataGridView.GridColor = System.Drawing.Color.DarkGray;
             this.departuresDataGridView.Location = new System.Drawing.Point(6, 125);
             this.departuresDataGridView.Name = "departuresDataGridView";
@@ -460,12 +444,29 @@
             // 
             // crewsDataGridView
             // 
+            this.crewsDataGridView.AutoGenerateColumns = false;
+            this.crewsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.crewsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.crewsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.crewidDataGridViewTextBoxColumn,
+            this.crewleaderDataGridViewTextBoxColumn,
+            this.crewcarmodelDataGridViewTextBoxColumn});
+            this.crewsDataGridView.DataSource = this.crewsBindingSource;
             this.crewsDataGridView.Location = new System.Drawing.Point(6, 45);
             this.crewsDataGridView.Name = "crewsDataGridView";
             this.crewsDataGridView.RowTemplate.Height = 24;
             this.crewsDataGridView.Size = new System.Drawing.Size(516, 249);
             this.crewsDataGridView.TabIndex = 0;
+            // 
+            // securityDataSet
+            // 
+            this.securityDataSet.DataSetName = "SecurityDataSet";
+            this.securityDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // contracts_viewBindingSource
+            // 
+            this.contracts_viewBindingSource.DataMember = "contracts_view";
+            this.contracts_viewBindingSource.DataSource = this.securityDataSet;
             // 
             // contracts_viewTableAdapter
             // 
@@ -473,29 +474,121 @@
             // 
             // tableAdapterManager
             // 
-            this.tableAdapterManager.Apartments_with_balcony1TableAdapter = null;
             this.tableAdapterManager.Apartments_with_balconyTableAdapter = null;
-            this.tableAdapterManager.Apartments_without_balcony1TableAdapter = null;
             this.tableAdapterManager.Apartments_without_balconyTableAdapter = null;
-            this.tableAdapterManager.Apartments1TableAdapter = null;
             this.tableAdapterManager.ApartmentsTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.Clients1TableAdapter = null;
             this.tableAdapterManager.ClientsTableAdapter = null;
-            this.tableAdapterManager.Connection = null;
-            this.tableAdapterManager.Contracts1TableAdapter = null;
             this.tableAdapterManager.ContractsTableAdapter = null;
-            this.tableAdapterManager.Crews1TableAdapter = null;
-            this.tableAdapterManager.CrewsTableAdapter = null;
-            this.tableAdapterManager.Departures1TableAdapter = null;
-            this.tableAdapterManager.DeparturesTableAdapter = null;
-            this.tableAdapterManager.False_departures1TableAdapter = null;
+            this.tableAdapterManager.CrewsTableAdapter = this.crewsTableAdapter;
+            this.tableAdapterManager.DeparturesTableAdapter = this.departuresTableAdapter;
             this.tableAdapterManager.False_departuresTableAdapter = null;
-            this.tableAdapterManager.Houses1TableAdapter = null;
             this.tableAdapterManager.HousesTableAdapter = null;
-            this.tableAdapterManager.True_departures1TableAdapter = null;
             this.tableAdapterManager.True_departuresTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Security.SecurityDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            // 
+            // номерДоговораDataGridViewTextBoxColumn
+            // 
+            this.номерДоговораDataGridViewTextBoxColumn.DataPropertyName = "Номер договора";
+            this.номерДоговораDataGridViewTextBoxColumn.HeaderText = "Номер договора";
+            this.номерДоговораDataGridViewTextBoxColumn.Name = "номерДоговораDataGridViewTextBoxColumn";
+            this.номерДоговораDataGridViewTextBoxColumn.Width = 132;
+            // 
+            // фИОКлиентаDataGridViewTextBoxColumn
+            // 
+            this.фИОКлиентаDataGridViewTextBoxColumn.DataPropertyName = "ФИО клиента";
+            this.фИОКлиентаDataGridViewTextBoxColumn.HeaderText = "ФИО клиента";
+            this.фИОКлиентаDataGridViewTextBoxColumn.Name = "фИОКлиентаDataGridViewTextBoxColumn";
+            this.фИОКлиентаDataGridViewTextBoxColumn.Width = 118;
+            // 
+            // адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn
+            // 
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.DataPropertyName = "Адрес квартиры, указанной в договре";
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.HeaderText = "Адрес квартиры, указанной в договре";
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.Name = "адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn";
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.ReadOnly = true;
+            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.Width = 215;
+            // 
+            // телефонКлиентаDataGridViewTextBoxColumn
+            // 
+            this.телефонКлиентаDataGridViewTextBoxColumn.DataPropertyName = "Телефон клиента";
+            this.телефонКлиентаDataGridViewTextBoxColumn.HeaderText = "Телефон клиента";
+            this.телефонКлиентаDataGridViewTextBoxColumn.Name = "телефонКлиентаDataGridViewTextBoxColumn";
+            this.телефонКлиентаDataGridViewTextBoxColumn.Width = 142;
+            // 
+            // crewsBindingSource
+            // 
+            this.crewsBindingSource.DataMember = "Crews";
+            this.crewsBindingSource.DataSource = this.securityDataSet;
+            // 
+            // crewsTableAdapter
+            // 
+            this.crewsTableAdapter.ClearBeforeFill = true;
+            // 
+            // crewidDataGridViewTextBoxColumn
+            // 
+            this.crewidDataGridViewTextBoxColumn.DataPropertyName = "crew_id";
+            this.crewidDataGridViewTextBoxColumn.HeaderText = "crew_id";
+            this.crewidDataGridViewTextBoxColumn.Name = "crewidDataGridViewTextBoxColumn";
+            this.crewidDataGridViewTextBoxColumn.Width = 85;
+            // 
+            // crewleaderDataGridViewTextBoxColumn
+            // 
+            this.crewleaderDataGridViewTextBoxColumn.DataPropertyName = "crew_leader";
+            this.crewleaderDataGridViewTextBoxColumn.HeaderText = "crew_leader";
+            this.crewleaderDataGridViewTextBoxColumn.Name = "crewleaderDataGridViewTextBoxColumn";
+            this.crewleaderDataGridViewTextBoxColumn.Width = 114;
+            // 
+            // crewcarmodelDataGridViewTextBoxColumn
+            // 
+            this.crewcarmodelDataGridViewTextBoxColumn.DataPropertyName = "crew_car_model";
+            this.crewcarmodelDataGridViewTextBoxColumn.HeaderText = "crew_car_model";
+            this.crewcarmodelDataGridViewTextBoxColumn.Name = "crewcarmodelDataGridViewTextBoxColumn";
+            this.crewcarmodelDataGridViewTextBoxColumn.Width = 140;
+            // 
+            // departuresBindingSource
+            // 
+            this.departuresBindingSource.DataMember = "Departures";
+            this.departuresBindingSource.DataSource = this.securityDataSet;
+            // 
+            // departuresTableAdapter
+            // 
+            this.departuresTableAdapter.ClearBeforeFill = true;
+            // 
+            // departureidDataGridViewTextBoxColumn
+            // 
+            this.departureidDataGridViewTextBoxColumn.DataPropertyName = "departure_id";
+            this.departureidDataGridViewTextBoxColumn.HeaderText = "departure_id";
+            this.departureidDataGridViewTextBoxColumn.Name = "departureidDataGridViewTextBoxColumn";
+            this.departureidDataGridViewTextBoxColumn.Width = 118;
+            // 
+            // crewidDataGridViewTextBoxColumn1
+            // 
+            this.crewidDataGridViewTextBoxColumn1.DataPropertyName = "crew_id";
+            this.crewidDataGridViewTextBoxColumn1.HeaderText = "crew_id";
+            this.crewidDataGridViewTextBoxColumn1.Name = "crewidDataGridViewTextBoxColumn1";
+            this.crewidDataGridViewTextBoxColumn1.Width = 85;
+            // 
+            // contractidDataGridViewTextBoxColumn
+            // 
+            this.contractidDataGridViewTextBoxColumn.DataPropertyName = "contract_id";
+            this.contractidDataGridViewTextBoxColumn.HeaderText = "contract_id";
+            this.contractidDataGridViewTextBoxColumn.Name = "contractidDataGridViewTextBoxColumn";
+            this.contractidDataGridViewTextBoxColumn.Width = 107;
+            // 
+            // departuredatetimeDataGridViewTextBoxColumn
+            // 
+            this.departuredatetimeDataGridViewTextBoxColumn.DataPropertyName = "departure_date_time";
+            this.departuredatetimeDataGridViewTextBoxColumn.HeaderText = "departure_date_time";
+            this.departuredatetimeDataGridViewTextBoxColumn.Name = "departuredatetimeDataGridViewTextBoxColumn";
+            this.departuredatetimeDataGridViewTextBoxColumn.Width = 169;
+            // 
+            // falsecallDataGridViewCheckBoxColumn
+            // 
+            this.falsecallDataGridViewCheckBoxColumn.DataPropertyName = "false_call";
+            this.falsecallDataGridViewCheckBoxColumn.HeaderText = "false_call";
+            this.falsecallDataGridViewCheckBoxColumn.Name = "falsecallDataGridViewCheckBoxColumn";
+            this.falsecallDataGridViewCheckBoxColumn.Width = 73;
             // 
             // mainForm
             // 
@@ -513,8 +606,6 @@
             this.contractsTabPage.ResumeLayout(false);
             this.contractsTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contracts_viewBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.securityDataSet)).EndInit();
             this.departuresTabPage.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -523,6 +614,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crewsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.securityDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contracts_viewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.crewsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.departuresBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -570,6 +665,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn фИОКлиентаDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn телефонКлиентаDataGridViewTextBoxColumn;
+        private SecurityDataSetTableAdapters.CrewsTableAdapter crewsTableAdapter;
+        private System.Windows.Forms.BindingSource crewsBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn crewidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn crewleaderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn crewcarmodelDataGridViewTextBoxColumn;
+        private SecurityDataSetTableAdapters.DeparturesTableAdapter departuresTableAdapter;
+        private System.Windows.Forms.BindingSource departuresBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departureidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn crewidDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contractidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departuredatetimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn falsecallDataGridViewCheckBoxColumn;
     }
 }
 
