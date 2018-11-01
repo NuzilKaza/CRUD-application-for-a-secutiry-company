@@ -27,7 +27,20 @@ namespace Security
             this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "securityDataSet.contracts_view". При необходимости она может быть перемещена или удалена.
             this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
+
+            ShowRowsCountEverywhere();
         }
 
+        private void ShowRowsCountEverywhere()
+        {
+            ShowRowsCount(contractsDataGridView, contractsCountLabel);
+            ShowRowsCount(departuresDataGridView, departuresCountLabel);
+            ShowRowsCount(crewsDataGridView, crewsCountLabel);
+        }
+
+        private void ShowRowsCount(DataGridView dataGridView, Label labelWithCount)
+        {
+            labelWithCount.Text += " " + dataGridView.RowCount;
+        }
     }
 }

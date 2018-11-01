@@ -503,6 +503,8 @@
             // 
             // crewsDataGridView
             // 
+            this.crewsDataGridView.AllowUserToAddRows = false;
+            this.crewsDataGridView.AllowUserToDeleteRows = false;
             this.crewsDataGridView.AllowUserToOrderColumns = true;
             this.crewsDataGridView.AllowUserToResizeRows = false;
             this.crewsDataGridView.AutoGenerateColumns = false;
@@ -514,7 +516,9 @@
             this.crewcarmodelDataGridViewTextBoxColumn});
             this.crewsDataGridView.DataSource = this.crewsBindingSource;
             this.crewsDataGridView.Location = new System.Drawing.Point(9, 50);
+            this.crewsDataGridView.MultiSelect = false;
             this.crewsDataGridView.Name = "crewsDataGridView";
+            this.crewsDataGridView.ReadOnly = true;
             this.crewsDataGridView.RowTemplate.Height = 24;
             this.crewsDataGridView.Size = new System.Drawing.Size(607, 249);
             this.crewsDataGridView.TabIndex = 0;
@@ -597,6 +601,7 @@
             this.crewidDataGridViewTextBoxColumn.DataPropertyName = "crew_id";
             this.crewidDataGridViewTextBoxColumn.HeaderText = "Номер экипажа";
             this.crewidDataGridViewTextBoxColumn.Name = "crewidDataGridViewTextBoxColumn";
+            this.crewidDataGridViewTextBoxColumn.ReadOnly = true;
             this.crewidDataGridViewTextBoxColumn.Width = 127;
             // 
             // crewleaderDataGridViewTextBoxColumn
@@ -604,6 +609,7 @@
             this.crewleaderDataGridViewTextBoxColumn.DataPropertyName = "crew_leader";
             this.crewleaderDataGridViewTextBoxColumn.HeaderText = "Командир экипажа";
             this.crewleaderDataGridViewTextBoxColumn.Name = "crewleaderDataGridViewTextBoxColumn";
+            this.crewleaderDataGridViewTextBoxColumn.ReadOnly = true;
             this.crewleaderDataGridViewTextBoxColumn.Width = 148;
             // 
             // crewcarmodelDataGridViewTextBoxColumn
@@ -611,6 +617,7 @@
             this.crewcarmodelDataGridViewTextBoxColumn.DataPropertyName = "crew_car_model";
             this.crewcarmodelDataGridViewTextBoxColumn.HeaderText = "Марка автомобиля";
             this.crewcarmodelDataGridViewTextBoxColumn.Name = "crewcarmodelDataGridViewTextBoxColumn";
+            this.crewcarmodelDataGridViewTextBoxColumn.ReadOnly = true;
             this.crewcarmodelDataGridViewTextBoxColumn.Width = 148;
             // 
             // mainForm
