@@ -79,7 +79,6 @@
             this.carModelTextBox.Name = "carModelTextBox";
             this.carModelTextBox.Size = new System.Drawing.Size(227, 22);
             this.carModelTextBox.TabIndex = 4;
-            this.carModelTextBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label3
             // 
@@ -89,7 +88,6 @@
             this.label3.Size = new System.Drawing.Size(133, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "Марка автомобиля";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // okButton
             // 
@@ -100,7 +98,6 @@
             this.okButton.TabIndex = 6;
             this.okButton.Text = "ОК";
             this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // cancelButton
             // 
@@ -111,7 +108,6 @@
             this.cancelButton.TabIndex = 7;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // CrewForm
             // 

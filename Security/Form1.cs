@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,18 +15,50 @@ namespace Security
 {
     public partial class mainForm : Form
     {
+        private SqlConnection connection;
+
         public mainForm()
         {
             InitializeComponent();
+            this.connection = new SqlConnection(Properties.Settings.Default.connectionString);
         }
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "securityDataSet.Departures". При необходимости она может быть перемещена или удалена.
+            SqlCommand command = new SqlCommand();
+            command.Connection = connection;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = "Crews_Select_All";
+
+            connection.Open();
+            SqlDataReader reader = command.ExecuteReader();
+            DataTable dataTable = new DataTable();
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                string columnName = reader.GetName(i);
+                Type columnType = reader.GetFieldType(i);
+                DataColumn dataColumn = new DataColumn(columnName, columnType);
+                dataTable.Columns.Add(dataColumn);
+            }
+
+            while (reader.Read())
+            {
+                DataRow row = dataTable.NewRow();
+                for (int i = 0; i < reader.FieldCount; i++)
+                {
+                    row[i] = reader.GetValue(i);
+                }
+                dataTable.Rows.Add(row);
+            }
+
+            connection.Close();
+            crewsDataGridView.DataSource = dataTable;
+
+            
             this.departuresTableAdapter.Fill(this.securityDataSet.Departures);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "securityDataSet.Crews". При необходимости она может быть перемещена или удалена.
-            this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "securityDataSet.contracts_view". При необходимости она может быть перемещена или удалена.
+            
+            //this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
+            
             this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
 
             ShowRowsCountEverywhere();
