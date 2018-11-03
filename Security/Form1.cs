@@ -25,17 +25,22 @@ namespace Security
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-            
+
+
+            //this.departuresTableAdapter.Fill(this.securityDataSet.Departures);
+
+            //this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
+
+            //this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
+            FillTables();
+            ShowRowsCountEverywhere();
+        }
+
+        private void FillTables()
+        {
             crewsDataGridView.DataSource = CreateDataSource("Crews_Select_All", CommandType.StoredProcedure);
             departuresDataGridView.DataSource = CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
-            
-            //this.departuresTableAdapter.Fill(this.securityDataSet.Departures);
-            
-            //this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
-            
-            this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
-
-            ShowRowsCountEverywhere();
+            contractsDataGridView.DataSource = CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
         }
 
         private DataTable CreateDataSource(string commandText, CommandType commandType)
