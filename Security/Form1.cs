@@ -25,10 +25,25 @@ namespace Security
 
         private void mainForm_Load(object sender, EventArgs e)
         {
+            
+            crewsDataGridView.DataSource = CreateDataSource("Crews_Select_All", CommandType.StoredProcedure);
+            departuresDataGridView.DataSource = CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
+            
+            //this.departuresTableAdapter.Fill(this.securityDataSet.Departures);
+            
+            //this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
+            
+            this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
+
+            ShowRowsCountEverywhere();
+        }
+
+        private DataTable CreateDataSource(string commandText, CommandType commandType)
+        {
             SqlCommand command = new SqlCommand();
             command.Connection = connection;
-            command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = "Crews_Select_All";
+            command.CommandType = commandType;
+            command.CommandText = commandText;
 
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
@@ -52,16 +67,7 @@ namespace Security
             }
 
             connection.Close();
-            crewsDataGridView.DataSource = dataTable;
-
-            
-            this.departuresTableAdapter.Fill(this.securityDataSet.Departures);
-            
-            //this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
-            
-            this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
-
-            ShowRowsCountEverywhere();
+            return dataTable;
         }
 
         private void ShowRowsCountEverywhere()
