@@ -16,6 +16,9 @@ namespace Security
     public partial class mainForm : Form
     {
         private SqlConnection connection;
+        private DataTable crewsDataTable;
+        private DataTable departuresDataTable;
+        private DataTable contractsDataTable;
 
         public mainForm()
         {
@@ -25,12 +28,8 @@ namespace Security
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-
-
             //this.departuresTableAdapter.Fill(this.securityDataSet.Departures);
-
             //this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
-
             //this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
             FillTables();
             ShowRowsCountEverywhere();
@@ -38,9 +37,14 @@ namespace Security
 
         private void FillTables()
         {
-            crewsDataGridView.DataSource = CreateDataSource("Crews_Select_All", CommandType.StoredProcedure);
-            departuresDataGridView.DataSource = CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
-            contractsDataGridView.DataSource = CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
+            crewsDataTable = CreateDataSource("Crews_Select_All", CommandType.StoredProcedure);
+            departuresDataTable = CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
+            contractsDataTable = CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
+
+            //TODO: разобраться с колонкой адресов
+            crewsDataGridView.DataSource = crewsDataTable;
+            departuresDataGridView.DataSource = departuresDataTable;
+            contractsDataGridView.DataSource = contractsDataTable;
         }
 
         private DataTable CreateDataSource(string commandText, CommandType commandType)
@@ -85,6 +89,65 @@ namespace Security
         private void ShowRowsCount(DataGridView dataGridView, Label labelWithCount)
         {
             labelWithCount.Text += " " + dataGridView.RowCount;
+        }
+
+        private bool CheckCrewId(int id)
+        {
+            for (int i = 0; i < crewsDataTable.Rows.Count; i++)
+            {
+                DataRow row = crewsDataTable.Rows[i];
+                if ((int)row["crew_id"] == id) return false;
+            }
+            return true;
+        }
+
+        private int GetMaxId(DataTable dataTable, string columnName)
+        {
+            DataRow row = dataTable.Rows[dataTable.Rows.Count - 1];
+            return Convert.ToInt32(row[columnName]);
+        }
+
+        private void addCrewButton_Click(object sender, EventArgs e)
+        {
+            int maxId = GetMaxId(crewsDataTable, "crew_id");
+            CrewForm crewForm = new CrewForm(((DataTable)crewsDataGridView.DataSource).NewRow(), false, maxId);
+            if (crewForm.ShowDialog() == DialogResult.OK)
+            {
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.CommandType = CommandType.StoredProcedure;
+                command.CommandText = "Crew_Insert";
+
+                command.Parameters.Add(new SqlParameter("@crew_id", SqlDbType.Int));
+                command.Parameters["@crew_id"].Value = crewForm.Row["crew_id"];
+                command.Parameters.Add(new SqlParameter("@crew_leader", SqlDbType.NChar));
+                command.Parameters["@crew_leader"].Value = crewForm.Row["crew_leader"];
+                command.Parameters.Add(new SqlParameter("@crew_car_model", SqlDbType.NChar));
+                command.Parameters["@crew_car_model"].Value = crewForm.Row["crew_car_model"];
+
+                connection.Open();
+                if (command.ExecuteNonQuery() != 0)
+                {
+                    MessageBox.Show("Вставка выполнена успешно");
+                }
+                connection.Close();
+
+                FillTables();
+                ShowRowsCountEverywhere();
+            }
+        }
+
+        private void addDepartureButton_Click(object sender, EventArgs e)
+        {
+            int maxDepartureId = GetMaxId(departuresDataTable, "departure_id");
+            int maxCrewId = GetMaxId(crewsDataTable, "crew_id");
+            int maxContractId = GetMaxId(contractsDataTable, "contract_id");
+
+            DepartureForm departureForm = new DepartureForm(((DataTable)crewsDataGridView.DataSource).NewRow(), false, maxDepartureId, maxCrewId, maxContractId);
+            if (departureForm.ShowDialog() == DialogResult.OK)
+            {
+
+            }
         }
     }
 }

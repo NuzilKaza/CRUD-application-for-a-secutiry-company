@@ -594,17 +594,17 @@ SELECT departure_id, arrest_document FROM True_departures WHERE (departure_id = 
               <DbSource ConnectionRef="SecurityConnectionString (Settings)" DbObjectName="Security.dbo.contracts_view" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
-                    <CommandText>SELECT [Номер договора], [ФИО клиента], [Адрес квартиры, указанной в договре], [Телефон клиента] FROM dbo.contracts_view</CommandText>
+                    <CommandText>SELECT contract_id, client_name, apartment_address_in_contract, client_phone FROM dbo.contracts_view</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
             </MainSource>
             <Mappings>
-              <Mapping SourceColumn="Номер договора" DataSetColumn="Номер договора" />
-              <Mapping SourceColumn="ФИО клиента" DataSetColumn="ФИО клиента" />
-              <Mapping SourceColumn="Адрес квартиры, указанной в договре" DataSetColumn="Адрес квартиры, указанной в договре" />
-              <Mapping SourceColumn="Телефон клиента" DataSetColumn="Телефон клиента" />
+              <Mapping SourceColumn="contract_id" DataSetColumn="contract_id" />
+              <Mapping SourceColumn="client_name" DataSetColumn="client_name" />
+              <Mapping SourceColumn="apartment_address_in_contract" DataSetColumn="apartment_address_in_contract" />
+              <Mapping SourceColumn="client_phone" DataSetColumn="client_phone" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -785,22 +785,22 @@ SELECT departure_id, arrest_document FROM True_departures WHERE (departure_id = 
         <xs:element name="contracts_view" msprop:Generator_TableClassName="contracts_viewDataTable" msprop:Generator_TableVarName="tablecontracts_view" msprop:Generator_TablePropName="contracts_view" msprop:Generator_RowDeletingName="contracts_viewRowDeleting" msprop:Generator_RowChangingName="contracts_viewRowChanging" msprop:Generator_RowEvHandlerName="contracts_viewRowChangeEventHandler" msprop:Generator_RowDeletedName="contracts_viewRowDeleted" msprop:Generator_UserTableName="contracts_view" msprop:Generator_RowChangedName="contracts_viewRowChanged" msprop:Generator_RowEvArgName="contracts_viewRowChangeEvent" msprop:Generator_RowClassName="contracts_viewRow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Номер_x0020_договора" msprop:Generator_ColumnVarNameInTable="columnНомер_договора" msprop:Generator_ColumnPropNameInRow="Номер_договора" msprop:Generator_ColumnPropNameInTable="Номер_договораColumn" msprop:Generator_UserColumnName="Номер договора" type="xs:int" />
-              <xs:element name="ФИО_x0020_клиента" msprop:Generator_ColumnVarNameInTable="columnФИО_клиента" msprop:Generator_ColumnPropNameInRow="ФИО_клиента" msprop:Generator_ColumnPropNameInTable="ФИО_клиентаColumn" msprop:Generator_UserColumnName="ФИО клиента">
+              <xs:element name="contract_id" msprop:Generator_ColumnVarNameInTable="columncontract_id" msprop:Generator_ColumnPropNameInRow="contract_id" msprop:Generator_ColumnPropNameInTable="contract_idColumn" msprop:Generator_UserColumnName="contract_id" type="xs:int" />
+              <xs:element name="client_name" msprop:Generator_ColumnVarNameInTable="columnclient_name" msprop:Generator_ColumnPropNameInRow="client_name" msprop:Generator_ColumnPropNameInTable="client_nameColumn" msprop:Generator_UserColumnName="client_name">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="60" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Адрес_x0020_квартиры_x002C__x0020_указанной_x0020_в_x0020_договре" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="_columnАдрес_квартиры__указанной_в_договре" msprop:Generator_ColumnPropNameInRow="_Адрес_квартиры__указанной_в_договре" msprop:Generator_ColumnPropNameInTable="_Адрес_квартиры__указанной_в_договреColumn" msprop:Generator_UserColumnName="Адрес квартиры, указанной в договре" minOccurs="0">
+              <xs:element name="apartment_address_in_contract" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnapartment_address_in_contract" msprop:Generator_ColumnPropNameInRow="apartment_address_in_contract" msprop:Generator_ColumnPropNameInTable="apartment_address_in_contractColumn" msprop:Generator_UserColumnName="apartment_address_in_contract" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="77" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Телефон_x0020_клиента" msprop:Generator_ColumnVarNameInTable="columnТелефон_клиента" msprop:Generator_ColumnPropNameInRow="Телефон_клиента" msprop:Generator_ColumnPropNameInTable="Телефон_клиентаColumn" msprop:Generator_UserColumnName="Телефон клиента">
+              <xs:element name="client_phone" msprop:Generator_ColumnVarNameInTable="columnclient_phone" msprop:Generator_ColumnPropNameInRow="client_phone" msprop:Generator_ColumnPropNameInTable="client_phoneColumn" msprop:Generator_UserColumnName="client_phone">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="11" />
@@ -854,7 +854,7 @@ SELECT departure_id, arrest_document FROM True_departures WHERE (departure_id = 
     </xs:unique>
     <xs:unique name="contracts_view_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:contracts_view" />
-      <xs:field xpath="mstns:Номер_x0020_договора" />
+      <xs:field xpath="mstns:contract_id" />
     </xs:unique>
   </xs:element>
   <xs:annotation>

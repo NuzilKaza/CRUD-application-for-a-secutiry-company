@@ -3755,13 +3755,13 @@ namespace Security {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class contracts_viewDataTable : global::System.Data.TypedTableBase<contracts_viewRow> {
             
-            private global::System.Data.DataColumn columnНомер_договора;
+            private global::System.Data.DataColumn columncontract_id;
             
-            private global::System.Data.DataColumn columnФИО_клиента;
+            private global::System.Data.DataColumn columnclient_name;
             
-            private global::System.Data.DataColumn _columnАдрес_квартиры__указанной_в_договре;
+            private global::System.Data.DataColumn columnapartment_address_in_contract;
             
-            private global::System.Data.DataColumn columnТелефон_клиента;
+            private global::System.Data.DataColumn columnclient_phone;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
@@ -3798,33 +3798,33 @@ namespace Security {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn Номер_договораColumn {
+            public global::System.Data.DataColumn contract_idColumn {
                 get {
-                    return this.columnНомер_договора;
+                    return this.columncontract_id;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn ФИО_клиентаColumn {
+            public global::System.Data.DataColumn client_nameColumn {
                 get {
-                    return this.columnФИО_клиента;
+                    return this.columnclient_name;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn _Адрес_квартиры__указанной_в_договреColumn {
+            public global::System.Data.DataColumn apartment_address_in_contractColumn {
                 get {
-                    return this._columnАдрес_квартиры__указанной_в_договре;
+                    return this.columnapartment_address_in_contract;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn Телефон_клиентаColumn {
+            public global::System.Data.DataColumn client_phoneColumn {
                 get {
-                    return this.columnТелефон_клиента;
+                    return this.columnclient_phone;
                 }
             }
             
@@ -3865,13 +3865,13 @@ namespace Security {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public contracts_viewRow Addcontracts_viewRow(int Номер_договора, string ФИО_клиента, string _Адрес_квартиры__указанной_в_договре, string Телефон_клиента) {
+            public contracts_viewRow Addcontracts_viewRow(int contract_id, string client_name, string apartment_address_in_contract, string client_phone) {
                 contracts_viewRow rowcontracts_viewRow = ((contracts_viewRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Номер_договора,
-                        ФИО_клиента,
-                        _Адрес_квартиры__указанной_в_договре,
-                        Телефон_клиента};
+                        contract_id,
+                        client_name,
+                        apartment_address_in_contract,
+                        client_phone};
                 rowcontracts_viewRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcontracts_viewRow);
                 return rowcontracts_viewRow;
@@ -3879,9 +3879,9 @@ namespace Security {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public contracts_viewRow FindByНомер_договора(int Номер_договора) {
+            public contracts_viewRow FindBycontract_id(int contract_id) {
                 return ((contracts_viewRow)(this.Rows.Find(new object[] {
-                            Номер_договора})));
+                            contract_id})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3901,35 +3901,33 @@ namespace Security {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             internal void InitVars() {
-                this.columnНомер_договора = base.Columns["Номер договора"];
-                this.columnФИО_клиента = base.Columns["ФИО клиента"];
-                this._columnАдрес_квартиры__указанной_в_договре = base.Columns["Адрес квартиры, указанной в договре"];
-                this.columnТелефон_клиента = base.Columns["Телефон клиента"];
+                this.columncontract_id = base.Columns["contract_id"];
+                this.columnclient_name = base.Columns["client_name"];
+                this.columnapartment_address_in_contract = base.Columns["apartment_address_in_contract"];
+                this.columnclient_phone = base.Columns["client_phone"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnНомер_договора = new global::System.Data.DataColumn("Номер договора", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnНомер_договора);
-                this.columnФИО_клиента = new global::System.Data.DataColumn("ФИО клиента", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnФИО_клиента);
-                this._columnАдрес_квартиры__указанной_в_договре = new global::System.Data.DataColumn("Адрес квартиры, указанной в договре", typeof(string), null, global::System.Data.MappingType.Element);
-                this._columnАдрес_квартиры__указанной_в_договре.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnАдрес_квартиры__указанной_в_договре");
-                this._columnАдрес_квартиры__указанной_в_договре.ExtendedProperties.Add("Generator_UserColumnName", "Адрес квартиры, указанной в договре");
-                base.Columns.Add(this._columnАдрес_квартиры__указанной_в_договре);
-                this.columnТелефон_клиента = new global::System.Data.DataColumn("Телефон клиента", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnТелефон_клиента);
+                this.columncontract_id = new global::System.Data.DataColumn("contract_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncontract_id);
+                this.columnclient_name = new global::System.Data.DataColumn("client_name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnclient_name);
+                this.columnapartment_address_in_contract = new global::System.Data.DataColumn("apartment_address_in_contract", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnapartment_address_in_contract);
+                this.columnclient_phone = new global::System.Data.DataColumn("client_phone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnclient_phone);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnНомер_договора}, true));
-                this.columnНомер_договора.AllowDBNull = false;
-                this.columnНомер_договора.Unique = true;
-                this.columnФИО_клиента.AllowDBNull = false;
-                this.columnФИО_клиента.MaxLength = 60;
-                this._columnАдрес_квартиры__указанной_в_договре.ReadOnly = true;
-                this._columnАдрес_квартиры__указанной_в_договре.MaxLength = 77;
-                this.columnТелефон_клиента.AllowDBNull = false;
-                this.columnТелефон_клиента.MaxLength = 11;
+                                this.columncontract_id}, true));
+                this.columncontract_id.AllowDBNull = false;
+                this.columncontract_id.Unique = true;
+                this.columnclient_name.AllowDBNull = false;
+                this.columnclient_name.MaxLength = 60;
+                this.columnapartment_address_in_contract.ReadOnly = true;
+                this.columnapartment_address_in_contract.MaxLength = 77;
+                this.columnclient_phone.AllowDBNull = false;
+                this.columnclient_phone.MaxLength = 11;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4946,64 +4944,64 @@ namespace Security {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Номер_договора {
+            public int contract_id {
                 get {
-                    return ((int)(this[this.tablecontracts_view.Номер_договораColumn]));
+                    return ((int)(this[this.tablecontracts_view.contract_idColumn]));
                 }
                 set {
-                    this[this.tablecontracts_view.Номер_договораColumn] = value;
+                    this[this.tablecontracts_view.contract_idColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string ФИО_клиента {
+            public string client_name {
                 get {
-                    return ((string)(this[this.tablecontracts_view.ФИО_клиентаColumn]));
+                    return ((string)(this[this.tablecontracts_view.client_nameColumn]));
                 }
                 set {
-                    this[this.tablecontracts_view.ФИО_клиентаColumn] = value;
+                    this[this.tablecontracts_view.client_nameColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string _Адрес_квартиры__указанной_в_договре {
+            public string apartment_address_in_contract {
                 get {
                     try {
-                        return ((string)(this[this.tablecontracts_view._Адрес_квартиры__указанной_в_договреColumn]));
+                        return ((string)(this[this.tablecontracts_view.apartment_address_in_contractColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("Значение для столбца \'Адрес квартиры, указанной в договре\' в таблице \'contracts_v" +
-                                "iew\' равно DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("Значение для столбца \'apartment_address_in_contract\' в таблице \'contracts_view\' р" +
+                                "авно DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tablecontracts_view._Адрес_квартиры__указанной_в_договреColumn] = value;
+                    this[this.tablecontracts_view.apartment_address_in_contractColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string Телефон_клиента {
+            public string client_phone {
                 get {
-                    return ((string)(this[this.tablecontracts_view.Телефон_клиентаColumn]));
+                    return ((string)(this[this.tablecontracts_view.client_phoneColumn]));
                 }
                 set {
-                    this[this.tablecontracts_view.Телефон_клиентаColumn] = value;
+                    this[this.tablecontracts_view.client_phoneColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Is_Адрес_квартиры__указанной_в_договреNull() {
-                return this.IsNull(this.tablecontracts_view._Адрес_квартиры__указанной_в_договреColumn);
+            public bool Isapartment_address_in_contractNull() {
+                return this.IsNull(this.tablecontracts_view.apartment_address_in_contractColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Set_Адрес_квартиры__указанной_в_договреNull() {
-                this[this.tablecontracts_view._Адрес_квартиры__указанной_в_договреColumn] = global::System.Convert.DBNull;
+            public void Setapartment_address_in_contractNull() {
+                this[this.tablecontracts_view.apartment_address_in_contractColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -9005,10 +9003,10 @@ SELECT departure_id, arrest_document FROM True_departures WHERE (departure_id = 
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "contracts_view";
-            tableMapping.ColumnMappings.Add("Номер договора", "Номер договора");
-            tableMapping.ColumnMappings.Add("ФИО клиента", "ФИО клиента");
-            tableMapping.ColumnMappings.Add("Адрес квартиры, указанной в договре", "Адрес квартиры, указанной в договре");
-            tableMapping.ColumnMappings.Add("Телефон клиента", "Телефон клиента");
+            tableMapping.ColumnMappings.Add("contract_id", "contract_id");
+            tableMapping.ColumnMappings.Add("client_name", "client_name");
+            tableMapping.ColumnMappings.Add("apartment_address_in_contract", "apartment_address_in_contract");
+            tableMapping.ColumnMappings.Add("client_phone", "client_phone");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -9025,8 +9023,8 @@ SELECT departure_id, arrest_document FROM True_departures WHERE (departure_id = 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT [Номер договора], [ФИО клиента], [Адрес квартиры, указанной в договре], [Т" +
-                "елефон клиента] FROM dbo.contracts_view";
+            this._commandCollection[0].CommandText = "SELECT contract_id, client_name, apartment_address_in_contract, client_phone FROM" +
+                " dbo.contracts_view";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

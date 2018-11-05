@@ -39,6 +39,7 @@
             this.documentTextBox = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.warningLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractIdNumericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -115,7 +116,7 @@
             this.departureDateTimePicker.MaxDate = new System.DateTime(2210, 12, 31, 0, 0, 0, 0);
             this.departureDateTimePicker.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.departureDateTimePicker.Name = "departureDateTimePicker";
-            this.departureDateTimePicker.Size = new System.Drawing.Size(166, 22);
+            this.departureDateTimePicker.Size = new System.Drawing.Size(199, 22);
             this.departureDateTimePicker.TabIndex = 3;
             // 
             // falseCallCheckBox
@@ -144,34 +145,48 @@
             this.documentTextBox.Location = new System.Drawing.Point(15, 159);
             this.documentTextBox.MaxLength = 40;
             this.documentTextBox.Name = "documentTextBox";
-            this.documentTextBox.Size = new System.Drawing.Size(284, 22);
+            this.documentTextBox.Size = new System.Drawing.Size(317, 22);
             this.documentTextBox.TabIndex = 5;
             // 
             // okButton
             // 
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(143, 197);
+            this.okButton.Location = new System.Drawing.Point(176, 197);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 27);
             this.okButton.TabIndex = 9;
             this.okButton.Text = "ОК";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(224, 197);
+            this.cancelButton.Location = new System.Drawing.Point(257, 197);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 27);
             this.cancelButton.TabIndex = 10;
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
+            // warningLabel
+            // 
+            this.warningLabel.AutoSize = true;
+            this.warningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.warningLabel.ForeColor = System.Drawing.Color.Crimson;
+            this.warningLabel.Location = new System.Drawing.Point(12, 202);
+            this.warningLabel.Name = "warningLabel";
+            this.warningLabel.Size = new System.Drawing.Size(160, 17);
+            this.warningLabel.TabIndex = 11;
+            this.warningLabel.Text = "Заполните все поля";
+            this.warningLabel.Visible = false;
+            // 
             // DepartureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 233);
+            this.ClientSize = new System.Drawing.Size(341, 233);
+            this.Controls.Add(this.warningLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.documentTextBox);
@@ -189,6 +204,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Выезд";
+            this.Load += new System.EventHandler(this.DepartureForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contractIdNumericUpDown)).EndInit();
             this.ResumeLayout(false);
@@ -209,5 +225,6 @@
         private System.Windows.Forms.TextBox documentTextBox;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label warningLabel;
     }
 }
