@@ -81,7 +81,7 @@
             this.departuresTableAdapter = new Security.SecurityDataSetTableAdapters.DeparturesTableAdapter();
             this.номерДоговораDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.фИОКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.телефонКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.contractsTabPage.SuspendLayout();
@@ -175,7 +175,7 @@
             this.contractsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.номерДоговораDataGridViewTextBoxColumn,
             this.фИОКлиентаDataGridViewTextBoxColumn,
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn,
+            this.Column1,
             this.телефонКлиентаDataGridViewTextBoxColumn});
             this.contractsDataGridView.DataSource = this.contracts_viewBindingSource;
             this.contractsDataGridView.Location = new System.Drawing.Point(9, 76);
@@ -509,6 +509,7 @@
             this.addCrewButton.TabIndex = 9;
             this.addCrewButton.Text = "Добавить";
             this.addCrewButton.UseVisualStyleBackColor = true;
+            this.addCrewButton.Click += new System.EventHandler(this.addCrewButton_Click);
             // 
             // crewsDataGridView
             // 
@@ -604,13 +605,13 @@
             this.фИОКлиентаDataGridViewTextBoxColumn.ReadOnly = true;
             this.фИОКлиентаDataGridViewTextBoxColumn.Width = 118;
             // 
-            // адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn
+            // Column1
             // 
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.DataPropertyName = "Адрес квартиры, указанной в договоре";
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.HeaderText = "Адрес квартиры, указанной в договре";
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.Name = "адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn";
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.ReadOnly = true;
-            this.адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn.Width = 215;
+            this.Column1.DataPropertyName = "Адрес квартиры, указанной в договре";
+            this.Column1.HeaderText = "Адрес квартиры, указанный в договоре";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 217;
             // 
             // телефонКлиентаDataGridViewTextBoxColumn
             // 
@@ -703,9 +704,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn crewidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn crewleaderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn crewcarmodelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn номерДоговораDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn фИОКлиентаDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn адресКвартирыУказаннойВДоговреDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn телефонКлиентаDataGridViewTextBoxColumn;
     }
 }
