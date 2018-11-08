@@ -57,6 +57,7 @@
     <Compile Include="CrewForm.Designer.cs">
       <DependentUpon>CrewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataController.cs" />
     <Compile Include="DepartureForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,7 +77,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SecurityDataSet1.xsd</DependentUpon>
     </Compile>
-    <Compile Include="TablesInformation\TableInfo.cs" />
     <EmbeddedResource Include="ContractForm.resx">
       <DependentUpon>ContractForm.cs</DependentUpon>
     </EmbeddedResource>

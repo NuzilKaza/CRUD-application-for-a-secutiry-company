@@ -1,5 +1,4 @@
-﻿using Security.TablesInformation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +15,7 @@ namespace Security
     public partial class mainForm : Form
     {
         private SqlConnection connection;
+        private DataController dataController;
         private DataTable crewsDataTable;
         private DataTable departuresDataTable;
         private DataTable contractsDataTable;
@@ -24,59 +24,28 @@ namespace Security
         {
             InitializeComponent();
             this.connection = new SqlConnection(Properties.Settings.Default.connectionString);
+            this.dataController = new DataController(this.connection);
         }
 
         private void mainForm_Load(object sender, EventArgs e)
         {
             //this.departuresTableAdapter.Fill(this.securityDataSet.Departures);
             //this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
-            this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
+            //this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
             FillTables();
             ShowRowsCountEverywhere();
         }
 
         private void FillTables()
         {
-            crewsDataTable = CreateDataSource("Crews_Select_All", CommandType.StoredProcedure);
-            departuresDataTable = CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
-            contractsDataTable = CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
+            crewsDataTable = dataController.CreateDataSource("Crews_Select_All", CommandType.StoredProcedure);
+            departuresDataTable = dataController.CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
+            contractsDataTable = dataController.CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
 
-            //TODO: разобраться с колонкой адресов
+            //TODO: разобраться с таблицей адресов
             crewsDataGridView.DataSource = crewsDataTable;
             departuresDataGridView.DataSource = departuresDataTable;
-            //contractsDataGridView.DataSource = contractsDataTable;
-        }
-
-        private DataTable CreateDataSource(string commandText, CommandType commandType)
-        {
-            SqlCommand command = new SqlCommand();
-            command.Connection = connection;
-            command.CommandType = commandType;
-            command.CommandText = commandText;
-
-            connection.Open();
-            SqlDataReader reader = command.ExecuteReader();
-            DataTable dataTable = new DataTable();
-            for (int i = 0; i < reader.FieldCount; i++)
-            {
-                string columnName = reader.GetName(i);
-                Type columnType = reader.GetFieldType(i);
-                DataColumn dataColumn = new DataColumn(columnName, columnType);
-                dataTable.Columns.Add(dataColumn);
-            }
-
-            while (reader.Read())
-            {
-                DataRow row = dataTable.NewRow();
-                for (int i = 0; i < reader.FieldCount; i++)
-                {
-                    row[i] = reader.GetValue(i);
-                }
-                dataTable.Rows.Add(row);
-            }
-
-            connection.Close();
-            return dataTable;
+            contractsDataGridView.DataSource = contractsDataTable;
         }
 
         private void ShowRowsCountEverywhere()
@@ -88,49 +57,25 @@ namespace Security
 
         private void ShowRowsCount(DataGridView dataGridView, Label labelWithCount)
         {
-            labelWithCount.Text += " " + dataGridView.RowCount;
-        }
-
-        private bool CheckCrewId(int id)
-        {
-            for (int i = 0; i < crewsDataTable.Rows.Count; i++)
-            {
-                DataRow row = crewsDataTable.Rows[i];
-                if ((int)row["crew_id"] == id) return false;
-            }
-            return true;
-        }
-
-        private int GetMaxId(DataTable dataTable, string columnName)
-        {
-            DataRow row = dataTable.Rows[dataTable.Rows.Count - 1];
-            return Convert.ToInt32(row[columnName]);
+            labelWithCount.Text = "Найдено " + dataGridView.RowCount;
         }
 
         private void addCrewButton_Click(object sender, EventArgs e)
         {
-            int maxId = GetMaxId(crewsDataTable, "crew_id");
+            int maxId = dataController.GetMaxId(crewsDataTable, "crew_id");
             CrewForm crewForm = new CrewForm(((DataTable)crewsDataGridView.DataSource).NewRow(), false, maxId);
             if (crewForm.ShowDialog() == DialogResult.OK)
             {
-                SqlCommand command = new SqlCommand();
-                command.Connection = connection;
-                command.CommandType = CommandType.StoredProcedure;
-                command.CommandText = "Crew_Insert";
+                DataRow crewRow = crewForm.Row;
+                string[] paramNames = { "@crew_id", "@crew_leader", "@crew_car_model" };
+                SqlDbType[] paramTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.NChar };
+                object[] paramValues = { crewRow["crew_id"], crewRow["crew_leader"], crewRow["crew_car_model"] };
 
-                command.Parameters.Add(new SqlParameter("@crew_id", SqlDbType.Int));
-                command.Parameters["@crew_id"].Value = crewForm.Row["crew_id"];
-                command.Parameters.Add(new SqlParameter("@crew_leader", SqlDbType.NChar));
-                command.Parameters["@crew_leader"].Value = crewForm.Row["crew_leader"];
-                command.Parameters.Add(new SqlParameter("@crew_car_model", SqlDbType.NChar));
-                command.Parameters["@crew_car_model"].Value = crewForm.Row["crew_car_model"];
-
-                connection.Open();
-                if (command.ExecuteNonQuery() != 0)
+                int result = dataController.ModifyData("Crew_Insert", CommandType.StoredProcedure, paramNames, paramTypes, paramValues);
+                if (result == 0)
                 {
-                    MessageBox.Show("Вставка выполнена успешно");
+                    MessageBox.Show("Ошибка выполнения вставки");
                 }
-                connection.Close();
 
                 FillTables();
                 ShowRowsCountEverywhere();
@@ -139,14 +84,41 @@ namespace Security
 
         private void addDepartureButton_Click(object sender, EventArgs e)
         {
-            int maxDepartureId = GetMaxId(departuresDataTable, "departure_id");
-            int maxCrewId = GetMaxId(crewsDataTable, "crew_id");
-            int maxContractId = GetMaxId(contractsDataTable, "contract_id");
+            int maxDepartureId = dataController.GetMaxId(departuresDataTable, "departure_id");
+            int maxCrewId = dataController.GetMaxId(crewsDataTable, "crew_id");
+            int maxContractId = dataController.GetMaxId(contractsDataTable, "contract_id");
 
             DepartureForm departureForm = new DepartureForm(((DataTable)departuresDataGridView.DataSource).NewRow(), false, maxDepartureId, maxCrewId, maxContractId);
             if (departureForm.ShowDialog() == DialogResult.OK)
             {
+                DataRow departureRow = departureForm.Row;
+                string[] paramNames = { "@departure_id", "@crew_id", "@contract_id", "@departure_date_time", "@false_call" };
+                SqlDbType[] paramTypes = { SqlDbType.Int, SqlDbType.Int, SqlDbType.Int, SqlDbType.DateTime, SqlDbType.Bit };
+                object[] paramValues = { departureRow["departure_id"], departureRow["crew_id"], departureRow["contract_id"], departureRow["departure_date_time"], departureRow["false_call"] };
+                int departureResult = dataController.ModifyData("Departure_Insert", CommandType.StoredProcedure, paramNames, paramTypes, paramValues);
 
+                int falseCallResult;
+                if (Convert.ToBoolean(departureRow["false_call"]))
+                {
+                    string[] paramNamesFalseCall = { "@departure_id" };
+                    SqlDbType[] paramTypesFalseCall = { SqlDbType.Int };
+                    object[] paramValuesFalseCall = { departureRow["departure_id"] };
+                    falseCallResult = dataController.ModifyData("False_Departure_Insert", CommandType.StoredProcedure, paramNamesFalseCall, paramTypesFalseCall, paramValuesFalseCall);
+                } else
+                {
+                    string[] paramNamesTrueCall = { "@departure_id", "@arrest_document" };
+                    SqlDbType[] paramTypesTrueCall = { SqlDbType.Int, SqlDbType.NChar };
+                    object[] paramValuesTrueCall = { departureRow["departure_id"], departureRow["arrest_document"] };
+                    falseCallResult = dataController.ModifyData("True_Departure_Insert", CommandType.StoredProcedure, paramNamesTrueCall, paramTypesTrueCall, paramValuesTrueCall);
+                }
+
+                if (departureResult == 0 || falseCallResult == 0)
+                {
+                    MessageBox.Show("Ошибка выполнения вставки");
+                }
+
+                FillTables();
+                ShowRowsCountEverywhere();
             }
         }
     }
