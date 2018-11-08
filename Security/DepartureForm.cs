@@ -40,9 +40,10 @@ namespace Security
                 row["contract_id"] = (int)contractIdNumericUpDown.Value;
                 row["departure_date_time"] = departureDateTimePicker.Value;
                 row["false_call"] = falseCallCheckBox.Checked;
-                /*row["crew_id"] = lastCrewId + 1;
-                row["crew_leader"] = leaderTextBox.Text;
-                row["crew_car_model"] = carModelTextBox.Text;*/
+                if (!falseCallCheckBox.Checked)
+                {
+                    row["arrest_document"] = documentTextBox.Text;
+                }
             }
             else
             {
@@ -53,13 +54,19 @@ namespace Security
 
         private bool DocumentTextBoxIsEmpty()
         {
-            return falseCallCheckBox.Checked && documentTextBox.Text == "";
+            return !falseCallCheckBox.Checked && documentTextBox.Text == "";
 ;        }
 
         private void DepartureForm_Load(object sender, EventArgs e)
         {
             crewIdNumericUpDown.Maximum = lastCrewId;
-            contractIdNumericUpDown.Minimum = lastContractId;
+            contractIdNumericUpDown.Maximum = lastContractId;
+        }
+
+        private void falseCallCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            documentLabel.Enabled = !documentLabel.Enabled;
+            documentTextBox.Enabled = !documentTextBox.Enabled;
         }
     }
 }

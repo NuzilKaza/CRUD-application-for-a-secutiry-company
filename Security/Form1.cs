@@ -30,7 +30,7 @@ namespace Security
         {
             //this.departuresTableAdapter.Fill(this.securityDataSet.Departures);
             //this.crewsTableAdapter.Fill(this.securityDataSet.Crews);
-            //this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
+            this.contracts_viewTableAdapter.Fill(this.securityDataSet.contracts_view);
             FillTables();
             ShowRowsCountEverywhere();
         }
@@ -44,7 +44,7 @@ namespace Security
             //TODO: разобраться с колонкой адресов
             crewsDataGridView.DataSource = crewsDataTable;
             departuresDataGridView.DataSource = departuresDataTable;
-            contractsDataGridView.DataSource = contractsDataTable;
+            //contractsDataGridView.DataSource = contractsDataTable;
         }
 
         private DataTable CreateDataSource(string commandText, CommandType commandType)
@@ -143,7 +143,7 @@ namespace Security
             int maxCrewId = GetMaxId(crewsDataTable, "crew_id");
             int maxContractId = GetMaxId(contractsDataTable, "contract_id");
 
-            DepartureForm departureForm = new DepartureForm(((DataTable)crewsDataGridView.DataSource).NewRow(), false, maxDepartureId, maxCrewId, maxContractId);
+            DepartureForm departureForm = new DepartureForm(((DataTable)departuresDataGridView.DataSource).NewRow(), false, maxDepartureId, maxCrewId, maxContractId);
             if (departureForm.ShowDialog() == DialogResult.OK)
             {
 

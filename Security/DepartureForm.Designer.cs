@@ -35,7 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.departureDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.falseCallCheckBox = new System.Windows.Forms.CheckBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.documentLabel = new System.Windows.Forms.Label();
             this.documentTextBox = new System.Windows.Forms.TextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
@@ -128,20 +128,19 @@
             this.falseCallCheckBox.TabIndex = 4;
             this.falseCallCheckBox.Text = "Ложный вызов";
             this.falseCallCheckBox.UseVisualStyleBackColor = true;
+            this.falseCallCheckBox.CheckedChanged += new System.EventHandler(this.falseCallCheckBox_CheckedChanged);
             // 
-            // label4
+            // documentLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Enabled = false;
-            this.label4.Location = new System.Drawing.Point(12, 139);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(287, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Документ, оформленный при задержании";
+            this.documentLabel.AutoSize = true;
+            this.documentLabel.Location = new System.Drawing.Point(12, 139);
+            this.documentLabel.Name = "documentLabel";
+            this.documentLabel.Size = new System.Drawing.Size(287, 17);
+            this.documentLabel.TabIndex = 7;
+            this.documentLabel.Text = "Документ, оформленный при задержании";
             // 
             // documentTextBox
             // 
-            this.documentTextBox.Enabled = false;
             this.documentTextBox.Location = new System.Drawing.Point(15, 159);
             this.documentTextBox.MaxLength = 40;
             this.documentTextBox.Name = "documentTextBox";
@@ -190,7 +189,7 @@
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.documentTextBox);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.documentLabel);
             this.Controls.Add(this.falseCallCheckBox);
             this.Controls.Add(this.departureDateTimePicker);
             this.Controls.Add(this.label3);
@@ -221,7 +220,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DateTimePicker departureDateTimePicker;
         private System.Windows.Forms.CheckBox falseCallCheckBox;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label documentLabel;
         private System.Windows.Forms.TextBox documentTextBox;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
