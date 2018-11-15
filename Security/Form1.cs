@@ -121,5 +121,34 @@ namespace Security
                 ShowRowsCountEverywhere();
             }
         }
+
+        private void deleteCrewButton_Click(object sender, EventArgs e)
+        {
+            if (crewsDataGridView.SelectedRows.Count == 0)
+            {
+                crewWarningLabel.Visible = true;
+            } else
+            {
+                crewWarningLabel.Visible = false;
+                DataGridViewRow selectedRow = crewsDataGridView.SelectedRows[0];
+                int crew_id = (int)selectedRow.Cells["crewidDataGridViewTextBoxColumn"].Value;
+
+                DialogResult dialogResult = MessageBox.Show("Удалить выбранный экипаж?", "Подтверждение удаления", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string[] paramNames = { "@crew_id" };
+                    SqlDbType[] paramTypes = { SqlDbType.Int };
+                    object[] paramValues = { crew_id };
+                    int deletionResult = dataController.ModifyData("Crew_Delete", CommandType.StoredProcedure, paramNames, paramTypes, paramValues);
+                    if (deletionResult == 0)
+                    {
+                        MessageBox.Show("Ошибка выполнения удаления");
+                    }
+
+                    FillTables();
+                    ShowRowsCountEverywhere();
+                }
+            }
+        }
     }
 }

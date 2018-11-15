@@ -33,6 +33,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.contractsTabPage = new System.Windows.Forms.TabPage();
             this.contractsDataGridView = new System.Windows.Forms.DataGridView();
+            this.contracts_viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.securityDataSet = new Security.SecurityDataSet();
             this.refreshContractsButton = new System.Windows.Forms.Button();
             this.editContractButton = new System.Windows.Forms.Button();
             this.addContractButton = new System.Windows.Forms.Button();
@@ -52,7 +54,6 @@
             this.departuredatetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.falsecallDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.departuresBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.securityDataSet = new Security.SecurityDataSet();
             this.editDepartureButton = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.addDepartureButton = new System.Windows.Forms.Button();
@@ -74,28 +75,28 @@
             this.crewleaderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.crewcarmodelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.crewsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contracts_viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contracts_viewTableAdapter = new Security.SecurityDataSetTableAdapters.contracts_viewTableAdapter();
             this.tableAdapterManager = new Security.SecurityDataSetTableAdapters.TableAdapterManager();
             this.crewsTableAdapter = new Security.SecurityDataSetTableAdapters.CrewsTableAdapter();
             this.departuresTableAdapter = new Security.SecurityDataSetTableAdapters.DeparturesTableAdapter();
-            this.номерДоговораDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.фИОКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.телефонКлиентаDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apartmentaddressincontractDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientphoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.crewWarningLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.contractsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contracts_viewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.securityDataSet)).BeginInit();
             this.departuresTabPage.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departuresDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departuresBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.securityDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crewsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crewsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contracts_viewBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -137,10 +138,10 @@
             this.contractsDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.contractsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.contractsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.номерДоговораDataGridViewTextBoxColumn,
-            this.фИОКлиентаDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn1,
-            this.телефонКлиентаDataGridViewTextBoxColumn});
+            this.contractidDataGridViewTextBoxColumn1,
+            this.clientnameDataGridViewTextBoxColumn,
+            this.apartmentaddressincontractDataGridViewTextBoxColumn,
+            this.clientphoneDataGridViewTextBoxColumn});
             this.contractsDataGridView.DataSource = this.contracts_viewBindingSource;
             this.contractsDataGridView.Location = new System.Drawing.Point(9, 76);
             this.contractsDataGridView.MultiSelect = false;
@@ -149,6 +150,16 @@
             this.contractsDataGridView.RowTemplate.Height = 24;
             this.contractsDataGridView.Size = new System.Drawing.Size(825, 668);
             this.contractsDataGridView.TabIndex = 9;
+            // 
+            // contracts_viewBindingSource
+            // 
+            this.contracts_viewBindingSource.DataMember = "contracts_view";
+            this.contracts_viewBindingSource.DataSource = this.securityDataSet;
+            // 
+            // securityDataSet
+            // 
+            this.securityDataSet.DataSetName = "SecurityDataSet";
+            this.securityDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // refreshContractsButton
             // 
@@ -344,11 +355,6 @@
             this.departuresBindingSource.DataMember = "Departures";
             this.departuresBindingSource.DataSource = this.securityDataSet;
             // 
-            // securityDataSet
-            // 
-            this.securityDataSet.DataSetName = "SecurityDataSet";
-            this.securityDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // editDepartureButton
             // 
             this.editDepartureButton.Location = new System.Drawing.Point(657, 161);
@@ -448,6 +454,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.crewWarningLabel);
             this.groupBox1.Controls.Add(this.crewsCountLabel);
             this.groupBox1.Controls.Add(this.deleteCrewButton);
             this.groupBox1.Controls.Add(this.refreshCrewsButton);
@@ -478,6 +485,7 @@
             this.deleteCrewButton.TabIndex = 12;
             this.deleteCrewButton.Text = "Удалить";
             this.deleteCrewButton.UseVisualStyleBackColor = true;
+            this.deleteCrewButton.Click += new System.EventHandler(this.deleteCrewButton_Click);
             // 
             // refreshCrewsButton
             // 
@@ -558,11 +566,6 @@
             this.crewsBindingSource.DataMember = "Crews";
             this.crewsBindingSource.DataSource = this.securityDataSet;
             // 
-            // contracts_viewBindingSource
-            // 
-            this.contracts_viewBindingSource.DataMember = "contracts_view";
-            this.contracts_viewBindingSource.DataSource = this.securityDataSet;
-            // 
             // contracts_viewTableAdapter
             // 
             this.contracts_viewTableAdapter.ClearBeforeFill = true;
@@ -590,37 +593,49 @@
             // 
             this.departuresTableAdapter.ClearBeforeFill = true;
             // 
-            // номерДоговораDataGridViewTextBoxColumn
+            // contractidDataGridViewTextBoxColumn1
             // 
-            this.номерДоговораDataGridViewTextBoxColumn.DataPropertyName = "Номер договора";
-            this.номерДоговораDataGridViewTextBoxColumn.HeaderText = "Номер договора";
-            this.номерДоговораDataGridViewTextBoxColumn.Name = "номерДоговораDataGridViewTextBoxColumn";
-            this.номерДоговораDataGridViewTextBoxColumn.ReadOnly = true;
-            this.номерДоговораDataGridViewTextBoxColumn.Width = 132;
+            this.contractidDataGridViewTextBoxColumn1.DataPropertyName = "contract_id";
+            this.contractidDataGridViewTextBoxColumn1.HeaderText = "Номер договора";
+            this.contractidDataGridViewTextBoxColumn1.Name = "contractidDataGridViewTextBoxColumn1";
+            this.contractidDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.contractidDataGridViewTextBoxColumn1.Width = 132;
             // 
-            // фИОКлиентаDataGridViewTextBoxColumn
+            // clientnameDataGridViewTextBoxColumn
             // 
-            this.фИОКлиентаDataGridViewTextBoxColumn.DataPropertyName = "ФИО клиента";
-            this.фИОКлиентаDataGridViewTextBoxColumn.HeaderText = "ФИО клиента";
-            this.фИОКлиентаDataGridViewTextBoxColumn.Name = "фИОКлиентаDataGridViewTextBoxColumn";
-            this.фИОКлиентаDataGridViewTextBoxColumn.ReadOnly = true;
-            this.фИОКлиентаDataGridViewTextBoxColumn.Width = 118;
+            this.clientnameDataGridViewTextBoxColumn.DataPropertyName = "client_name";
+            this.clientnameDataGridViewTextBoxColumn.HeaderText = "ФИО клиента";
+            this.clientnameDataGridViewTextBoxColumn.Name = "clientnameDataGridViewTextBoxColumn";
+            this.clientnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientnameDataGridViewTextBoxColumn.Width = 118;
             // 
-            // dataGridViewTextBoxColumn1
+            // apartmentaddressincontractDataGridViewTextBoxColumn
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Адрес квартиры, указанной в договре";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Адрес квартиры, указанной в договре";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 215;
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.DataPropertyName = "apartment_address_in_contract";
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.HeaderText = "Адрес квартиры, указанной в договоре";
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.Name = "apartmentaddressincontractDataGridViewTextBoxColumn";
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.ReadOnly = true;
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.Width = 215;
             // 
-            // телефонКлиентаDataGridViewTextBoxColumn
+            // clientphoneDataGridViewTextBoxColumn
             // 
-            this.телефонКлиентаDataGridViewTextBoxColumn.DataPropertyName = "Телефон клиента";
-            this.телефонКлиентаDataGridViewTextBoxColumn.HeaderText = "Телефон клиента";
-            this.телефонКлиентаDataGridViewTextBoxColumn.Name = "телефонКлиентаDataGridViewTextBoxColumn";
-            this.телефонКлиентаDataGridViewTextBoxColumn.ReadOnly = true;
-            this.телефонКлиентаDataGridViewTextBoxColumn.Width = 142;
+            this.clientphoneDataGridViewTextBoxColumn.DataPropertyName = "client_phone";
+            this.clientphoneDataGridViewTextBoxColumn.HeaderText = "Телефон клиента";
+            this.clientphoneDataGridViewTextBoxColumn.Name = "clientphoneDataGridViewTextBoxColumn";
+            this.clientphoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientphoneDataGridViewTextBoxColumn.Width = 142;
+            // 
+            // crewWarningLabel
+            // 
+            this.crewWarningLabel.AutoSize = true;
+            this.crewWarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.crewWarningLabel.ForeColor = System.Drawing.Color.Crimson;
+            this.crewWarningLabel.Location = new System.Drawing.Point(622, 208);
+            this.crewWarningLabel.Name = "crewWarningLabel";
+            this.crewWarningLabel.Size = new System.Drawing.Size(137, 17);
+            this.crewWarningLabel.TabIndex = 14;
+            this.crewWarningLabel.Text = "Выберите строку";
+            this.crewWarningLabel.Visible = false;
             // 
             // mainForm
             // 
@@ -638,18 +653,18 @@
             this.contractsTabPage.ResumeLayout(false);
             this.contractsTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.contracts_viewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.securityDataSet)).EndInit();
             this.departuresTabPage.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departuresDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departuresBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.securityDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crewsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.crewsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.contracts_viewBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -710,6 +725,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn фИОКлиентаDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn телефонКлиентаDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contractidDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientnameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn apartmentaddressincontractDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientphoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label crewWarningLabel;
     }
 }
 
