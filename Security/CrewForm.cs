@@ -39,9 +39,7 @@ namespace Security
             if (!TextBoxesAreEmpty())
             {
                 warningLabel.Visible = false;
-                row["crew_id"] = lastCrewId + 1;
-                row["crew_leader"] = leaderTextBox.Text;
-                row["crew_car_model"] = carModelTextBox.Text;
+                CollectInformation();
             } else
             {
                 warningLabel.Visible = true;
@@ -52,6 +50,13 @@ namespace Security
         private bool TextBoxesAreEmpty()
         {
             return leaderTextBox.Text == "" || carModelTextBox.Text == "";
+        }
+
+        private void CollectInformation()
+        {
+            row["crew_id"] = lastCrewId + 1;
+            row["crew_leader"] = leaderTextBox.Text;
+            row["crew_car_model"] = carModelTextBox.Text;
         }
     }
 }

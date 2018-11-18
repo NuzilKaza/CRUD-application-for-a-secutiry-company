@@ -36,7 +36,7 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.taxtNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.fineNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.compensationNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.codeKeyCheckBox = new System.Windows.Forms.CheckBox();
             this.balconyTypeComboBox = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.balconyTypeLabel = new System.Windows.Forms.Label();
             this.balconyCheckBox = new System.Windows.Forms.CheckBox();
             this.doorTypeComboBox = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -64,12 +64,13 @@
             this.additionalRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.extensionDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
+            this.extensionLabel = new System.Windows.Forms.Label();
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
+            this.warningLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.taxtNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fineNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.compensationNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentNumericUpDown)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -97,7 +98,7 @@
             // 
             this.phoneMaskedTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.phoneMaskedTextBox.Location = new System.Drawing.Point(144, 53);
-            this.phoneMaskedTextBox.Mask = "8-900-000-00-00";
+            this.phoneMaskedTextBox.Mask = "8\\9000000000";
             this.phoneMaskedTextBox.Name = "phoneMaskedTextBox";
             this.phoneMaskedTextBox.Size = new System.Drawing.Size(272, 22);
             this.phoneMaskedTextBox.TabIndex = 2;
@@ -152,7 +153,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.taxtNumericUpDown);
+            this.groupBox2.Controls.Add(this.fineNumericUpDown);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.compensationNumericUpDown);
             this.groupBox2.Controls.Add(this.label9);
@@ -170,13 +171,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Условия договора";
             // 
-            // taxtNumericUpDown
+            // fineNumericUpDown
             // 
-            this.taxtNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.taxtNumericUpDown.Location = new System.Drawing.Point(260, 136);
-            this.taxtNumericUpDown.Name = "taxtNumericUpDown";
-            this.taxtNumericUpDown.Size = new System.Drawing.Size(55, 22);
-            this.taxtNumericUpDown.TabIndex = 15;
+            this.fineNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fineNumericUpDown.Location = new System.Drawing.Point(260, 136);
+            this.fineNumericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.fineNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.fineNumericUpDown.Name = "fineNumericUpDown";
+            this.fineNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.fineNumericUpDown.TabIndex = 15;
+            this.fineNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label10
             // 
@@ -192,9 +208,24 @@
             // 
             this.compensationNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.compensationNumericUpDown.Location = new System.Drawing.Point(260, 108);
+            this.compensationNumericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.compensationNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.compensationNumericUpDown.Name = "compensationNumericUpDown";
             this.compensationNumericUpDown.Size = new System.Drawing.Size(55, 22);
             this.compensationNumericUpDown.TabIndex = 14;
+            this.compensationNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label9
             // 
@@ -210,9 +241,24 @@
             // 
             this.paymentNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.paymentNumericUpDown.Location = new System.Drawing.Point(161, 80);
+            this.paymentNumericUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.paymentNumericUpDown.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.paymentNumericUpDown.Name = "paymentNumericUpDown";
             this.paymentNumericUpDown.Size = new System.Drawing.Size(55, 22);
             this.paymentNumericUpDown.TabIndex = 13;
+            this.paymentNumericUpDown.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label8
             // 
@@ -268,7 +314,7 @@
             // 
             this.groupBox3.Controls.Add(this.codeKeyCheckBox);
             this.groupBox3.Controls.Add(this.balconyTypeComboBox);
-            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.balconyTypeLabel);
             this.groupBox3.Controls.Add(this.balconyCheckBox);
             this.groupBox3.Controls.Add(this.doorTypeComboBox);
             this.groupBox3.Controls.Add(this.label17);
@@ -301,28 +347,28 @@
             // 
             // balconyTypeComboBox
             // 
+            this.balconyTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.balconyTypeComboBox.Enabled = false;
             this.balconyTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.balconyTypeComboBox.FormattingEnabled = true;
             this.balconyTypeComboBox.Items.AddRange(new object[] {
-            "деревянный",
-            "кирпичный",
-            "панельный"});
+            "отдельный",
+            "совмещённый"});
             this.balconyTypeComboBox.Location = new System.Drawing.Point(190, 165);
             this.balconyTypeComboBox.Name = "balconyTypeComboBox";
             this.balconyTypeComboBox.Size = new System.Drawing.Size(143, 24);
             this.balconyTypeComboBox.TabIndex = 9;
             // 
-            // label3
+            // balconyTypeLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Enabled = false;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(94, 168);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 17);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Тип балкона";
+            this.balconyTypeLabel.AutoSize = true;
+            this.balconyTypeLabel.Enabled = false;
+            this.balconyTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.balconyTypeLabel.Location = new System.Drawing.Point(94, 168);
+            this.balconyTypeLabel.Name = "balconyTypeLabel";
+            this.balconyTypeLabel.Size = new System.Drawing.Size(92, 17);
+            this.balconyTypeLabel.TabIndex = 26;
+            this.balconyTypeLabel.Text = "Тип балкона";
             // 
             // balconyCheckBox
             // 
@@ -334,15 +380,16 @@
             this.balconyCheckBox.TabIndex = 8;
             this.balconyCheckBox.Text = "Балкон";
             this.balconyCheckBox.UseVisualStyleBackColor = true;
+            this.balconyCheckBox.CheckedChanged += new System.EventHandler(this.balconyCheckBox_CheckedChanged);
             // 
             // doorTypeComboBox
             // 
+            this.doorTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.doorTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.doorTypeComboBox.FormattingEnabled = true;
             this.doorTypeComboBox.Items.AddRange(new object[] {
-            "деревянный",
-            "кирпичный",
-            "панельный"});
+            "металлическая",
+            "деревянная"});
             this.doorTypeComboBox.Location = new System.Drawing.Point(91, 135);
             this.doorTypeComboBox.Name = "doorTypeComboBox";
             this.doorTypeComboBox.Size = new System.Drawing.Size(143, 24);
@@ -403,6 +450,7 @@
             0,
             0,
             0});
+            this.floorsCountNumericUpDown.ValueChanged += new System.EventHandler(this.floorsCountNumericUpDown_ValueChanged);
             // 
             // label15
             // 
@@ -416,6 +464,7 @@
             // 
             // houseTypeComboBox
             // 
+            this.houseTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.houseTypeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.houseTypeComboBox.FormattingEnabled = true;
             this.houseTypeComboBox.Items.AddRange(new object[] {
@@ -483,18 +532,16 @@
             this.extensionDateTimePicker.Name = "extensionDateTimePicker";
             this.extensionDateTimePicker.Size = new System.Drawing.Size(174, 22);
             this.extensionDateTimePicker.TabIndex = 17;
-            this.extensionDateTimePicker.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
-            // label11
+            // extensionLabel
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label11.Location = new System.Drawing.Point(21, 385);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(238, 17);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "Продление действия договора";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
+            this.extensionLabel.AutoSize = true;
+            this.extensionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.extensionLabel.Location = new System.Drawing.Point(21, 385);
+            this.extensionLabel.Name = "extensionLabel";
+            this.extensionLabel.Size = new System.Drawing.Size(238, 17);
+            this.extensionLabel.TabIndex = 16;
+            this.extensionLabel.Text = "Продление действия договора";
             // 
             // okButton
             // 
@@ -505,6 +552,7 @@
             this.okButton.TabIndex = 18;
             this.okButton.Text = "ОК";
             this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
@@ -516,31 +564,45 @@
             this.cancelButton.Text = "Отмена";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
+            // warningLabel
+            // 
+            this.warningLabel.AutoSize = true;
+            this.warningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.warningLabel.ForeColor = System.Drawing.Color.Maroon;
+            this.warningLabel.Location = new System.Drawing.Point(442, 385);
+            this.warningLabel.Name = "warningLabel";
+            this.warningLabel.Size = new System.Drawing.Size(0, 17);
+            this.warningLabel.TabIndex = 20;
+            // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(885, 422);
+            this.Controls.Add(this.warningLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.extensionDateTimePicker);
-            this.Controls.Add(this.label11);
+            this.Controls.Add(this.extensionLabel);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.additionalRichTextBox);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(903, 469);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(903, 469);
             this.Name = "ContractForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Договор";
+            this.Load += new System.EventHandler(this.ContractForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.taxtNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fineNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.compensationNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.paymentNumericUpDown)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -561,7 +623,7 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.NumericUpDown taxtNumericUpDown;
+        private System.Windows.Forms.NumericUpDown fineNumericUpDown;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown compensationNumericUpDown;
         private System.Windows.Forms.Label label9;
@@ -585,13 +647,14 @@
         private System.Windows.Forms.MaskedTextBox phoneMaskedTextBox;
         private System.Windows.Forms.CheckBox codeKeyCheckBox;
         private System.Windows.Forms.ComboBox balconyTypeComboBox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label balconyTypeLabel;
         private System.Windows.Forms.CheckBox balconyCheckBox;
         private System.Windows.Forms.RichTextBox additionalRichTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DateTimePicker extensionDateTimePicker;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label extensionLabel;
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label warningLabel;
     }
 }

@@ -33,6 +33,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.contractsTabPage = new System.Windows.Forms.TabPage();
             this.contractsDataGridView = new System.Windows.Forms.DataGridView();
+            this.contractidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apartmentaddressincontractDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientphoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contracts_viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.securityDataSet = new Security.SecurityDataSet();
             this.refreshContractsButton = new System.Windows.Forms.Button();
@@ -65,6 +69,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.crewWarningLabel = new System.Windows.Forms.Label();
             this.crewsCountLabel = new System.Windows.Forms.Label();
             this.deleteCrewButton = new System.Windows.Forms.Button();
             this.refreshCrewsButton = new System.Windows.Forms.Button();
@@ -79,11 +84,6 @@
             this.tableAdapterManager = new Security.SecurityDataSetTableAdapters.TableAdapterManager();
             this.crewsTableAdapter = new Security.SecurityDataSetTableAdapters.CrewsTableAdapter();
             this.departuresTableAdapter = new Security.SecurityDataSetTableAdapters.DeparturesTableAdapter();
-            this.contractidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apartmentaddressincontractDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientphoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.crewWarningLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.contractsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).BeginInit();
@@ -148,8 +148,41 @@
             this.contractsDataGridView.Name = "contractsDataGridView";
             this.contractsDataGridView.ReadOnly = true;
             this.contractsDataGridView.RowTemplate.Height = 24;
+            this.contractsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.contractsDataGridView.Size = new System.Drawing.Size(825, 668);
             this.contractsDataGridView.TabIndex = 9;
+            // 
+            // contractidDataGridViewTextBoxColumn1
+            // 
+            this.contractidDataGridViewTextBoxColumn1.DataPropertyName = "contract_id";
+            this.contractidDataGridViewTextBoxColumn1.HeaderText = "Номер договора";
+            this.contractidDataGridViewTextBoxColumn1.Name = "contractidDataGridViewTextBoxColumn1";
+            this.contractidDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.contractidDataGridViewTextBoxColumn1.Width = 132;
+            // 
+            // clientnameDataGridViewTextBoxColumn
+            // 
+            this.clientnameDataGridViewTextBoxColumn.DataPropertyName = "client_name";
+            this.clientnameDataGridViewTextBoxColumn.HeaderText = "ФИО клиента";
+            this.clientnameDataGridViewTextBoxColumn.Name = "clientnameDataGridViewTextBoxColumn";
+            this.clientnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientnameDataGridViewTextBoxColumn.Width = 118;
+            // 
+            // apartmentaddressincontractDataGridViewTextBoxColumn
+            // 
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.DataPropertyName = "apartment_address_in_contract";
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.HeaderText = "Адрес квартиры, указанной в договоре";
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.Name = "apartmentaddressincontractDataGridViewTextBoxColumn";
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.ReadOnly = true;
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.Width = 215;
+            // 
+            // clientphoneDataGridViewTextBoxColumn
+            // 
+            this.clientphoneDataGridViewTextBoxColumn.DataPropertyName = "client_phone";
+            this.clientphoneDataGridViewTextBoxColumn.HeaderText = "Телефон клиента";
+            this.clientphoneDataGridViewTextBoxColumn.Name = "clientphoneDataGridViewTextBoxColumn";
+            this.clientphoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientphoneDataGridViewTextBoxColumn.Width = 142;
             // 
             // contracts_viewBindingSource
             // 
@@ -187,6 +220,7 @@
             this.addContractButton.TabIndex = 6;
             this.addContractButton.Text = "Добавить";
             this.addContractButton.UseVisualStyleBackColor = true;
+            this.addContractButton.Click += new System.EventHandler(this.addContractButton_Click);
             // 
             // contractsCountLabel
             // 
@@ -306,6 +340,7 @@
             this.departuresDataGridView.Name = "departuresDataGridView";
             this.departuresDataGridView.ReadOnly = true;
             this.departuresDataGridView.RowTemplate.Height = 24;
+            this.departuresDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.departuresDataGridView.Size = new System.Drawing.Size(645, 319);
             this.departuresDataGridView.TabIndex = 13;
             // 
@@ -468,6 +503,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Экипажи";
             // 
+            // crewWarningLabel
+            // 
+            this.crewWarningLabel.AutoSize = true;
+            this.crewWarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.crewWarningLabel.ForeColor = System.Drawing.Color.Crimson;
+            this.crewWarningLabel.Location = new System.Drawing.Point(622, 208);
+            this.crewWarningLabel.Name = "crewWarningLabel";
+            this.crewWarningLabel.Size = new System.Drawing.Size(137, 17);
+            this.crewWarningLabel.TabIndex = 14;
+            this.crewWarningLabel.Text = "Выберите строку";
+            this.crewWarningLabel.Visible = false;
+            // 
             // crewsCountLabel
             // 
             this.crewsCountLabel.AutoSize = true;
@@ -534,6 +581,7 @@
             this.crewsDataGridView.Name = "crewsDataGridView";
             this.crewsDataGridView.ReadOnly = true;
             this.crewsDataGridView.RowTemplate.Height = 24;
+            this.crewsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.crewsDataGridView.Size = new System.Drawing.Size(607, 249);
             this.crewsDataGridView.TabIndex = 0;
             // 
@@ -592,50 +640,6 @@
             // departuresTableAdapter
             // 
             this.departuresTableAdapter.ClearBeforeFill = true;
-            // 
-            // contractidDataGridViewTextBoxColumn1
-            // 
-            this.contractidDataGridViewTextBoxColumn1.DataPropertyName = "contract_id";
-            this.contractidDataGridViewTextBoxColumn1.HeaderText = "Номер договора";
-            this.contractidDataGridViewTextBoxColumn1.Name = "contractidDataGridViewTextBoxColumn1";
-            this.contractidDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.contractidDataGridViewTextBoxColumn1.Width = 132;
-            // 
-            // clientnameDataGridViewTextBoxColumn
-            // 
-            this.clientnameDataGridViewTextBoxColumn.DataPropertyName = "client_name";
-            this.clientnameDataGridViewTextBoxColumn.HeaderText = "ФИО клиента";
-            this.clientnameDataGridViewTextBoxColumn.Name = "clientnameDataGridViewTextBoxColumn";
-            this.clientnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.clientnameDataGridViewTextBoxColumn.Width = 118;
-            // 
-            // apartmentaddressincontractDataGridViewTextBoxColumn
-            // 
-            this.apartmentaddressincontractDataGridViewTextBoxColumn.DataPropertyName = "apartment_address_in_contract";
-            this.apartmentaddressincontractDataGridViewTextBoxColumn.HeaderText = "Адрес квартиры, указанной в договоре";
-            this.apartmentaddressincontractDataGridViewTextBoxColumn.Name = "apartmentaddressincontractDataGridViewTextBoxColumn";
-            this.apartmentaddressincontractDataGridViewTextBoxColumn.ReadOnly = true;
-            this.apartmentaddressincontractDataGridViewTextBoxColumn.Width = 215;
-            // 
-            // clientphoneDataGridViewTextBoxColumn
-            // 
-            this.clientphoneDataGridViewTextBoxColumn.DataPropertyName = "client_phone";
-            this.clientphoneDataGridViewTextBoxColumn.HeaderText = "Телефон клиента";
-            this.clientphoneDataGridViewTextBoxColumn.Name = "clientphoneDataGridViewTextBoxColumn";
-            this.clientphoneDataGridViewTextBoxColumn.ReadOnly = true;
-            this.clientphoneDataGridViewTextBoxColumn.Width = 142;
-            // 
-            // crewWarningLabel
-            // 
-            this.crewWarningLabel.AutoSize = true;
-            this.crewWarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.crewWarningLabel.ForeColor = System.Drawing.Color.Crimson;
-            this.crewWarningLabel.Location = new System.Drawing.Point(622, 208);
-            this.crewWarningLabel.Name = "crewWarningLabel";
-            this.crewWarningLabel.Size = new System.Drawing.Size(137, 17);
-            this.crewWarningLabel.TabIndex = 14;
-            this.crewWarningLabel.Text = "Выберите строку";
-            this.crewWarningLabel.Visible = false;
             // 
             // mainForm
             // 

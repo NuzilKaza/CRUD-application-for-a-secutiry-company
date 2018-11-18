@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Security.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Security
 {
@@ -63,15 +65,11 @@ namespace Security
         private void addCrewButton_Click(object sender, EventArgs e)
         {
             int maxId = dataController.GetMaxId(crewsDataTable, "crew_id");
-            CrewForm crewForm = new CrewForm(((DataTable)crewsDataGridView.DataSource).NewRow(), false, maxId);
+            CrewForm crewForm = new CrewForm(crewsDataTable.NewRow(), false, maxId);
             if (crewForm.ShowDialog() == DialogResult.OK)
             {
-                DataRow crewRow = crewForm.Row;
-                string[] paramNames = { "@crew_id", "@crew_leader", "@crew_car_model" };
-                SqlDbType[] paramTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.NChar };
-                object[] paramValues = { crewRow["crew_id"], crewRow["crew_leader"], crewRow["crew_car_model"] };
-
-                int result = dataController.ModifyData("Crew_Insert", CommandType.StoredProcedure, paramNames, paramTypes, paramValues);
+                CrewController crewController = new CrewController(crewForm.Row);
+                int result = crewController.Insert();
                 if (result == 0)
                 {
                     MessageBox.Show("Ошибка выполнения вставки");
@@ -88,31 +86,13 @@ namespace Security
             int maxCrewId = dataController.GetMaxId(crewsDataTable, "crew_id");
             int maxContractId = dataController.GetMaxId(contractsDataTable, "contract_id");
 
-            DepartureForm departureForm = new DepartureForm(((DataTable)departuresDataGridView.DataSource).NewRow(), false, maxDepartureId, maxCrewId, maxContractId);
+            DepartureForm departureForm = new DepartureForm(departuresDataTable.NewRow(), false, maxDepartureId, maxCrewId, maxContractId);
             if (departureForm.ShowDialog() == DialogResult.OK)
             {
-                DataRow departureRow = departureForm.Row;
-                string[] paramNames = { "@departure_id", "@crew_id", "@contract_id", "@departure_date_time", "@false_call" };
-                SqlDbType[] paramTypes = { SqlDbType.Int, SqlDbType.Int, SqlDbType.Int, SqlDbType.DateTime, SqlDbType.Bit };
-                object[] paramValues = { departureRow["departure_id"], departureRow["crew_id"], departureRow["contract_id"], departureRow["departure_date_time"], departureRow["false_call"] };
-                int departureResult = dataController.ModifyData("Departure_Insert", CommandType.StoredProcedure, paramNames, paramTypes, paramValues);
+                DepartureController departureController = new DepartureController(departureForm.Row);
+                int result = departureController.Insert();
 
-                int falseCallResult;
-                if (Convert.ToBoolean(departureRow["false_call"]))
-                {
-                    string[] paramNamesFalseCall = { "@departure_id" };
-                    SqlDbType[] paramTypesFalseCall = { SqlDbType.Int };
-                    object[] paramValuesFalseCall = { departureRow["departure_id"] };
-                    falseCallResult = dataController.ModifyData("False_Departure_Insert", CommandType.StoredProcedure, paramNamesFalseCall, paramTypesFalseCall, paramValuesFalseCall);
-                } else
-                {
-                    string[] paramNamesTrueCall = { "@departure_id", "@arrest_document" };
-                    SqlDbType[] paramTypesTrueCall = { SqlDbType.Int, SqlDbType.NChar };
-                    object[] paramValuesTrueCall = { departureRow["departure_id"], departureRow["arrest_document"] };
-                    falseCallResult = dataController.ModifyData("True_Departure_Insert", CommandType.StoredProcedure, paramNamesTrueCall, paramTypesTrueCall, paramValuesTrueCall);
-                }
-
-                if (departureResult == 0 || falseCallResult == 0)
+                if (result == 0)
                 {
                     MessageBox.Show("Ошибка выполнения вставки");
                 }
@@ -131,16 +111,14 @@ namespace Security
             {
                 crewWarningLabel.Visible = false;
                 DataGridViewRow selectedRow = crewsDataGridView.SelectedRows[0];
-                int crew_id = (int)selectedRow.Cells["crewidDataGridViewTextBoxColumn"].Value;
+                int crewId = (int)selectedRow.Cells["crewidDataGridViewTextBoxColumn"].Value;
 
                 DialogResult dialogResult = MessageBox.Show("Удалить выбранный экипаж?", "Подтверждение удаления", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    string[] paramNames = { "@crew_id" };
-                    SqlDbType[] paramTypes = { SqlDbType.Int };
-                    object[] paramValues = { crew_id };
-                    int deletionResult = dataController.ModifyData("Crew_Delete", CommandType.StoredProcedure, paramNames, paramTypes, paramValues);
-                    if (deletionResult == 0)
+                    CrewController crewController = new CrewController(crewId);
+                    int result = crewController.Delete();
+                    if (result == 0)
                     {
                         MessageBox.Show("Ошибка выполнения удаления");
                     }
@@ -148,6 +126,20 @@ namespace Security
                     FillTables();
                     ShowRowsCountEverywhere();
                 }
+            }
+        }
+
+        private void addContractButton_Click(object sender, EventArgs e)
+        {
+            int maxContractId = dataController.GetMaxId(contractsDataTable, "contract_id");
+            int maxClientId = dataController.GetMaxId(contractsDataTable, "client_id");
+            int maxHouseId = dataController.GetMaxId(contractsDataTable, "house_id");
+            int maxApartmentId = dataController.GetMaxId(contractsDataTable, "apartment_id");
+
+            ContractForm contractForm = new ContractForm(contractsDataTable.NewRow(), false, maxContractId, maxClientId, maxHouseId, maxApartmentId);
+            if (contractForm.ShowDialog() == DialogResult.OK)
+            {
+
             }
         }
     }

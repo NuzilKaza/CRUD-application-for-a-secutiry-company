@@ -64,6 +64,11 @@
     <Compile Include="DepartureForm.Designer.cs">
       <DependentUpon>DepartureForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entity\ApartmentController.cs" />
+    <Compile Include="Entity\ClientController.cs" />
+    <Compile Include="Entity\CrewController.cs" />
+    <Compile Include="Entity\DepartureController.cs" />
+    <Compile Include="Entity\HouseController.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

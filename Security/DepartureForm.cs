@@ -35,15 +35,7 @@ namespace Security
             if (!DocumentTextBoxIsEmpty())
             {
                 warningLabel.Visible = false;
-                row["departure_id"] = lastDepartureId + 1;
-                row["crew_id"] = (int)crewIdNumericUpDown.Value;
-                row["contract_id"] = (int)contractIdNumericUpDown.Value;
-                row["departure_date_time"] = departureDateTimePicker.Value;
-                row["false_call"] = falseCallCheckBox.Checked;
-                if (!falseCallCheckBox.Checked)
-                {
-                    row["arrest_document"] = documentTextBox.Text;
-                }
+                CollectInformation();
             }
             else
             {
@@ -67,6 +59,19 @@ namespace Security
         {
             documentLabel.Enabled = !documentLabel.Enabled;
             documentTextBox.Enabled = !documentTextBox.Enabled;
+        }
+
+        private void CollectInformation()
+        {
+            row["departure_id"] = lastDepartureId + 1;
+            row["crew_id"] = (int)crewIdNumericUpDown.Value;
+            row["contract_id"] = (int)contractIdNumericUpDown.Value;
+            row["departure_date_time"] = departureDateTimePicker.Value;
+            row["false_call"] = falseCallCheckBox.Checked;
+            if (!falseCallCheckBox.Checked)
+            {
+                row["arrest_document"] = documentTextBox.Text;
+            }
         }
     }
 }

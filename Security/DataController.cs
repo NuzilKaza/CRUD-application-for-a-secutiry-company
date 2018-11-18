@@ -20,6 +20,22 @@ namespace Security
         public DataTable CreateDataSource(string commandText, CommandType commandType)
         {
             SqlCommand command = CreateCommand(commandText, commandType);
+            return LoadData(command);
+        }
+
+        public DataTable CreateDataSource(
+            string commandText,
+            CommandType commandType,
+            string[] paramNames,
+            SqlDbType[] paramTypes,
+            params object[] paramValues)
+        {
+            SqlCommand command = CreateCommand(commandText, commandType, paramNames, paramTypes, paramValues);
+            return LoadData(command);
+        }
+
+        private DataTable LoadData(SqlCommand command)
+        {
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
             DataTable dataTable = new DataTable();
@@ -82,10 +98,7 @@ namespace Security
                 throw new InvalidOperationException("Разное количество элементов в массивах");
             }
 
-            SqlCommand command = new SqlCommand();
-            command.Connection = connection;
-            command.CommandType = commandType;
-            command.CommandText = commandText;
+            SqlCommand command = CreateCommand(commandText, commandType);
 
             for (int i = 0; i < paramNames.Length; i++)
             {
@@ -98,8 +111,17 @@ namespace Security
 
         public int GetMaxId(DataTable dataTable, string columnName)
         {
-            DataRow row = dataTable.Rows[dataTable.Rows.Count - 1];
-            return Convert.ToInt32(row[columnName]);
+            int maxId = Convert.ToInt32(dataTable.Rows[0][columnName]);
+            for (int i = 1; i < dataTable.Rows.Count; i++)
+            {
+                DataRow row = dataTable.Rows[i];
+                if (maxId < Convert.ToInt32(row[columnName]))
+                {
+                    maxId = Convert.ToInt32(row[columnName]);
+                }
+            }
+
+            return maxId;
         }
     }
 }
