@@ -139,7 +139,16 @@ namespace Security
             ContractForm contractForm = new ContractForm(contractsDataTable.NewRow(), false, maxContractId, maxClientId, maxHouseId, maxApartmentId);
             if (contractForm.ShowDialog() == DialogResult.OK)
             {
+                ContractController contractController = new ContractController(contractForm.Row);
+                int result = contractController.Insert(maxClientId, maxHouseId);
 
+                if (result == 0)
+                {
+                    MessageBox.Show("Ошибка выполнения вставки");
+                }
+
+                FillTables();
+                ShowRowsCountEverywhere();
             }
         }
     }

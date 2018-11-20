@@ -134,14 +134,14 @@ namespace Security
                 row["additional_conditions"] = additionalRichTextBox.Text;
             }
 
-            ClientController clientController = new ClientController(row);
+            /*ClientController clientController = new ClientController(row);
             row["client_id"] = clientController.GetClientId(lastClientId);
 
             HouseController houseController = new HouseController(row);
             row["house_id"] = houseController.GetHouseId(lastHouseId);
 
             ApartmentController apartmentController = new ApartmentController(row);
-            row["apartment_id"] = apartmentController.GetApartmentId(Convert.ToInt32(row["house_id"]), lastApartmentId);
+            row["apartment_id"] = apartmentController.GetApartmentId(Convert.ToInt32(row["house_id"]), lastApartmentId);*/
 
         }
 

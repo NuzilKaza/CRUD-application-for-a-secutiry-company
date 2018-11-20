@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Entity\ApartmentController.cs" />
     <Compile Include="Entity\ClientController.cs" />
+    <Compile Include="Entity\ContractController.cs" />
     <Compile Include="Entity\CrewController.cs" />
     <Compile Include="Entity\DepartureController.cs" />
     <Compile Include="Entity\HouseController.cs" />

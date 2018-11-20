@@ -15,6 +15,8 @@ namespace Security.Entity
 
         private string[] findHouseIdParamNames = { "@house_address" };
         private SqlDbType[] findHouseIdParamTypes = { SqlDbType.NChar };
+        private string[] insertParamNames = { "@house_id", "@house_address", "@floors_count", "@house_type" };
+        private SqlDbType[] insertParamTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.TinyInt, SqlDbType.NChar };
 
         public HouseController(DataRow information)
         {
@@ -22,9 +24,17 @@ namespace Security.Entity
             Connect();
         }
 
-        public int GetHouseId(int maxHouseId)
+        public int Insert(int maxHouseId)
         {
-            int houseId = FindHouseId();
+            information["house_id"] = GetHouseId(maxHouseId);
+            object[] paramValues = { information["house_id"], GetHouseAddress(), information["floors_count"], information["house_type"] };
+            int result = dataController.ModifyData("House_Insert", CommandType.StoredProcedure, insertParamNames, insertParamTypes, paramValues);
+            return result;
+        }
+
+        private int GetHouseId(int maxHouseId)
+        {
+            int houseId = HouseExists();
             if (houseId > 0)
             {
                 return houseId;
@@ -35,7 +45,7 @@ namespace Security.Entity
             }
         }
 
-        private int FindHouseId()
+        public int HouseExists()
         {
             object[] findHouseIdParamValues = { GetHouseAddress() };
             DataTable house = dataController.CreateDataSource("House_Select", CommandType.StoredProcedure, findHouseIdParamNames, findHouseIdParamTypes, findHouseIdParamValues);

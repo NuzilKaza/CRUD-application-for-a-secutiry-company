@@ -15,6 +15,8 @@ namespace Security.Entity
 
         private string[] findClientIdParamNames = { "@client_name", "@client_address", "@client_phone" };
         private SqlDbType[] findClientIdParamTypes = { SqlDbType.NChar, SqlDbType.NChar, SqlDbType.NChar };
+        private string[] insertParamNames = { "@client_id", "@client_name", "@client_address", "@client_phone" };
+        private SqlDbType[] insertParamTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.NChar, SqlDbType.NChar };
 
         public ClientController(DataRow information)
         {
@@ -22,7 +24,7 @@ namespace Security.Entity
             Connect();
         }
 
-        private int FindClientId()
+        public int ClientExists()
         {
             object[] findClientIdParamValues = { information["client_name"], information["client_address"], information["client_phone"] };
             DataTable client = dataController.CreateDataSource("Client_Select", CommandType.StoredProcedure, findClientIdParamNames, findClientIdParamTypes, findClientIdParamValues);
@@ -36,9 +38,17 @@ namespace Security.Entity
             }
         }
 
-        public int GetClientId(int maxClientId)
+       public int Insert(int maxClientId)
         {
-            int clientId = FindClientId();
+            information["client_id"] = GetClientId(maxClientId);
+            object[] paramValues = { information["client_id"], information["client_name"], information["client_address"], information["client_phone"] };
+            int result = dataController.ModifyData("Client_Insert", CommandType.StoredProcedure, insertParamNames, insertParamTypes, paramValues);
+            return result;
+        }
+
+        private int GetClientId(int maxClientId)
+        {
+            int clientId = ClientExists();
             if (clientId > 0)
             {
                 return clientId;
