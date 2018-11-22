@@ -140,7 +140,7 @@ namespace Security
             if (contractForm.ShowDialog() == DialogResult.OK)
             {
                 ContractController contractController = new ContractController(contractForm.Row);
-                int result = contractController.Insert(maxClientId, maxHouseId);
+                int result = contractController.Insert(maxClientId, maxHouseId, maxApartmentId);
 
                 if (result == 0)
                 {

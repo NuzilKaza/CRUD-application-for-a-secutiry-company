@@ -13,6 +13,11 @@ namespace Security.Entity
         private DataRow information;
         private DataController dataController;
 
+        private string[] insertParamNames = { "@contract_id", "@apartment_id", "@commencement_date", "@expiration_date",
+            "@payment_per_month", "@compensation", "@fine", "@additional" };
+        private SqlDbType[] insertParamTypes = { SqlDbType.Int, SqlDbType.Int, SqlDbType.Date, SqlDbType.Date,
+            SqlDbType.Money, SqlDbType.Money, SqlDbType.Money, SqlDbType.Text };
+
         public ContractController(DataRow information)
         {
             this.information = information;
@@ -25,7 +30,7 @@ namespace Security.Entity
             dataController = new DataController(connection);
         }
 
-        public int Insert(int maxClientId, int maxHouseId)
+        public int Insert(int maxClientId, int maxHouseId, int maxApartmentId)
         {
             ClientController clientController = new ClientController(information);
             int clientResult = 1;
@@ -41,7 +46,22 @@ namespace Security.Entity
                 houseResult = houseController.Insert(maxHouseId);
             }
 
-            return clientResult & houseResult;
+            ApartmentController apartmentController = new ApartmentController(information);
+            int apartmentResult = 1;
+            int houseId = houseController.GetHouseId(maxHouseId);
+            int clientId = clientController.GetClientId(maxClientId);
+            if (houseId != 0 && apartmentController.ApartmentExists(houseId) == 0)
+            {
+                apartmentResult = apartmentController.Insert(houseId, clientId, maxApartmentId);
+            }
+
+            int apartmentId = apartmentController.GetApartmentId(houseId, maxApartmentId);
+            object[] paramValues = { information["contract_id"], apartmentId, information["commencement_date"], information["expiration_date"],
+                information["payment_per_month"], information["compensation"], information["fine"], information["additional_conditions"] };
+            int contractResult = dataController.ModifyData("Contract_Insert", CommandType.StoredProcedure, insertParamNames, insertParamTypes, paramValues);
+
+
+            return clientResult & houseResult & apartmentResult & contractResult;
         }
     }
 }

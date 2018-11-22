@@ -32,7 +32,18 @@ namespace Security.Entity
             return result;
         }
 
-        private int GetHouseId(int maxHouseId)
+        public int GetHouseId()
+        {
+            if (information["house_id"] != null)
+            {
+                return Convert.ToInt32(information["house_id"]);
+            } else
+            {
+                return 0;
+            }
+        }
+
+        public int GetHouseId(int maxHouseId)
         {
             int houseId = HouseExists();
             if (houseId > 0)

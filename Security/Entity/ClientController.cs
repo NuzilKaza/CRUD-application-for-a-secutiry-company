@@ -46,7 +46,19 @@ namespace Security.Entity
             return result;
         }
 
-        private int GetClientId(int maxClientId)
+        public int GetClientId()
+        {
+            if (information["client_id"] != null)
+            {
+                return Convert.ToInt32(information["client_id"]);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public int GetClientId(int maxClientId)
         {
             int clientId = ClientExists();
             if (clientId > 0)
