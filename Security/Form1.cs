@@ -44,7 +44,6 @@ namespace Security
             departuresDataTable = dataController.CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
             contractsDataTable = dataController.CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
 
-            //TODO: разобраться с таблицей адресов
             crewsDataGridView.DataSource = crewsDataTable;
             departuresDataGridView.DataSource = departuresDataTable;
             contractsDataGridView.DataSource = contractsDataTable;

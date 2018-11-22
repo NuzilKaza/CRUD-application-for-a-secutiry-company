@@ -83,8 +83,14 @@ namespace Security
 
         private bool DatesAreCorrect()
         {
-            return commencementDateTimePicker.Value < expirationDateTimePicker.Value &&
-                expirationDateTimePicker.Value < extensionDateTimePicker.Value;
+            if (extensionDateTimePicker.Enabled)
+            {
+                return commencementDateTimePicker.Value < expirationDateTimePicker.Value &&
+                        expirationDateTimePicker.Value < extensionDateTimePicker.Value; 
+            } else
+            {
+                return commencementDateTimePicker.Value < expirationDateTimePicker.Value;
+            }
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -133,16 +139,6 @@ namespace Security
             {
                 row["additional_conditions"] = additionalRichTextBox.Text;
             }
-
-            /*ClientController clientController = new ClientController(row);
-            row["client_id"] = clientController.GetClientId(lastClientId);
-
-            HouseController houseController = new HouseController(row);
-            row["house_id"] = houseController.GetHouseId(lastHouseId);
-
-            ApartmentController apartmentController = new ApartmentController(row);
-            row["apartment_id"] = apartmentController.GetApartmentId(Convert.ToInt32(row["house_id"]), lastApartmentId);*/
-
         }
 
         private void floorsCountNumericUpDown_ValueChanged(object sender, EventArgs e)

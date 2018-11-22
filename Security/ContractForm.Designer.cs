@@ -174,6 +174,11 @@
             // fineNumericUpDown
             // 
             this.fineNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fineNumericUpDown.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.fineNumericUpDown.Location = new System.Drawing.Point(260, 136);
             this.fineNumericUpDown.Maximum = new decimal(new int[] {
             10000,
@@ -186,7 +191,7 @@
             0,
             0});
             this.fineNumericUpDown.Name = "fineNumericUpDown";
-            this.fineNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.fineNumericUpDown.Size = new System.Drawing.Size(65, 22);
             this.fineNumericUpDown.TabIndex = 15;
             this.fineNumericUpDown.Value = new decimal(new int[] {
             1,
@@ -207,6 +212,11 @@
             // compensationNumericUpDown
             // 
             this.compensationNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.compensationNumericUpDown.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.compensationNumericUpDown.Location = new System.Drawing.Point(260, 108);
             this.compensationNumericUpDown.Maximum = new decimal(new int[] {
             10000,
@@ -219,7 +229,7 @@
             0,
             0});
             this.compensationNumericUpDown.Name = "compensationNumericUpDown";
-            this.compensationNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.compensationNumericUpDown.Size = new System.Drawing.Size(65, 22);
             this.compensationNumericUpDown.TabIndex = 14;
             this.compensationNumericUpDown.Value = new decimal(new int[] {
             1,
@@ -240,6 +250,11 @@
             // paymentNumericUpDown
             // 
             this.paymentNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.paymentNumericUpDown.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             this.paymentNumericUpDown.Location = new System.Drawing.Point(161, 80);
             this.paymentNumericUpDown.Maximum = new decimal(new int[] {
             1000,
@@ -252,7 +267,7 @@
             0,
             0});
             this.paymentNumericUpDown.Name = "paymentNumericUpDown";
-            this.paymentNumericUpDown.Size = new System.Drawing.Size(55, 22);
+            this.paymentNumericUpDown.Size = new System.Drawing.Size(65, 22);
             this.paymentNumericUpDown.TabIndex = 13;
             this.paymentNumericUpDown.Value = new decimal(new int[] {
             1,
