@@ -150,5 +150,27 @@ namespace Security
                 ShowRowsCountEverywhere();
             }
         }
+
+        private void editCrewButton_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = crewsDataGridView.SelectedRows[0];
+            int crewId = (int)selectedRow.Cells["crewidDataGridViewTextBoxColumn"].Value;
+            DataRow[] rows = crewsDataTable.Select(String.Format("crew_id = {0}", crewId));
+
+            int maxId = dataController.GetMaxId(crewsDataTable, "crew_id");
+            CrewForm crewForm = new CrewForm(rows[0], true, maxId);
+            if (crewForm.ShowDialog() == DialogResult.OK)
+            {
+                CrewController crewController = new CrewController(crewForm.Row);
+                int result = crewController.Update();
+                if (result == 0)
+                {
+                    MessageBox.Show("Ошибка выполнения редактирования");
+                }
+
+                FillTables();
+                ShowRowsCountEverywhere();
+            }
+        }
     }
 }

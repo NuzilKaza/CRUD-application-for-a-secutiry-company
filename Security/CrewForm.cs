@@ -29,9 +29,16 @@ namespace Security
 
         private void CrewForm_Load(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(Properties.Settings.Default.connectionString);
-            SqlCommand command = new SqlCommand();
-            command.Connection = connection;
+            if (forUpdate)
+            {
+                FillForm();
+            }
+        }
+
+        private void FillForm()
+        {
+            leaderTextBox.Text = row["crew_leader"].ToString();
+            carModelTextBox.Text = row["crew_car_model"].ToString();
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -54,7 +61,10 @@ namespace Security
 
         private void CollectInformation()
         {
-            row["crew_id"] = lastCrewId + 1;
+            if (!forUpdate)
+            {
+                row["crew_id"] = lastCrewId + 1; 
+            }
             row["crew_leader"] = leaderTextBox.Text;
             row["crew_car_model"] = carModelTextBox.Text;
         }

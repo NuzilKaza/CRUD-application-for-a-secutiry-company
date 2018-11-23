@@ -18,6 +18,8 @@ namespace Security.Entity
         private SqlDbType[] insertParamTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.NChar };
         private string[] deleteParamNames = { "@crew_id" };
         private SqlDbType[] deleteParamTypes = { SqlDbType.Int };
+        private string[] updateParamNames = { "@crew_id", "@crew_leader", "@crew_car_model" };
+        private SqlDbType[] updateParamTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.NChar };
 
         public CrewController(DataRow crewInformation)
         {
@@ -48,6 +50,12 @@ namespace Security.Entity
         {
             SqlConnection connection = new SqlConnection(Properties.Settings.Default.connectionString);
             dataController = new DataController(connection);
+        }
+
+        public int Update()
+        {
+            object[] paramValues = { information["crew_id"], information["crew_leader"], information["crew_car_model"] };
+            return dataController.ModifyData("Crew_Update", CommandType.StoredProcedure, updateParamNames, updateParamTypes, paramValues);
         }
     }
 }
