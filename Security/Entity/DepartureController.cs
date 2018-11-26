@@ -19,6 +19,14 @@ namespace Security.Entity
         private SqlDbType[] insertFalseParamTypes = { SqlDbType.Int };
         private string[] insertTrueParamNames = { "@departure_id", "@arrest_document" };
         SqlDbType[] insertTrueParamTypes = { SqlDbType.Int, SqlDbType.NChar };
+        private string[] updateParamNames = { "@departure_id", "@crew_id", "@contract_id", "@departure_date_time", "@false_call" };
+        private SqlDbType[] updateParamTypes = { SqlDbType.Int, SqlDbType.Int, SqlDbType.Int, SqlDbType.DateTime, SqlDbType.Bit };
+        private string[] findDepartureParamNames = { "@departure_id" };
+        private SqlDbType[] findDepartureParamTypes = { SqlDbType.Int };
+        private string[] replaceParamNames = { "@departure_id", "@arrest_document" };
+        private SqlDbType[] replaceParamTypes = { SqlDbType.Int, SqlDbType.NChar };
+        private string[] updateTrueParamNames = { "@departure_id", "@arrest_document" };
+        private SqlDbType[] updateTrueParamTypes = { SqlDbType.Int, SqlDbType.NChar };
 
         public DepartureController(DataRow departureInformation)
         {
@@ -49,6 +57,90 @@ namespace Security.Entity
         {
             SqlConnection connection = new SqlConnection(Properties.Settings.Default.connectionString);
             dataController = new DataController(connection);
+        }
+
+        public int Update()
+        {
+            //TODO: написать хранимые процедуры
+            object[] paramValues = { information["departure_id"], information["crew_id"], information["contract_id"], information["departure_date_time"], information["false_call"] };
+            int result1 = dataController.ModifyData("Departure_Update", CommandType.StoredProcedure, updateParamNames, updateParamTypes, paramValues);
+
+            int result2 = 1;
+            if (Convert.ToBoolean(information["false_call"]))
+            {
+                if (!FalseDepartureExists())
+                {
+                    object[] paramReplaceValues = { information["departure_id"] };
+                    result2 = dataController.ModifyData("Replace_True_Departure_With_False", CommandType.StoredProcedure, findDepartureParamNames, findDepartureParamTypes, paramReplaceValues);
+                }
+            }
+            else
+            {
+                if (!TrueDepartureExists())
+                {
+                    object[] paramReplaceValues = { information["departure_id"], information["arrest_document"] };
+                    result2 = dataController.ModifyData("Replace_False_Departure_With_True", CommandType.StoredProcedure, replaceParamNames, replaceParamTypes, paramReplaceValues);
+                } else
+                {
+                    object[] paramUpdateTrueValues = { information["departure_id"], information["arrest_document"] }; ;
+                    result2 = dataController.ModifyData("Update_True_Departure", CommandType.StoredProcedure, updateTrueParamNames, updateTrueParamTypes, paramUpdateTrueValues);
+                }
+            }
+
+            return result1 & result2;
+        }
+
+        private bool TrueDepartureExists()
+        {
+            int trueDepartureId = GetTrueDepartureId();
+            if (trueDepartureId == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private int GetTrueDepartureId()
+        {
+            object[] paramValues = { information["departure_id"] };
+            DataTable trueDeparture = dataController.CreateDataSource("True_Departure_Select", CommandType.StoredProcedure, findDepartureParamNames, findDepartureParamTypes, paramValues);
+            if (trueDeparture.Rows.Count == 1)
+            {
+                return Convert.ToInt32(trueDeparture.Rows[0]["departure_id"]);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private bool FalseDepartureExists()
+        {
+            int falseDepartureId = GetFalseDepartureId();
+            if (falseDepartureId == 0)
+            {
+                return false;
+            } else
+            {
+                return true;
+            }
+        }
+
+        private int GetFalseDepartureId()
+        {
+            object[] paramValues = { information["departure_id"] };
+            DataTable falseDeparture = dataController.CreateDataSource("False_Departure_Select", CommandType.StoredProcedure, findDepartureParamNames, findDepartureParamTypes, paramValues);
+            if (falseDeparture.Rows.Count == 1)
+            {
+                return Convert.ToInt32(falseDeparture.Rows[0]["departure_id"]);
+            }
+            else
+            {
+                return 0;
+            }
         }
     }
 }

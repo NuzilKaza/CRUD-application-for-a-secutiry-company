@@ -172,5 +172,31 @@ namespace Security
                 ShowRowsCountEverywhere();
             }
         }
+
+        private void editDepartureButton_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = departuresDataGridView.SelectedRows[0];
+            int departureId = (int)selectedRow.Cells["departureidDataGridViewTextBoxColumn"].Value;
+            DataRow[] rows = departuresDataTable.Select(String.Format("departure_id = {0}", departureId));
+
+            int maxDepartureId = dataController.GetMaxId(departuresDataTable, "departure_id");
+            int maxCrewId = dataController.GetMaxId(crewsDataTable, "crew_id");
+            int maxContractId = dataController.GetMaxId(contractsDataTable, "contract_id");
+
+            DepartureForm departureForm = new DepartureForm(rows[0], true, maxDepartureId, maxCrewId, maxContractId);
+            if (departureForm.ShowDialog() == DialogResult.OK)
+            {
+                DepartureController departureController = new DepartureController(departureForm.Row);
+                int result = departureController.Update();
+
+                if (result == 0)
+                {
+                    MessageBox.Show("Ошибка выполнения редактирования");
+                }
+
+                FillTables();
+                ShowRowsCountEverywhere();
+            }
+        }
     }
 }

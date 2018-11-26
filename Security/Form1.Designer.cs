@@ -398,6 +398,7 @@
             this.editDepartureButton.TabIndex = 14;
             this.editDepartureButton.Text = "Изменить";
             this.editDepartureButton.UseVisualStyleBackColor = true;
+            this.editDepartureButton.Click += new System.EventHandler(this.editDepartureButton_Click);
             // 
             // label7
             // 

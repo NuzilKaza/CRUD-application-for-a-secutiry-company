@@ -123,5 +123,10 @@ namespace Security
 
             return maxId;
         }
+
+        internal int ModifyData(string v, CommandType storedProcedure, string[] updateTrueParamNames, SqlDbType[] updateTrueParamTypes, object paramUpdateTrueValues)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -51,8 +51,24 @@ namespace Security
 
         private void DepartureForm_Load(object sender, EventArgs e)
         {
+            if (forUpdate)
+            {
+                FillForm();
+            }
             crewIdNumericUpDown.Maximum = lastCrewId;
             contractIdNumericUpDown.Maximum = lastContractId;
+        }
+
+        private void FillForm()
+        {
+            crewIdNumericUpDown.Value = (int)row["crew_id"];
+            contractIdNumericUpDown.Value = (int)row["contract_id"];
+            departureDateTimePicker.Value = Convert.ToDateTime(row["departure_date_time"]);
+            falseCallCheckBox.Checked = Convert.ToBoolean(row["false_call"]);
+            if (!Convert.ToBoolean(row["false_call"]))
+            {
+                documentTextBox.Text = row["arrest_document"].ToString();
+            }
         }
 
         private void falseCallCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -63,7 +79,10 @@ namespace Security
 
         private void CollectInformation()
         {
-            row["departure_id"] = lastDepartureId + 1;
+            if (!forUpdate)
+            {
+                row["departure_id"] = lastDepartureId + 1; 
+            }
             row["crew_id"] = (int)crewIdNumericUpDown.Value;
             row["contract_id"] = (int)contractIdNumericUpDown.Value;
             row["departure_date_time"] = departureDateTimePicker.Value;
