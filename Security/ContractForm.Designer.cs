@@ -68,6 +68,7 @@
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.warningLabel = new System.Windows.Forms.Label();
+            this.extensionCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fineNumericUpDown)).BeginInit();
@@ -541,7 +542,7 @@
             // extensionDateTimePicker
             // 
             this.extensionDateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.extensionDateTimePicker.Location = new System.Drawing.Point(265, 381);
+            this.extensionDateTimePicker.Location = new System.Drawing.Point(147, 407);
             this.extensionDateTimePicker.MaxDate = new System.DateTime(2210, 12, 31, 0, 0, 0, 0);
             this.extensionDateTimePicker.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.extensionDateTimePicker.Name = "extensionDateTimePicker";
@@ -589,11 +590,23 @@
             this.warningLabel.Size = new System.Drawing.Size(0, 17);
             this.warningLabel.TabIndex = 20;
             // 
+            // extensionCheckBox
+            // 
+            this.extensionCheckBox.AutoSize = true;
+            this.extensionCheckBox.Location = new System.Drawing.Point(27, 409);
+            this.extensionCheckBox.Name = "extensionCheckBox";
+            this.extensionCheckBox.Size = new System.Drawing.Size(114, 21);
+            this.extensionCheckBox.TabIndex = 21;
+            this.extensionCheckBox.Text = "Продлить до";
+            this.extensionCheckBox.UseVisualStyleBackColor = true;
+            this.extensionCheckBox.CheckedChanged += new System.EventHandler(this.extensionCheckBox_CheckedChanged);
+            // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(885, 422);
+            this.ClientSize = new System.Drawing.Size(885, 453);
+            this.Controls.Add(this.extensionCheckBox);
             this.Controls.Add(this.warningLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
@@ -605,7 +618,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(903, 469);
+            this.MaximumSize = new System.Drawing.Size(903, 500);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(903, 469);
             this.Name = "ContractForm";
@@ -671,5 +684,6 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label warningLabel;
+        private System.Windows.Forms.CheckBox extensionCheckBox;
     }
 }

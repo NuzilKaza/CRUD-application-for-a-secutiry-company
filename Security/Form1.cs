@@ -106,7 +106,8 @@ namespace Security
             if (crewsDataGridView.SelectedRows.Count == 0)
             {
                 crewWarningLabel.Visible = true;
-            } else
+            }
+            else
             {
                 crewWarningLabel.Visible = false;
                 DataGridViewRow selectedRow = crewsDataGridView.SelectedRows[0];
@@ -193,6 +194,32 @@ namespace Security
                 {
                     MessageBox.Show("Ошибка выполнения редактирования");
                 }
+
+                FillTables();
+                ShowRowsCountEverywhere();
+            }
+        }
+
+        private void editContractButton_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow selectedRow = contractsDataGridView.SelectedRows[0];
+            int contractId = (int)selectedRow.Cells["contractidDataGridViewTextBoxColumn1"].Value;
+            DataRow[] rows = contractsDataTable.Select(String.Format("contract_id = {0}", contractId));
+
+            int maxContractId = dataController.GetMaxId(contractsDataTable, "contract_id");
+            int maxClientId = dataController.GetMaxId(contractsDataTable, "client_id");
+            int maxHouseId = dataController.GetMaxId(contractsDataTable, "house_id");
+            int maxApartmentId = dataController.GetMaxId(contractsDataTable, "apartment_id");
+
+            ContractForm contractForm = new ContractForm(rows[0], true, maxContractId, maxClientId, maxHouseId, maxApartmentId);
+            if (contractForm.ShowDialog() == DialogResult.OK)
+            {
+                ContractController contractController = new ContractController(contractForm.Row);
+                /*int result = contractController.Update();
+                if (result == 0)
+                {
+                    MessageBox.Show("Ошибка выполнения редактирования");
+                }*/
 
                 FillTables();
                 ShowRowsCountEverywhere();

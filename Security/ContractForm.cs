@@ -44,9 +44,41 @@ namespace Security
         private void ContractForm_Load(object sender, EventArgs e)
         {
             SetDateTimePickers();
-            if (!forUpdate)
+            if (forUpdate)
             {
-                DisableExtensionDateTimePicker();
+                FillForm();
+            } 
+            DisableExtensionElements();
+        }
+
+        private void FillForm()
+        {
+            nameTextBox.Text = row["client_name"].ToString();
+            phoneMaskedTextBox.Text = row["client_phone"].ToString();
+            clientAdressTextBox.Text = row["client_address"].ToString();
+
+            apartmentAddressTextBox.Text = row["apartment_address_in_contract"].ToString();
+            houseTypeComboBox.Text = row["house_type"].ToString();
+            floorsCountNumericUpDown.Value = (byte)row["floors_count"];
+            apartmentFloorNumericUpDown.Value = (byte)row["apartment_floor"];
+            doorTypeComboBox.Text = row["apartment_door_type"].ToString();
+            balconyCheckBox.Checked = Convert.ToBoolean(row["balcony"]);
+            if (Convert.ToBoolean(row["balcony"]))
+            {
+                balconyTypeComboBox.Text = row["balcony_type"].ToString();
+            }
+            codeKeyCheckBox.Checked = Convert.ToBoolean(row["code_key"]);
+
+            commencementDateTimePicker.Value = Convert.ToDateTime(row["commencement_date"]);
+            expirationDateTimePicker.Value = Convert.ToDateTime(row["expiration_date"]);
+            paymentNumericUpDown.Value = (decimal)row["payment_per_month"];
+            compensationNumericUpDown.Value = (decimal)row["compensation"];
+            fineNumericUpDown.Value = (decimal)row["fine"];
+
+            additionalRichTextBox.Text = row["additional_conditions"].ToString();
+            if (row["validity_extention"].ToString() != "")
+            {
+                extensionDateTimePicker.Value = Convert.ToDateTime(row["validity_extention"]);
             }
         }
 
@@ -60,10 +92,15 @@ namespace Security
             extensionDateTimePicker.Value = extensionDate;
         }
 
-        private void DisableExtensionDateTimePicker()
+        private void DisableExtensionElements()
         {
-            extensionLabel.Enabled = false;
+            if (!forUpdate)
+            {
+                extensionLabel.Enabled = false;
+                extensionCheckBox.Enabled = false; 
+            }
             extensionDateTimePicker.Enabled = false;
+            
         }
 
         private bool TextBoxesAreEmpty()
@@ -112,7 +149,10 @@ namespace Security
 
         private void CollectInformation()
         {
-            row["contract_id"] = lastContractId + 1;
+            if (!forUpdate)
+            {
+                row["contract_id"] = lastContractId + 1; 
+            }
             row["client_name"] = nameTextBox.Text;
             row["client_address"] = clientAdressTextBox.Text;
             row["client_phone"] = phoneMaskedTextBox.Text;
@@ -139,11 +179,21 @@ namespace Security
             {
                 row["additional_conditions"] = additionalRichTextBox.Text;
             }
+
+            if (extensionCheckBox.Checked)
+            {
+                row["validity_extention"] = extensionDateTimePicker.Value;
+            }
         }
 
         private void floorsCountNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             apartmentFloorNumericUpDown.Maximum = floorsCountNumericUpDown.Value;
+        }
+
+        private void extensionCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            extensionDateTimePicker.Enabled = !extensionDateTimePicker.Enabled;
         }
     }
 }

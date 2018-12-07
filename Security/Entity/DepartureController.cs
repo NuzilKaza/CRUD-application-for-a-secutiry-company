@@ -61,7 +61,6 @@ namespace Security.Entity
 
         public int Update()
         {
-            //TODO: написать хранимые процедуры
             object[] paramValues = { information["departure_id"], information["crew_id"], information["contract_id"], information["departure_date_time"], information["false_call"] };
             int result1 = dataController.ModifyData("Departure_Update", CommandType.StoredProcedure, updateParamNames, updateParamTypes, paramValues);
 
