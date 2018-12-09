@@ -21,6 +21,14 @@ namespace Security.Entity
         private SqlDbType[] insertWithBalconyParamTypes = { SqlDbType.Int, SqlDbType.NChar };
         private string[] insertWithoutBalconyParamNames = { "@apartment_id" };
         private SqlDbType[] insertWithoutBalconyParamTypes = { SqlDbType.Int };
+        private string[] updateParamNames = { "@apartment_id", "@client_id", "@house_id", "@apartment_number", "@apartment_floor", "@apartment_door_type", "@balcony", "@code_key" };
+        private SqlDbType[] updateParamTypes = { SqlDbType.Int, SqlDbType.Int, SqlDbType.Int, SqlDbType.Int, SqlDbType.TinyInt, SqlDbType.NChar, SqlDbType.Bit, SqlDbType.Bit };
+        private string[] findApartmentParamNames = { "@apartment_id" };
+        private SqlDbType[] findApartmentParamTypes = { SqlDbType.Int };
+        private string[] replaceParamNames = { "@apartment_id", "@balcony_type" };
+        private SqlDbType[] replaceParamTypes = { SqlDbType.Int, SqlDbType.NChar };
+        private string[] updateWithBalconyParamNames = { "@apartment_id", "@balcony_type" };
+        private SqlDbType[] updateWithBalconyParamTypes = { SqlDbType.Int, SqlDbType.NChar };
 
         public ApartmentController(DataRow information)
         {
@@ -91,6 +99,97 @@ namespace Security.Entity
             }
 
             return result1 & result2;
+        }
+
+        public int Update()
+        {
+            int apartmentId = ApartmentExists((int)information["house_id"]);
+            if (apartmentId > 0)
+            {
+                information["apartment_id"] = apartmentId;
+            }
+
+            object[] paramValues = { information["apartment_id"], information["client_id"], information["house_id"], GetApartmentNumber(),
+                information["apartment_floor"], information["apartment_door_type"], information["balcony"], information["code_key"]  };
+            int result1 = dataController.ModifyData("Apartment_Update", CommandType.StoredProcedure, updateParamNames, updateParamTypes, paramValues);
+
+            int result2 = 1;
+            if (Convert.ToBoolean(information["balcony"]))
+            {
+                if (!WithBalconyExists())
+                {
+                    object[] paramReplaceValues = { information["apartment_id"], information["balcony_type"] };
+                    result2 = dataController.ModifyData("Replace_Without_Balcony_With_With", CommandType.StoredProcedure, replaceParamNames, replaceParamTypes, paramReplaceValues);
+                }
+                else
+                {
+                    object[] paramUpdateTrueValues = { information["apartment_id"], information["balcony_type"] }; ;
+                    result2 = dataController.ModifyData("Update_With_Balcony", CommandType.StoredProcedure, updateWithBalconyParamNames, updateWithBalconyParamTypes, paramUpdateTrueValues);
+                }
+            } else
+            {
+                if (!WithoutBalconyExists())
+                {
+                    object[] paramReplaceValues = { information["apartment_id"] };
+                    result2 = dataController.ModifyData("Replace_With_Balcony_With_Without", CommandType.StoredProcedure, findApartmentParamNames, findApartmentParamTypes, paramReplaceValues);
+                }
+            }
+
+            return result1 & result2;
+        }
+
+        private bool WithBalconyExists()
+        {
+            int withBalconyId = GetWithBalconyId();
+            if (withBalconyId == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private int GetWithBalconyId()
+        {
+            object[] paramValues = { information["apartment_id"] };
+            DataTable apartmentWithBalcony = dataController.CreateDataSource("With_Balcony_Select", CommandType.StoredProcedure, findApartmentParamNames, findApartmentParamTypes, paramValues);
+            if (apartmentWithBalcony.Rows.Count == 1)
+            {
+                return Convert.ToInt32(apartmentWithBalcony.Rows[0]["apartment_id"]);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        private bool WithoutBalconyExists()
+        {
+            int withoutBalconyId = GetWithoutBalconyId();
+            if (withoutBalconyId == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private int GetWithoutBalconyId()
+        {
+            object[] paramValues = { information["apartment_id"] };
+            DataTable apartmentWithoutBalcony = dataController.CreateDataSource("Without_Balcony_Select", CommandType.StoredProcedure, findApartmentParamNames, findApartmentParamTypes, paramValues);
+            if (apartmentWithoutBalcony.Rows.Count == 1)
+            {
+                return Convert.ToInt32(apartmentWithoutBalcony.Rows[0]["apartment_id"]);
+            }
+            else
+            {
+                return 0;
+            }
         }
 
         private void Connect()

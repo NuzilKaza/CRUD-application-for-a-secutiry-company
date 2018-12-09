@@ -17,6 +17,8 @@ namespace Security.Entity
         private SqlDbType[] findHouseIdParamTypes = { SqlDbType.NChar };
         private string[] insertParamNames = { "@house_id", "@house_address", "@floors_count", "@house_type" };
         private SqlDbType[] insertParamTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.TinyInt, SqlDbType.NChar };
+        private string[] updateParamNames = { "@house_id", "@house_address", "@floors_count", "@house_type" };
+        private SqlDbType[] updateParamTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.TinyInt, SqlDbType.NChar };
 
         public HouseController(DataRow information)
         {
@@ -81,6 +83,21 @@ namespace Security.Entity
         {
             SqlConnection connection = new SqlConnection(Properties.Settings.Default.connectionString);
             dataController = new DataController(connection);
+        }
+
+        internal int Update()
+        {
+            int result = 1;
+            int houseId = HouseExists();
+            if (houseId > 0)
+            {
+                information["house_id"] = houseId;
+            }
+
+            object[] paramValues = { information["house_id"], GetHouseAddress(), information["floors_count"], information["house_type"] };
+            result = dataController.ModifyData("House_Update", CommandType.StoredProcedure, updateParamNames, updateParamTypes, paramValues);
+
+            return result;
         }
     }
 }

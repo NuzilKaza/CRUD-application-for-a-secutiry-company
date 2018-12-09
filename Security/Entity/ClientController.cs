@@ -17,6 +17,8 @@ namespace Security.Entity
         private SqlDbType[] findClientIdParamTypes = { SqlDbType.NChar, SqlDbType.NChar, SqlDbType.NChar };
         private string[] insertParamNames = { "@client_id", "@client_name", "@client_address", "@client_phone" };
         private SqlDbType[] insertParamTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.NChar, SqlDbType.NChar };
+        private string[] updateParamNames = { "@client_id", "@client_name", "@client_address", "@client_phone" };
+        private SqlDbType[] updateParamTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.NChar, SqlDbType.NChar };
 
         public ClientController(DataRow information)
         {
@@ -74,6 +76,22 @@ namespace Security.Entity
         {
             SqlConnection connection = new SqlConnection(Properties.Settings.Default.connectionString);
             dataController = new DataController(connection);
+        }
+
+        public int Update()
+        {
+            int result = 1;
+            int clientId = ClientExists();
+            if (clientId > 0)
+            {
+                information["client_id"] = clientId;
+            } else
+            {
+                object[] paramValues = { information["client_id"], information["client_name"], information["client_address"], information["client_phone"] };
+                result = dataController.ModifyData("Client_Update", CommandType.StoredProcedure, updateParamNames, updateParamTypes, paramValues);
+            }
+
+            return result;
         }
     }
 }

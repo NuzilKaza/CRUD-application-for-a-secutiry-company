@@ -17,6 +17,10 @@ namespace Security.Entity
             "@payment_per_month", "@compensation", "@fine", "@additional" };
         private SqlDbType[] insertParamTypes = { SqlDbType.Int, SqlDbType.Int, SqlDbType.Date, SqlDbType.Date,
             SqlDbType.Money, SqlDbType.Money, SqlDbType.Money, SqlDbType.Text };
+        private string[] updateParamNames = {"@contract_id", "@apartment_id", "@commencement_date", "@expiration_date",
+            "@validity_extention", "@payment_per_month", "@compensation", "@fine", "@additional" };
+        private SqlDbType[] updateParamTypes = { SqlDbType.Int, SqlDbType.Int, SqlDbType.Date, SqlDbType.Date,
+            SqlDbType.Date, SqlDbType.Money, SqlDbType.Money, SqlDbType.Money, SqlDbType.Text };
 
         public ContractController(DataRow information)
         {
@@ -60,6 +64,23 @@ namespace Security.Entity
                 information["payment_per_month"], information["compensation"], information["fine"], information["additional_conditions"] };
             int contractResult = dataController.ModifyData("Contract_Insert", CommandType.StoredProcedure, insertParamNames, insertParamTypes, paramValues);
 
+            return clientResult & houseResult & apartmentResult & contractResult;
+        }
+
+        public int Update()
+        {
+            ClientController clientController = new ClientController(information);
+            int clientResult = clientController.Update();
+
+            HouseController houseController = new HouseController(information);
+            int houseResult = houseController.Update();
+
+            ApartmentController apartmentController = new ApartmentController(information);
+            int apartmentResult = apartmentController.Update();
+
+            object[] paramValues = { information["contract_id"], information["apartment_id"], information["commencement_date"], information["expiration_date"],
+                information["validity_extention"], information["payment_per_month"], information["compensation"], information["fine"], information["additional_conditions"] };
+            int contractResult = dataController.ModifyData("Contract_Update", CommandType.StoredProcedure, updateParamNames, updateParamTypes, paramValues);
 
             return clientResult & houseResult & apartmentResult & contractResult;
         }

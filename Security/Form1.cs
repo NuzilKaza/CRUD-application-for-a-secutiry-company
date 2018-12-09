@@ -215,11 +215,14 @@ namespace Security
             if (contractForm.ShowDialog() == DialogResult.OK)
             {
                 ContractController contractController = new ContractController(contractForm.Row);
-                /*int result = contractController.Update();
+                int result = contractController.Update();
                 if (result == 0)
                 {
                     MessageBox.Show("Ошибка выполнения редактирования");
-                }*/
+                } else
+                {
+                    MessageBox.Show("Изменения сохранены");
+                }
 
                 FillTables();
                 ShowRowsCountEverywhere();
