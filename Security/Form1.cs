@@ -228,5 +228,25 @@ namespace Security
                 ShowRowsCountEverywhere();
             }
         }
+
+        private void nameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SelectContracts();
+        }
+
+        private void contractAddressTextBox_TextChanged(object sender, EventArgs e)
+        {
+            SelectContracts();
+        }
+
+        private void SelectContracts()
+        {
+            string name = nameTextBox.Text;
+            string address = contractAddressTextBox.Text;
+
+            DataTable dataTable = ContractController.SelectContracts(name, address);
+            contractsDataGridView.DataSource = dataTable;
+            ShowRowsCount(contractsDataGridView, contractsCountLabel);
+        }
     }
 }

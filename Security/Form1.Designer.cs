@@ -33,6 +33,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.contractsTabPage = new System.Windows.Forms.TabPage();
             this.contractsDataGridView = new System.Windows.Forms.DataGridView();
+            this.contractidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientphoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.apartmentaddressincontractDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contracts_viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.securityDataSet = new Security.SecurityDataSet();
             this.refreshContractsButton = new System.Windows.Forms.Button();
@@ -80,10 +84,6 @@
             this.tableAdapterManager = new Security.SecurityDataSetTableAdapters.TableAdapterManager();
             this.crewsTableAdapter = new Security.SecurityDataSetTableAdapters.CrewsTableAdapter();
             this.departuresTableAdapter = new Security.SecurityDataSetTableAdapters.DeparturesTableAdapter();
-            this.contractidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientnameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientphoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.apartmentaddressincontractDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.contractsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).BeginInit();
@@ -152,6 +152,38 @@
             this.contractsDataGridView.Size = new System.Drawing.Size(825, 668);
             this.contractsDataGridView.TabIndex = 9;
             // 
+            // contractidDataGridViewTextBoxColumn1
+            // 
+            this.contractidDataGridViewTextBoxColumn1.DataPropertyName = "contract_id";
+            this.contractidDataGridViewTextBoxColumn1.HeaderText = "Номер договора";
+            this.contractidDataGridViewTextBoxColumn1.Name = "contractidDataGridViewTextBoxColumn1";
+            this.contractidDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.contractidDataGridViewTextBoxColumn1.Width = 132;
+            // 
+            // clientnameDataGridViewTextBoxColumn
+            // 
+            this.clientnameDataGridViewTextBoxColumn.DataPropertyName = "client_name";
+            this.clientnameDataGridViewTextBoxColumn.HeaderText = "ФИО клиента";
+            this.clientnameDataGridViewTextBoxColumn.Name = "clientnameDataGridViewTextBoxColumn";
+            this.clientnameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientnameDataGridViewTextBoxColumn.Width = 118;
+            // 
+            // clientphoneDataGridViewTextBoxColumn
+            // 
+            this.clientphoneDataGridViewTextBoxColumn.DataPropertyName = "client_phone";
+            this.clientphoneDataGridViewTextBoxColumn.HeaderText = "Телефон клиента";
+            this.clientphoneDataGridViewTextBoxColumn.Name = "clientphoneDataGridViewTextBoxColumn";
+            this.clientphoneDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientphoneDataGridViewTextBoxColumn.Width = 142;
+            // 
+            // apartmentaddressincontractDataGridViewTextBoxColumn
+            // 
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.DataPropertyName = "apartment_address_in_contract";
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.HeaderText = "Адрес квартиры, указанной в договоре";
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.Name = "apartmentaddressincontractDataGridViewTextBoxColumn";
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.ReadOnly = true;
+            this.apartmentaddressincontractDataGridViewTextBoxColumn.Width = 215;
+            // 
             // contracts_viewBindingSource
             // 
             this.contracts_viewBindingSource.DataMember = "contracts_view";
@@ -207,6 +239,7 @@
             this.contractAddressTextBox.Name = "contractAddressTextBox";
             this.contractAddressTextBox.Size = new System.Drawing.Size(316, 22);
             this.contractAddressTextBox.TabIndex = 3;
+            this.contractAddressTextBox.TextChanged += new System.EventHandler(this.contractAddressTextBox_TextChanged);
             // 
             // label2
             // 
@@ -225,6 +258,7 @@
             this.nameTextBox.Size = new System.Drawing.Size(316, 22);
             this.nameTextBox.TabIndex = 1;
             this.nameTextBox.WordWrap = false;
+            this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // label1
             // 
@@ -611,38 +645,6 @@
             // departuresTableAdapter
             // 
             this.departuresTableAdapter.ClearBeforeFill = true;
-            // 
-            // contractidDataGridViewTextBoxColumn1
-            // 
-            this.contractidDataGridViewTextBoxColumn1.DataPropertyName = "contract_id";
-            this.contractidDataGridViewTextBoxColumn1.HeaderText = "Номер договора";
-            this.contractidDataGridViewTextBoxColumn1.Name = "contractidDataGridViewTextBoxColumn1";
-            this.contractidDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.contractidDataGridViewTextBoxColumn1.Width = 132;
-            // 
-            // clientnameDataGridViewTextBoxColumn
-            // 
-            this.clientnameDataGridViewTextBoxColumn.DataPropertyName = "client_name";
-            this.clientnameDataGridViewTextBoxColumn.HeaderText = "ФИО клиента";
-            this.clientnameDataGridViewTextBoxColumn.Name = "clientnameDataGridViewTextBoxColumn";
-            this.clientnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.clientnameDataGridViewTextBoxColumn.Width = 118;
-            // 
-            // clientphoneDataGridViewTextBoxColumn
-            // 
-            this.clientphoneDataGridViewTextBoxColumn.DataPropertyName = "client_phone";
-            this.clientphoneDataGridViewTextBoxColumn.HeaderText = "Телефон клиента";
-            this.clientphoneDataGridViewTextBoxColumn.Name = "clientphoneDataGridViewTextBoxColumn";
-            this.clientphoneDataGridViewTextBoxColumn.ReadOnly = true;
-            this.clientphoneDataGridViewTextBoxColumn.Width = 142;
-            // 
-            // apartmentaddressincontractDataGridViewTextBoxColumn
-            // 
-            this.apartmentaddressincontractDataGridViewTextBoxColumn.DataPropertyName = "apartment_address_in_contract";
-            this.apartmentaddressincontractDataGridViewTextBoxColumn.HeaderText = "Адрес квартиры, указанной в договоре";
-            this.apartmentaddressincontractDataGridViewTextBoxColumn.Name = "apartmentaddressincontractDataGridViewTextBoxColumn";
-            this.apartmentaddressincontractDataGridViewTextBoxColumn.ReadOnly = true;
-            this.apartmentaddressincontractDataGridViewTextBoxColumn.Width = 215;
             // 
             // mainForm
             // 

@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Security.Entity
@@ -83,6 +84,55 @@ namespace Security.Entity
             int contractResult = dataController.ModifyData("Contract_Update", CommandType.StoredProcedure, updateParamNames, updateParamTypes, paramValues);
 
             return clientResult & houseResult & apartmentResult & contractResult;
+        }
+
+        public static DataTable SelectContracts(string name, string address)
+        {
+            int apartmentNumber = 0;
+            string houseAddress = "";
+            string pattern = @", кв. \d+$";
+            if (Regex.IsMatch(address, pattern))
+            {
+                string[] separators = { ", кв. " };
+                string[] addressParts = address.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                houseAddress = addressParts[0];
+                apartmentNumber = Convert.ToInt32(addressParts[1]);
+            } else
+            {
+                houseAddress = address;
+            }
+
+            return LoadContracts(name, houseAddress, apartmentNumber);
+        }
+
+        private static DataTable LoadContracts(string name, string houseAddress, int apartmentNumber)
+        {
+            SqlConnection connection = new SqlConnection(Properties.Settings.Default.connectionString);
+            DataController dataController = new DataController(connection);
+
+            string[] paramNames = { "@client_name", "@house_address", "@apartment_number" };
+            SqlDbType[] paramTypes = { SqlDbType.NChar, SqlDbType.NChar, SqlDbType.Int};
+
+            if (name == "" && houseAddress == "" && apartmentNumber == 0)
+            {
+                return dataController.CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
+            }
+
+            object[] paramValues = { null, null, null };
+            if (name != "")
+            {
+                paramValues[0] = name;
+            }
+            if (houseAddress != "")
+            {
+                paramValues[1] = houseAddress;
+            }
+            if (apartmentNumber != 0)
+            {
+                paramValues[2] = apartmentNumber;
+            }
+
+            return dataController.CreateDataSource("Contract_Select", CommandType.StoredProcedure, paramNames, paramTypes, paramValues);
         }
     }
 }
