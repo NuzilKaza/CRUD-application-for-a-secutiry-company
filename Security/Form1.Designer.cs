@@ -39,7 +39,6 @@
             this.apartmentaddressincontractDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contracts_viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.securityDataSet = new Security.SecurityDataSet();
-            this.refreshContractsButton = new System.Windows.Forms.Button();
             this.editContractButton = new System.Windows.Forms.Button();
             this.addContractButton = new System.Windows.Forms.Button();
             this.contractsCountLabel = new System.Windows.Forms.Label();
@@ -50,29 +49,18 @@
             this.departuresTabPage = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.departuresCountLabel = new System.Windows.Forms.Label();
-            this.refreshDeparturesButton = new System.Windows.Forms.Button();
             this.departuresDataGridView = new System.Windows.Forms.DataGridView();
-            this.departureidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.crewidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contractidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.departuredatetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.falsecallDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.departuresBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.editDepartureButton = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
             this.addDepartureButton = new System.Windows.Forms.Button();
-            this.crewIdNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.finishDepartureDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.startDepartureDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.departureAdressTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.crewWarningLabel = new System.Windows.Forms.Label();
             this.crewsCountLabel = new System.Windows.Forms.Label();
             this.deleteCrewButton = new System.Windows.Forms.Button();
-            this.refreshCrewsButton = new System.Windows.Forms.Button();
             this.editCrewButton = new System.Windows.Forms.Button();
             this.addCrewButton = new System.Windows.Forms.Button();
             this.crewsDataGridView = new System.Windows.Forms.DataGridView();
@@ -84,6 +72,11 @@
             this.tableAdapterManager = new Security.SecurityDataSetTableAdapters.TableAdapterManager();
             this.crewsTableAdapter = new Security.SecurityDataSetTableAdapters.CrewsTableAdapter();
             this.departuresTableAdapter = new Security.SecurityDataSetTableAdapters.DeparturesTableAdapter();
+            this.departureidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.crewidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contractidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.departuredatetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.falsecallDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabControl1.SuspendLayout();
             this.contractsTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.contractsDataGridView)).BeginInit();
@@ -93,7 +86,6 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departuresDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.departuresBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crewsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crewsBindingSource)).BeginInit();
@@ -112,7 +104,6 @@
             // contractsTabPage
             // 
             this.contractsTabPage.Controls.Add(this.contractsDataGridView);
-            this.contractsTabPage.Controls.Add(this.refreshContractsButton);
             this.contractsTabPage.Controls.Add(this.editContractButton);
             this.contractsTabPage.Controls.Add(this.addContractButton);
             this.contractsTabPage.Controls.Add(this.contractsCountLabel);
@@ -193,15 +184,6 @@
             // 
             this.securityDataSet.DataSetName = "SecurityDataSet";
             this.securityDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // refreshContractsButton
-            // 
-            this.refreshContractsButton.Location = new System.Drawing.Point(840, 148);
-            this.refreshContractsButton.Name = "refreshContractsButton";
-            this.refreshContractsButton.Size = new System.Drawing.Size(136, 30);
-            this.refreshContractsButton.TabIndex = 8;
-            this.refreshContractsButton.Text = "Обновить";
-            this.refreshContractsButton.UseVisualStyleBackColor = true;
             // 
             // editContractButton
             // 
@@ -284,17 +266,12 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.departuresCountLabel);
-            this.groupBox2.Controls.Add(this.refreshDeparturesButton);
             this.groupBox2.Controls.Add(this.departuresDataGridView);
             this.groupBox2.Controls.Add(this.editDepartureButton);
-            this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.addDepartureButton);
-            this.groupBox2.Controls.Add(this.crewIdNumericUpDown);
             this.groupBox2.Controls.Add(this.finishDepartureDateTimePicker);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.startDepartureDateTimePicker);
-            this.groupBox2.Controls.Add(this.departureAdressTextBox);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
@@ -306,20 +283,11 @@
             // departuresCountLabel
             // 
             this.departuresCountLabel.AutoSize = true;
-            this.departuresCountLabel.Location = new System.Drawing.Point(6, 102);
+            this.departuresCountLabel.Location = new System.Drawing.Point(9, 70);
             this.departuresCountLabel.Name = "departuresCountLabel";
             this.departuresCountLabel.Size = new System.Drawing.Size(66, 17);
             this.departuresCountLabel.TabIndex = 14;
             this.departuresCountLabel.Text = "Найдено";
-            // 
-            // refreshDeparturesButton
-            // 
-            this.refreshDeparturesButton.Location = new System.Drawing.Point(657, 197);
-            this.refreshDeparturesButton.Name = "refreshDeparturesButton";
-            this.refreshDeparturesButton.Size = new System.Drawing.Size(136, 30);
-            this.refreshDeparturesButton.TabIndex = 15;
-            this.refreshDeparturesButton.Text = "Обновить";
-            this.refreshDeparturesButton.UseVisualStyleBackColor = true;
             // 
             // departuresDataGridView
             // 
@@ -338,55 +306,14 @@
             this.falsecallDataGridViewCheckBoxColumn});
             this.departuresDataGridView.DataSource = this.departuresBindingSource;
             this.departuresDataGridView.GridColor = System.Drawing.Color.DarkGray;
-            this.departuresDataGridView.Location = new System.Drawing.Point(6, 125);
+            this.departuresDataGridView.Location = new System.Drawing.Point(9, 93);
             this.departuresDataGridView.MultiSelect = false;
             this.departuresDataGridView.Name = "departuresDataGridView";
             this.departuresDataGridView.ReadOnly = true;
             this.departuresDataGridView.RowTemplate.Height = 24;
             this.departuresDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.departuresDataGridView.Size = new System.Drawing.Size(645, 319);
+            this.departuresDataGridView.Size = new System.Drawing.Size(601, 351);
             this.departuresDataGridView.TabIndex = 13;
-            // 
-            // departureidDataGridViewTextBoxColumn
-            // 
-            this.departureidDataGridViewTextBoxColumn.DataPropertyName = "departure_id";
-            this.departureidDataGridViewTextBoxColumn.HeaderText = "Номер выезда";
-            this.departureidDataGridViewTextBoxColumn.Name = "departureidDataGridViewTextBoxColumn";
-            this.departureidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.departureidDataGridViewTextBoxColumn.Visible = false;
-            this.departureidDataGridViewTextBoxColumn.Width = 132;
-            // 
-            // crewidDataGridViewTextBoxColumn1
-            // 
-            this.crewidDataGridViewTextBoxColumn1.DataPropertyName = "crew_id";
-            this.crewidDataGridViewTextBoxColumn1.HeaderText = "Номер экипажа";
-            this.crewidDataGridViewTextBoxColumn1.Name = "crewidDataGridViewTextBoxColumn1";
-            this.crewidDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.crewidDataGridViewTextBoxColumn1.Width = 127;
-            // 
-            // contractidDataGridViewTextBoxColumn
-            // 
-            this.contractidDataGridViewTextBoxColumn.DataPropertyName = "contract_id";
-            this.contractidDataGridViewTextBoxColumn.HeaderText = "Номер договора";
-            this.contractidDataGridViewTextBoxColumn.Name = "contractidDataGridViewTextBoxColumn";
-            this.contractidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.contractidDataGridViewTextBoxColumn.Width = 132;
-            // 
-            // departuredatetimeDataGridViewTextBoxColumn
-            // 
-            this.departuredatetimeDataGridViewTextBoxColumn.DataPropertyName = "departure_date_time";
-            this.departuredatetimeDataGridViewTextBoxColumn.HeaderText = "Дата и время выезда";
-            this.departuredatetimeDataGridViewTextBoxColumn.Name = "departuredatetimeDataGridViewTextBoxColumn";
-            this.departuredatetimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.departuredatetimeDataGridViewTextBoxColumn.Width = 163;
-            // 
-            // falsecallDataGridViewCheckBoxColumn
-            // 
-            this.falsecallDataGridViewCheckBoxColumn.DataPropertyName = "false_call";
-            this.falsecallDataGridViewCheckBoxColumn.HeaderText = "Ложный вызов";
-            this.falsecallDataGridViewCheckBoxColumn.Name = "falsecallDataGridViewCheckBoxColumn";
-            this.falsecallDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.falsecallDataGridViewCheckBoxColumn.Width = 99;
             // 
             // departuresBindingSource
             // 
@@ -395,7 +322,7 @@
             // 
             // editDepartureButton
             // 
-            this.editDepartureButton.Location = new System.Drawing.Point(657, 161);
+            this.editDepartureButton.Location = new System.Drawing.Point(619, 129);
             this.editDepartureButton.Name = "editDepartureButton";
             this.editDepartureButton.Size = new System.Drawing.Size(136, 30);
             this.editDepartureButton.TabIndex = 14;
@@ -403,18 +330,9 @@
             this.editDepartureButton.UseVisualStyleBackColor = true;
             this.editDepartureButton.Click += new System.EventHandler(this.editDepartureButton_Click);
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 35);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(110, 17);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Номер экипажа";
-            // 
             // addDepartureButton
             // 
-            this.addDepartureButton.Location = new System.Drawing.Point(657, 125);
+            this.addDepartureButton.Location = new System.Drawing.Point(619, 93);
             this.addDepartureButton.Name = "addDepartureButton";
             this.addDepartureButton.Size = new System.Drawing.Size(136, 30);
             this.addDepartureButton.TabIndex = 13;
@@ -422,81 +340,49 @@
             this.addDepartureButton.UseVisualStyleBackColor = true;
             this.addDepartureButton.Click += new System.EventHandler(this.addDepartureButton_Click);
             // 
-            // crewIdNumericUpDown
-            // 
-            this.crewIdNumericUpDown.Location = new System.Drawing.Point(116, 33);
-            this.crewIdNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.crewIdNumericUpDown.Name = "crewIdNumericUpDown";
-            this.crewIdNumericUpDown.Size = new System.Drawing.Size(55, 22);
-            this.crewIdNumericUpDown.TabIndex = 11;
-            this.crewIdNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
             // finishDepartureDateTimePicker
             // 
-            this.finishDepartureDateTimePicker.Location = new System.Drawing.Point(341, 63);
+            this.finishDepartureDateTimePicker.Location = new System.Drawing.Point(323, 31);
             this.finishDepartureDateTimePicker.MaxDate = new System.DateTime(2210, 12, 31, 0, 0, 0, 0);
             this.finishDepartureDateTimePicker.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.finishDepartureDateTimePicker.Name = "finishDepartureDateTimePicker";
-            this.finishDepartureDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.finishDepartureDateTimePicker.Size = new System.Drawing.Size(221, 22);
             this.finishDepartureDateTimePicker.TabIndex = 10;
+            this.finishDepartureDateTimePicker.ValueChanged += new System.EventHandler(this.finishDepartureDateTimePicker_ValueChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(293, 68);
+            this.label6.Location = new System.Drawing.Point(293, 36);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 17);
+            this.label6.Size = new System.Drawing.Size(24, 17);
             this.label6.TabIndex = 9;
-            this.label6.Text = "Дата";
+            this.label6.Text = "по";
             // 
             // startDepartureDateTimePicker
             // 
-            this.startDepartureDateTimePicker.Location = new System.Drawing.Point(56, 63);
+            this.startDepartureDateTimePicker.Location = new System.Drawing.Point(72, 31);
             this.startDepartureDateTimePicker.MaxDate = new System.DateTime(2210, 12, 31, 0, 0, 0, 0);
             this.startDepartureDateTimePicker.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.startDepartureDateTimePicker.Name = "startDepartureDateTimePicker";
-            this.startDepartureDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.startDepartureDateTimePicker.Size = new System.Drawing.Size(215, 22);
             this.startDepartureDateTimePicker.TabIndex = 8;
-            // 
-            // departureAdressTextBox
-            // 
-            this.departureAdressTextBox.Location = new System.Drawing.Point(225, 32);
-            this.departureAdressTextBox.Name = "departureAdressTextBox";
-            this.departureAdressTextBox.Size = new System.Drawing.Size(316, 22);
-            this.departureAdressTextBox.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(177, 35);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Адрес";
+            this.startDepartureDateTimePicker.ValueChanged += new System.EventHandler(this.startDepartureDateTimePicker_ValueChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 68);
+            this.label5.Location = new System.Drawing.Point(11, 36);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 17);
+            this.label5.Size = new System.Drawing.Size(55, 17);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Дата";
+            this.label5.Text = "Даты с";
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.crewWarningLabel);
             this.groupBox1.Controls.Add(this.crewsCountLabel);
             this.groupBox1.Controls.Add(this.deleteCrewButton);
-            this.groupBox1.Controls.Add(this.refreshCrewsButton);
             this.groupBox1.Controls.Add(this.editCrewButton);
             this.groupBox1.Controls.Add(this.addCrewButton);
             this.groupBox1.Controls.Add(this.crewsDataGridView);
@@ -512,7 +398,7 @@
             this.crewWarningLabel.AutoSize = true;
             this.crewWarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.crewWarningLabel.ForeColor = System.Drawing.Color.Crimson;
-            this.crewWarningLabel.Location = new System.Drawing.Point(622, 208);
+            this.crewWarningLabel.Location = new System.Drawing.Point(622, 164);
             this.crewWarningLabel.Name = "crewWarningLabel";
             this.crewWarningLabel.Size = new System.Drawing.Size(137, 17);
             this.crewWarningLabel.TabIndex = 14;
@@ -537,15 +423,6 @@
             this.deleteCrewButton.Text = "Удалить";
             this.deleteCrewButton.UseVisualStyleBackColor = true;
             this.deleteCrewButton.Click += new System.EventHandler(this.deleteCrewButton_Click);
-            // 
-            // refreshCrewsButton
-            // 
-            this.refreshCrewsButton.Location = new System.Drawing.Point(622, 158);
-            this.refreshCrewsButton.Name = "refreshCrewsButton";
-            this.refreshCrewsButton.Size = new System.Drawing.Size(136, 30);
-            this.refreshCrewsButton.TabIndex = 11;
-            this.refreshCrewsButton.Text = "Обновить";
-            this.refreshCrewsButton.UseVisualStyleBackColor = true;
             // 
             // editCrewButton
             // 
@@ -646,6 +523,47 @@
             // 
             this.departuresTableAdapter.ClearBeforeFill = true;
             // 
+            // departureidDataGridViewTextBoxColumn
+            // 
+            this.departureidDataGridViewTextBoxColumn.DataPropertyName = "departure_id";
+            this.departureidDataGridViewTextBoxColumn.HeaderText = "Номер выезда";
+            this.departureidDataGridViewTextBoxColumn.Name = "departureidDataGridViewTextBoxColumn";
+            this.departureidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.departureidDataGridViewTextBoxColumn.Visible = false;
+            this.departureidDataGridViewTextBoxColumn.Width = 132;
+            // 
+            // crewidDataGridViewTextBoxColumn1
+            // 
+            this.crewidDataGridViewTextBoxColumn1.DataPropertyName = "crew_id";
+            this.crewidDataGridViewTextBoxColumn1.HeaderText = "Номер экипажа";
+            this.crewidDataGridViewTextBoxColumn1.Name = "crewidDataGridViewTextBoxColumn1";
+            this.crewidDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.crewidDataGridViewTextBoxColumn1.Width = 127;
+            // 
+            // contractidDataGridViewTextBoxColumn
+            // 
+            this.contractidDataGridViewTextBoxColumn.DataPropertyName = "contract_id";
+            this.contractidDataGridViewTextBoxColumn.HeaderText = "Номер договора";
+            this.contractidDataGridViewTextBoxColumn.Name = "contractidDataGridViewTextBoxColumn";
+            this.contractidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.contractidDataGridViewTextBoxColumn.Width = 132;
+            // 
+            // departuredatetimeDataGridViewTextBoxColumn
+            // 
+            this.departuredatetimeDataGridViewTextBoxColumn.DataPropertyName = "departure_date_time";
+            this.departuredatetimeDataGridViewTextBoxColumn.HeaderText = "Дата выезда";
+            this.departuredatetimeDataGridViewTextBoxColumn.Name = "departuredatetimeDataGridViewTextBoxColumn";
+            this.departuredatetimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.departuredatetimeDataGridViewTextBoxColumn.Width = 113;
+            // 
+            // falsecallDataGridViewCheckBoxColumn
+            // 
+            this.falsecallDataGridViewCheckBoxColumn.DataPropertyName = "false_call";
+            this.falsecallDataGridViewCheckBoxColumn.HeaderText = "Ложный вызов";
+            this.falsecallDataGridViewCheckBoxColumn.Name = "falsecallDataGridViewCheckBoxColumn";
+            this.falsecallDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.falsecallDataGridViewCheckBoxColumn.Width = 99;
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -669,7 +587,6 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.departuresDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.departuresBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.crewIdNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.crewsDataGridView)).EndInit();
@@ -687,29 +604,22 @@
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage departuresTabPage;
-        private System.Windows.Forms.Button refreshContractsButton;
         private System.Windows.Forms.Button editContractButton;
         private System.Windows.Forms.Button addContractButton;
         private System.Windows.Forms.Label contractsCountLabel;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DateTimePicker startDepartureDateTimePicker;
-        private System.Windows.Forms.TextBox departureAdressTextBox;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button deleteCrewButton;
-        private System.Windows.Forms.Button refreshCrewsButton;
         private System.Windows.Forms.Button editCrewButton;
         private System.Windows.Forms.Button addCrewButton;
         private System.Windows.Forms.DataGridView crewsDataGridView;
         private System.Windows.Forms.DateTimePicker finishDepartureDateTimePicker;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button refreshDeparturesButton;
         private System.Windows.Forms.DataGridView departuresDataGridView;
         private System.Windows.Forms.Button editDepartureButton;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button addDepartureButton;
-        private System.Windows.Forms.NumericUpDown crewIdNumericUpDown;
         private System.Windows.Forms.Label departuresCountLabel;
         private System.Windows.Forms.Label crewsCountLabel;
         private SecurityDataSet securityDataSet;
@@ -720,11 +630,6 @@
         private System.Windows.Forms.BindingSource crewsBindingSource;
         private SecurityDataSetTableAdapters.DeparturesTableAdapter departuresTableAdapter;
         private System.Windows.Forms.BindingSource departuresBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn departureidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn crewidDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn contractidDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn departuredatetimeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn falsecallDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn crewidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn crewleaderDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn crewcarmodelDataGridViewTextBoxColumn;
@@ -739,6 +644,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clientnameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn clientphoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn apartmentaddressincontractDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departureidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn crewidDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contractidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn departuredatetimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn falsecallDataGridViewCheckBoxColumn;
     }
 }
 

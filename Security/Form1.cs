@@ -248,5 +248,26 @@ namespace Security
             contractsDataGridView.DataSource = dataTable;
             ShowRowsCount(contractsDataGridView, contractsCountLabel);
         }
+
+
+        private void startDepartureDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            SelectDepartures();
+        }
+
+        private void finishDepartureDateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            SelectDepartures();
+        }
+
+        private void SelectDepartures()
+        {
+            DateTime startDate = startDepartureDateTimePicker.Value;
+            DateTime finishDate = finishDepartureDateTimePicker.Value;
+
+            DataTable dataTable = DepartureController.SelectDepartures(startDate, finishDate);
+            departuresDataGridView.DataSource = dataTable;
+            ShowRowsCount(departuresDataGridView, departuresCountLabel);
+        }
     }
 }
