@@ -7,7 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Security.Entity
+namespace Security.Controllers
 {
     class DepartureController
     {
@@ -165,6 +165,5 @@ namespace Security.Entity
         {
             return date.Date == DateTime.Now.Date;
         }
-
     }
 }
