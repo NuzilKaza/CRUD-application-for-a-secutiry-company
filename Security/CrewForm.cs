@@ -1,33 +1,15 @@
 ﻿using Security.Controllers;
 using Security.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Security
 {
     public partial class CrewForm : Form
     {
-        private DataRow row;
         private bool forUpdate;
-        private int lastCrewId;
-
         private CrewController crewController;
-
-        public CrewForm(DataRow row, bool forUpdate, int lastCrewId)
-        {
-            InitializeComponent();
-            this.row = row;
-            this.forUpdate = forUpdate;
-            this.lastCrewId = lastCrewId;
-        }
+        private Crew selectedCrew;
 
         public CrewForm(CrewController crewController, bool forUpdate)
         {
@@ -36,7 +18,13 @@ namespace Security
             this.crewController = crewController;
         }
 
-        public DataRow Row { get => row; set => row = value; }
+        public CrewForm(CrewController crewController, bool forUpdate, Crew selectedCrew)
+        {
+            InitializeComponent();
+            this.forUpdate = forUpdate;
+            this.crewController = crewController;
+            this.selectedCrew = selectedCrew;
+        }
 
         private void CrewForm_Load(object sender, EventArgs e)
         {
@@ -48,8 +36,8 @@ namespace Security
 
         private void FillForm()
         {
-            leaderTextBox.Text = row["crew_leader"].ToString();
-            carModelTextBox.Text = row["crew_car_model"].ToString();
+            leaderTextBox.Text = selectedCrew.LeaderName;
+            carModelTextBox.Text = selectedCrew.CarModel;
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -74,13 +62,15 @@ namespace Security
         {
             if (!forUpdate)
             {
-                lastCrewId = crewController.GetMaxId();
-                //row["crew_id"] = lastCrewId + 1; 
+                int crewId = crewController.GetMaxId() + 1;
+                Crew crew = new Crew(crewId, leaderTextBox.Text, carModelTextBox.Text);
+                crewController.Insert(crew);
+            } else
+            {
+                selectedCrew.LeaderName = leaderTextBox.Text;
+                selectedCrew.CarModel = carModelTextBox.Text;
+                crewController.Update(selectedCrew);
             }
-            //row["crew_leader"] = leaderTextBox.Text;
-            //row["crew_car_model"] = carModelTextBox.Text;
-            Crew crew = new Crew(lastCrewId + 1, leaderTextBox.Text, carModelTextBox.Text);
-            crewController.Insert(crew);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Security.Controllers;
+using Security.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -153,19 +154,11 @@ namespace Security
         {
             DataGridViewRow selectedRow = crewsDataGridView.SelectedRows[0];
             int crewId = (int)selectedRow.Cells["crewidDataGridViewTextBoxColumn"].Value;
-            DataRow[] rows = crewsDataTable.Select(String.Format("crew_id = {0}", crewId));
+            Crew crew = crewController.Select(crewId);
 
-            int maxId = dataController.GetMaxId(crewsDataTable, "crew_id");
-            CrewForm crewForm = new CrewForm(rows[0], true, maxId);
+            CrewForm crewForm = new CrewForm(crewController, true, crew);
             if (crewForm.ShowDialog() == DialogResult.OK)
             {
-                CrewController crewController = new CrewController(crewForm.Row);
-                int result = crewController.Update();
-                if (result == 0)
-                {
-                    MessageBox.Show("Ошибка выполнения редактирования");
-                }
-
                 FillTables();
                 ShowRowsCountEverywhere();
             }

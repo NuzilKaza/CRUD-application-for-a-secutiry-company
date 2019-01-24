@@ -19,8 +19,8 @@ namespace Security.Entities
             this.carModel = carModel;
         }
 
-        public string LeaderName { get => leaderName; }
-        public string CarModel { get => carModel; }
+        public string LeaderName { get => leaderName; set => leaderName = value; }
+        public string CarModel { get => carModel; set => carModel = value; }
         public int Id { get => id; }
     }
 }

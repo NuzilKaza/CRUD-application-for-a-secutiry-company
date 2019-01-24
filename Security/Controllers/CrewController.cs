@@ -75,18 +75,24 @@ namespace Security.Controllers
             return maxId;
         }
 
-       
-
         private void Connect()
         {
             SqlConnection connection = new SqlConnection(Properties.Settings.Default.connectionString);
             dataController = new DataController(connection);
         }
 
-        public int Update()
+        public void Update(Crew crew)
         {
-            object[] paramValues = { information["crew_id"], information["crew_leader"], information["crew_car_model"] };
-            return dataController.ModifyData("Crew_Update", CommandType.StoredProcedure, updateParamNames, updateParamTypes, paramValues);
+            object[] paramValues = { crew.Id, crew.LeaderName, crew.CarModel};
+            dataController.ModifyData("Crew_Update", CommandType.StoredProcedure, updateParamNames, updateParamTypes, paramValues);
+        }
+
+        public Crew Select(int id)
+        {
+            DataRow row = crewsDataTable.Select(String.Format("crew_id = {0}", id))[0];
+            string leaderName = row["crew_leader"].ToString();
+            string carModel = row["crew_car_model"].ToString();
+            return new Crew(id, leaderName, carModel);
         }
     }
 }
