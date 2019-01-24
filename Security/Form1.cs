@@ -68,17 +68,9 @@ namespace Security
 
         private void addCrewButton_Click(object sender, EventArgs e)
         {
-            int maxId = dataController.GetMaxId(crewsDataTable, "crew_id");
-            CrewForm crewForm = new CrewForm(crewsDataTable.NewRow(), false, maxId);
+            CrewForm crewForm = new CrewForm(crewController, false);
             if (crewForm.ShowDialog() == DialogResult.OK)
             {
-                CrewController crewController = new CrewController(crewForm.Row);
-                int result = crewController.Insert();
-                if (result == 0)
-                {
-                    MessageBox.Show("Ошибка выполнения вставки");
-                }
-
                 FillTables();
                 ShowRowsCountEverywhere();
             }

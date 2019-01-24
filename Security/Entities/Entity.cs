@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Security.Entities
 {
-    abstract class Entity
+    public abstract class Entity
     {
         
     }

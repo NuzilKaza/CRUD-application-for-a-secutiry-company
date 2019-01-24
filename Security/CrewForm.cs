@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Security.Controllers;
+using Security.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,12 +19,21 @@ namespace Security
         private bool forUpdate;
         private int lastCrewId;
 
+        private CrewController crewController;
+
         public CrewForm(DataRow row, bool forUpdate, int lastCrewId)
         {
             InitializeComponent();
             this.row = row;
             this.forUpdate = forUpdate;
             this.lastCrewId = lastCrewId;
+        }
+
+        public CrewForm(CrewController crewController, bool forUpdate)
+        {
+            InitializeComponent();
+            this.forUpdate = forUpdate;
+            this.crewController = crewController;
         }
 
         public DataRow Row { get => row; set => row = value; }
@@ -63,10 +74,13 @@ namespace Security
         {
             if (!forUpdate)
             {
-                row["crew_id"] = lastCrewId + 1; 
+                lastCrewId = crewController.GetMaxId();
+                //row["crew_id"] = lastCrewId + 1; 
             }
-            row["crew_leader"] = leaderTextBox.Text;
-            row["crew_car_model"] = carModelTextBox.Text;
+            //row["crew_leader"] = leaderTextBox.Text;
+            //row["crew_car_model"] = carModelTextBox.Text;
+            Crew crew = new Crew(lastCrewId + 1, leaderTextBox.Text, carModelTextBox.Text);
+            crewController.Insert(crew);
         }
     }
 }

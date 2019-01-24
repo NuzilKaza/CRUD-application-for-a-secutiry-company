@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Security.Entities
 {
-    class Crew : Entity
+    public class Crew : Entity
     {
         private int id;
         private string leaderName;

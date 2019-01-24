@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Security
 {
-    class DataController
+    public class DataController
     {
         private SqlConnection connection;
 

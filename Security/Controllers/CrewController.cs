@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using Security.Entities;
 
 namespace Security.Controllers
 {
-    class CrewController
+    public class CrewController
     {
         private int crewId;
         private DataRow information;
@@ -20,6 +21,8 @@ namespace Security.Controllers
         private SqlDbType[] deleteParamTypes = { SqlDbType.Int };
         private string[] updateParamNames = { "@crew_id", "@crew_leader", "@crew_car_model" };
         private SqlDbType[] updateParamTypes = { SqlDbType.Int, SqlDbType.NChar, SqlDbType.NChar };
+
+        private DataTable crewsDataTable;
 
         public CrewController(DataRow crewInformation)
         {
@@ -38,10 +41,10 @@ namespace Security.Controllers
             this.dataController = dataController;
         }
 
-        public int Insert()
+        public void Insert(Crew crew)
         {
-            object[] paramValues = { information["crew_id"], information["crew_leader"], information["crew_car_model"] };
-            return dataController.ModifyData("Crew_Insert", CommandType.StoredProcedure, insertParamNames, insertParamTypes, paramValues);
+            object[] paramValues = { crew.Id, crew.LeaderName, crew.CarModel };
+            dataController.ModifyData("Crew_Insert", CommandType.StoredProcedure, insertParamNames, insertParamTypes, paramValues);
         }
 
         public int Delete()
@@ -53,8 +56,26 @@ namespace Security.Controllers
 
         public DataTable GetAllCrews()
         {
-            return dataController.CreateDataSource("Crews_Select_All", CommandType.StoredProcedure);
+            crewsDataTable = dataController.CreateDataSource("Crews_Select_All", CommandType.StoredProcedure);
+            return crewsDataTable;
         }
+
+        public int GetMaxId()
+        {
+            int maxId = Convert.ToInt32(crewsDataTable.Rows[0]["crew_id"]);
+            for (int i = 1; i < crewsDataTable.Rows.Count; i++)
+            {
+                DataRow row = crewsDataTable.Rows[i];
+                if (maxId < Convert.ToInt32(row["crew_id"]))
+                {
+                    maxId = Convert.ToInt32(row["crew_id"]);
+                }
+            }
+
+            return maxId;
+        }
+
+       
 
         private void Connect()
         {
