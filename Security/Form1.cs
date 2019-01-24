@@ -101,29 +101,15 @@ namespace Security
 
         private void deleteCrewButton_Click(object sender, EventArgs e)
         {
-            if (crewsDataGridView.SelectedRows.Count == 0)
-            {
-                crewWarningLabel.Visible = true;
-            }
-            else
-            {
-                crewWarningLabel.Visible = false;
-                DataGridViewRow selectedRow = crewsDataGridView.SelectedRows[0];
-                int crewId = (int)selectedRow.Cells["crewidDataGridViewTextBoxColumn"].Value;
+            DataGridViewRow selectedRow = crewsDataGridView.SelectedRows[0];
+            int crewId = (int)selectedRow.Cells["crewidDataGridViewTextBoxColumn"].Value;
 
-                DialogResult dialogResult = MessageBox.Show("Удалить выбранный экипаж?", "Подтверждение удаления", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    CrewController crewController = new CrewController(crewId);
-                    int result = crewController.Delete();
-                    if (result == 0)
-                    {
-                        MessageBox.Show("Ошибка выполнения удаления");
-                    }
-
-                    FillTables();
-                    ShowRowsCountEverywhere();
-                }
+            DialogResult dialogResult = MessageBox.Show("Удалить выбранный экипаж?", "Подтверждение удаления", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                crewController.Delete(crewId);
+                FillTables();
+                ShowRowsCountEverywhere();
             }
         }
 
