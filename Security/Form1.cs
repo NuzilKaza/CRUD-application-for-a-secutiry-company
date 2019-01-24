@@ -22,11 +22,17 @@ namespace Security
         private DataTable departuresDataTable;
         private DataTable contractsDataTable;
 
+        private CrewController crewController;
+        private DepartureController departureController;
+        private ContractController contractController;
+
         public mainForm()
         {
             InitializeComponent();
             this.connection = new SqlConnection(Properties.Settings.Default.connectionString);
             this.dataController = new DataController(this.connection);
+
+            this.crewController = new CrewController(dataController);
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -40,11 +46,10 @@ namespace Security
 
         private void FillTables()
         {
-            crewsDataTable = dataController.CreateDataSource("Crews_Select_All", CommandType.StoredProcedure);
+            crewsDataGridView.DataSource = crewController.GetAllCrews();
             departuresDataTable = dataController.CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
             contractsDataTable = dataController.CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
 
-            crewsDataGridView.DataSource = crewsDataTable;
             departuresDataGridView.DataSource = departuresDataTable;
             contractsDataGridView.DataSource = contractsDataTable;
         }

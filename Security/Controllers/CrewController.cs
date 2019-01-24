@@ -33,6 +33,11 @@ namespace Security.Controllers
             Connect();
         }
 
+        public CrewController(DataController dataController)
+        {
+            this.dataController = dataController;
+        }
+
         public int Insert()
         {
             object[] paramValues = { information["crew_id"], information["crew_leader"], information["crew_car_model"] };
@@ -44,6 +49,11 @@ namespace Security.Controllers
             object[] paramValues = { crewId };
             return dataController.ModifyData("Crew_Delete", CommandType.StoredProcedure, deleteParamNames, deleteParamTypes, paramValues);
             
+        }
+
+        public DataTable GetAllCrews()
+        {
+            return dataController.CreateDataSource("Crews_Select_All", CommandType.StoredProcedure);
         }
 
         private void Connect()
