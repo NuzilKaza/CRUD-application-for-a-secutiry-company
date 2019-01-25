@@ -34,6 +34,7 @@ namespace Security
             this.dataController = new DataController(this.connection);
 
             this.crewController = new CrewController(dataController);
+            this.departureController = new DepartureController(dataController);
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -48,10 +49,9 @@ namespace Security
         private void FillTables()
         {
             crewsDataGridView.DataSource = crewController.GetAllCrews();
-            departuresDataTable = dataController.CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
+            departuresDataGridView.DataSource = departureController.GetAllDepartures();
             contractsDataTable = dataController.CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
 
-            departuresDataGridView.DataSource = departuresDataTable;
             contractsDataGridView.DataSource = contractsDataTable;
         }
 

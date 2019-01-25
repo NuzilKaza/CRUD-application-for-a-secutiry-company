@@ -29,10 +29,23 @@ namespace Security.Controllers
         private string[] updateTrueParamNames = { "@departure_id", "@arrest_document" };
         private SqlDbType[] updateTrueParamTypes = { SqlDbType.Int, SqlDbType.NChar };
 
+        private DataTable departuresDataTable;
+
         public DepartureController(DataRow departureInformation)
         {
             this.information = departureInformation;
             Connect();
+        }
+
+        public DataTable GetAllDepartures()
+        {
+            departuresDataTable = dataController.CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
+            return departuresDataTable;
+        }
+
+        public DepartureController(DataController dataController)
+        {
+            this.dataController = dataController;
         }
 
         public int Insert()
