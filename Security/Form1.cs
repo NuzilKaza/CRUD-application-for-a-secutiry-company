@@ -35,6 +35,7 @@ namespace Security
 
             this.crewController = new CrewController(dataController);
             this.departureController = new DepartureController(dataController);
+            this.contractController = new ContractController(dataController);
         }
 
         private void mainForm_Load(object sender, EventArgs e)
@@ -50,9 +51,7 @@ namespace Security
         {
             crewsDataGridView.DataSource = crewController.GetAllCrews();
             departuresDataGridView.DataSource = departureController.GetAllDepartures();
-            contractsDataTable = dataController.CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
-
-            contractsDataGridView.DataSource = contractsDataTable;
+            contractsDataGridView.DataSource = contractController.GetAllContracts();
         }
 
         private void ShowRowsCountEverywhere()

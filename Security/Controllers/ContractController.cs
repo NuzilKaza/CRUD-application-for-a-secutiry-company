@@ -23,10 +23,17 @@ namespace Security.Controllers
         private SqlDbType[] updateParamTypes = { SqlDbType.Int, SqlDbType.Int, SqlDbType.Date, SqlDbType.Date,
             SqlDbType.Date, SqlDbType.Money, SqlDbType.Money, SqlDbType.Money, SqlDbType.Text };
 
+        private DataTable contractsDataTable;
+
         public ContractController(DataRow information)
         {
             this.information = information;
             Connect();
+        }
+
+        public ContractController(DataController dataController)
+        {
+            this.dataController = dataController;
         }
 
         private void Connect()
@@ -66,6 +73,12 @@ namespace Security.Controllers
             int contractResult = dataController.ModifyData("Contract_Insert", CommandType.StoredProcedure, insertParamNames, insertParamTypes, paramValues);
 
             return clientResult & houseResult & apartmentResult & contractResult;
+        }
+
+        public DataTable GetAllContracts()
+        {
+            contractsDataTable = dataController.CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
+            return contractsDataTable;
         }
 
         public int Update()
