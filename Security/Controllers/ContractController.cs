@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Security.Entities;
 
 namespace Security.Controllers
 {
-    class ContractController
+    public class ContractController
     {
         private DataRow information;
         private DataController dataController;
@@ -34,6 +35,21 @@ namespace Security.Controllers
         public ContractController(DataController dataController)
         {
             this.dataController = dataController;
+        }
+
+        public int GetMaxId()
+        {
+            int maxId = Convert.ToInt32(contractsDataTable.Rows[0]["contract_id"]);
+            for (int i = 1; i < contractsDataTable.Rows.Count; i++)
+            {
+                DataRow row = contractsDataTable.Rows[i];
+                if (maxId < Convert.ToInt32(row["contract_id"]))
+                {
+                    maxId = Convert.ToInt32(row["contract_id"]);
+                }
+            }
+
+            return maxId;
         }
 
         private void Connect()

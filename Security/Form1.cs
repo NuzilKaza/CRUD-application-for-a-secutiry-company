@@ -78,21 +78,9 @@ namespace Security
 
         private void addDepartureButton_Click(object sender, EventArgs e)
         {
-            int maxDepartureId = dataController.GetMaxId(departuresDataTable, "departure_id");
-            int maxCrewId = dataController.GetMaxId(crewsDataTable, "crew_id");
-            int maxContractId = dataController.GetMaxId(contractsDataTable, "contract_id");
-
-            DepartureForm departureForm = new DepartureForm(departuresDataTable.NewRow(), false, maxDepartureId, maxCrewId, maxContractId);
+            DepartureForm departureForm = new DepartureForm(departureController, crewController, contractController, false);
             if (departureForm.ShowDialog() == DialogResult.OK)
             {
-                DepartureController departureController = new DepartureController(departureForm.Row);
-                int result = departureController.Insert();
-
-                if (result == 0)
-                {
-                    MessageBox.Show("Ошибка выполнения вставки");
-                }
-
                 FillTables();
                 ShowRowsCountEverywhere();
             }

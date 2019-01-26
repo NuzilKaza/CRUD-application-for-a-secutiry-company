@@ -6,10 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Security.Entities;
 
 namespace Security.Controllers
 {
-    class DepartureController
+    public class DepartureController
     {
         private DataRow information;
         private DataController dataController;
@@ -67,6 +68,21 @@ namespace Security.Controllers
             return result1 & result2;
         }
 
+        public int GetMaxId()
+        {
+            int maxId = Convert.ToInt32(departuresDataTable.Rows[0]["departure_id"]);
+            for (int i = 1; i < departuresDataTable.Rows.Count; i++)
+            {
+                DataRow row = departuresDataTable.Rows[i];
+                if (maxId < Convert.ToInt32(row["departure_id"]))
+                {
+                    maxId = Convert.ToInt32(row["departure_id"]);
+                }
+            }
+
+            return maxId;
+        }
+
         private void Connect()
         {
             SqlConnection connection = new SqlConnection(Properties.Settings.Default.connectionString);
@@ -101,6 +117,24 @@ namespace Security.Controllers
             }
 
             return result1 & result2;
+        }
+
+        public void Insert(Departure departure)
+        {
+            object[] paramValues = { departure.Id, departure.CrewId, departure.ContractId, departure.Date, departure.IsFalse };
+            dataController.ModifyData("Departure_Insert", CommandType.StoredProcedure, insertParamNames, insertParamTypes, paramValues);
+
+            int result2;
+            if (departure.IsFalse)
+            {
+                object[] paramValuesFalse = { departure.Id };
+                result2 = dataController.ModifyData("False_Departure_Insert", CommandType.StoredProcedure, insertFalseParamNames, insertFalseParamTypes, paramValuesFalse);
+            }
+            else
+            {
+                object[] insertTrueParamValues = { departure.Id, departure.ArrestDocument };
+                result2 = dataController.ModifyData("True_Departure_Insert", CommandType.StoredProcedure, insertTrueParamNames, insertTrueParamTypes, insertTrueParamValues);
+            }
         }
 
         private bool TrueDepartureExists()

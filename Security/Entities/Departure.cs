@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace Security.Entities
 {
-    class Departure : Entity
+    public class Departure : Entity
     {
         private int id;
-        private Crew crew;
-        private Contract contract;
+        private int crewId;
+        private int contractId;
         private DateTime date;
         private bool isFalse;
         private string arrestDocument;
 
-        public Departure(int id, Crew crew, Contract contract, DateTime date, bool isFalse)
+        public Departure(int id, int crewId, int contractId, DateTime date, bool isFalse)
         {
             this.id = id;
-            this.crew = crew;
-            this.contract = contract;
+            this.crewId = crewId;
+            this.contractId = contractId;
             this.date = date;
             this.isFalse = isFalse;
         }
@@ -28,7 +28,7 @@ namespace Security.Entities
         public DateTime Date { get => date; }
         public bool IsFalse { get => isFalse; }
         public string ArrestDocument { get => arrestDocument; set => arrestDocument = value; }
-        internal Crew Crew { get => crew; }
-        internal Contract Contract { get => contract; }
+        public int CrewId { get => crewId; }
+        public int ContractId { get => contractId; }
     }
 }
