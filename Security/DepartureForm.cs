@@ -23,6 +23,7 @@ namespace Security
         private DepartureController departureController;
         private CrewController crewController;
         private ContractController contractController;
+        private Departure selectedDeparture;
 
         public DataRow Row { get => row; set => row = value; }
 
@@ -43,6 +44,16 @@ namespace Security
             this.crewController = crewController;
             this.contractController = contractController;
             this.forUpdate = forUpdate;
+        }
+
+        public DepartureForm(DepartureController departureController, CrewController crewController, ContractController contractController, bool forUpdate, Departure selectedDeparture)
+        {
+            InitializeComponent();
+            this.departureController = departureController;
+            this.crewController = crewController;
+            this.contractController = contractController;
+            this.forUpdate = forUpdate;
+            this.selectedDeparture = selectedDeparture;
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -76,13 +87,13 @@ namespace Security
 
         private void FillForm()
         {
-            crewIdNumericUpDown.Value = (int)row["crew_id"];
-            contractIdNumericUpDown.Value = (int)row["contract_id"];
-            departureDateTimePicker.Value = Convert.ToDateTime(row["departure_date_time"]);
-            falseCallCheckBox.Checked = Convert.ToBoolean(row["false_call"]);
-            if (!Convert.ToBoolean(row["false_call"]))
+            crewIdNumericUpDown.Value = selectedDeparture.CrewId;
+            contractIdNumericUpDown.Value = selectedDeparture.ContractId;
+            departureDateTimePicker.Value = selectedDeparture.Date;
+            falseCallCheckBox.Checked = selectedDeparture.IsFalse;
+            if (!selectedDeparture.IsFalse)
             {
-                documentTextBox.Text = row["arrest_document"].ToString();
+                documentTextBox.Text = selectedDeparture.ArrestDocument;
             }
         }
 
@@ -96,22 +107,33 @@ namespace Security
         {
             if (!forUpdate)
             {
-                lastDepartureId = departureController.GetMaxId();
-                
+                int departureId = departureController.GetMaxId() + 1;
+                int crewId = (int)crewIdNumericUpDown.Value;
+                int contractId = (int)contractIdNumericUpDown.Value;
+                DateTime date = departureDateTimePicker.Value;
+                bool falseCall = falseCallCheckBox.Checked;
+                Departure departure = new Departure(departureId, crewId, contractId, date, falseCall);
+                if (!falseCallCheckBox.Checked)
+                {
+                    departure.ArrestDocument = documentTextBox.Text;
+                }
+
+                departureController.Insert(departure);
+            } else
+            {
+                selectedDeparture.CrewId = (int)crewIdNumericUpDown.Value;
+                selectedDeparture.ContractId = (int)contractIdNumericUpDown.Value;
+                selectedDeparture.Date = departureDateTimePicker.Value;
+                selectedDeparture.IsFalse = falseCallCheckBox.Checked;
+                if (!falseCallCheckBox.Checked)
+                {
+                    selectedDeparture.ArrestDocument = documentTextBox.Text;
+                }
+
+                departureController.Update(selectedDeparture);
             }
             
-            int crewId = (int)crewIdNumericUpDown.Value;
-            int contractId = (int)contractIdNumericUpDown.Value;
-            DateTime date = departureDateTimePicker.Value;
-            bool falseCall = falseCallCheckBox.Checked;
-            Departure departure = new Departure(lastDepartureId + 1, crewId, contractId, date, falseCall);
-
-            if (!falseCallCheckBox.Checked)
-            {
-                departure.ArrestDocument = documentTextBox.Text;
-            }
-
-            departureController.Insert(departure);
+            
         }
     }
 }

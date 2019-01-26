@@ -25,10 +25,10 @@ namespace Security.Entities
         }
 
         public int Id { get => id; }
-        public DateTime Date { get => date; }
-        public bool IsFalse { get => isFalse; }
+        public DateTime Date { get => date; set => date = value; }
+        public bool IsFalse { get => isFalse; set => isFalse = value; }
         public string ArrestDocument { get => arrestDocument; set => arrestDocument = value; }
-        public int CrewId { get => crewId; }
-        public int ContractId { get => contractId; }
+        public int CrewId { get => crewId; set => crewId = value; }
+        public int ContractId { get => contractId; set => contractId = value; }
     }
 }

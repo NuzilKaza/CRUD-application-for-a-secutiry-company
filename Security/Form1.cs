@@ -141,23 +141,11 @@ namespace Security
         {
             DataGridViewRow selectedRow = departuresDataGridView.SelectedRows[0];
             int departureId = (int)selectedRow.Cells["departureidDataGridViewTextBoxColumn"].Value;
-            DataRow[] rows = departuresDataTable.Select(String.Format("departure_id = {0}", departureId));
+            Departure departure = departureController.Select(departureId);
 
-            int maxDepartureId = dataController.GetMaxId(departuresDataTable, "departure_id");
-            int maxCrewId = dataController.GetMaxId(crewsDataTable, "crew_id");
-            int maxContractId = dataController.GetMaxId(contractsDataTable, "contract_id");
-
-            DepartureForm departureForm = new DepartureForm(rows[0], true, maxDepartureId, maxCrewId, maxContractId);
+            DepartureForm departureForm = new DepartureForm(departureController, crewController, contractController, true, departure);
             if (departureForm.ShowDialog() == DialogResult.OK)
             {
-                DepartureController departureController = new DepartureController(departureForm.Row);
-                int result = departureController.Update();
-
-                if (result == 0)
-                {
-                    MessageBox.Show("Ошибка выполнения редактирования");
-                }
-
                 FillTables();
                 ShowRowsCountEverywhere();
             }
