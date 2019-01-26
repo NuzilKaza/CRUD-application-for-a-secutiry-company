@@ -216,7 +216,7 @@ namespace Security
             DateTime startDate = startDepartureDateTimePicker.Value;
             DateTime finishDate = finishDepartureDateTimePicker.Value;
 
-            DataTable dataTable = DepartureController.SelectDepartures(startDate, finishDate);
+            DataTable dataTable = departureController.SelectDepartures(startDate, finishDate); ;
             departuresDataGridView.DataSource = dataTable;
             ShowRowsCount(departuresDataGridView, departuresCountLabel);
         }

@@ -1,41 +1,17 @@
 ﻿using Security.Controllers;
 using Security.Entities;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Security
 {
     public partial class DepartureForm : Form
     {
-        private DataRow row;
         private bool forUpdate;
-        private int lastCrewId;
-        private int lastDepartureId;
-        private int lastContractId;
-
         private DepartureController departureController;
         private CrewController crewController;
         private ContractController contractController;
         private Departure selectedDeparture;
-
-        public DataRow Row { get => row; set => row = value; }
-
-        public DepartureForm(DataRow row, bool forUpdate, int lastDepartureId, int lastCrewId, int lastContractId)
-        {
-            InitializeComponent();
-            this.row = row;
-            this.forUpdate = forUpdate;
-            this.lastCrewId = lastCrewId;
-            this.lastDepartureId = lastDepartureId;
-            this.lastContractId = lastContractId;
-        }
 
         public DepartureForm(DepartureController departureController, CrewController crewController, ContractController contractController, bool forUpdate)
         {
@@ -132,8 +108,6 @@ namespace Security
 
                 departureController.Update(selectedDeparture);
             }
-            
-            
         }
     }
 }

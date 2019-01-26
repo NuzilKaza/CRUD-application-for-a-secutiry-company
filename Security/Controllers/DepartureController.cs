@@ -188,11 +188,8 @@ namespace Security.Controllers
             return departure;
         }
 
-        public static DataTable SelectDepartures(DateTime startDate, DateTime finishDate)
+        public DataTable SelectDepartures(DateTime startDate, DateTime finishDate)
         {
-            SqlConnection connection = new SqlConnection(Properties.Settings.Default.connectionString);
-            DataController dataController = new DataController(connection);
-
             string[] paramNames = { "@start_date", "@finish_date" };
             SqlDbType[] paramTypes = { SqlDbType.DateTime, SqlDbType.DateTime };
 
@@ -202,11 +199,11 @@ namespace Security.Controllers
                 return dataController.CreateDataSource("Departures_Select", CommandType.StoredProcedure, paramNames, paramTypes, paramValues);
             } else
             {
-                return dataController.CreateDataSource("Departures_Select_All", CommandType.StoredProcedure);
+                return departuresDataTable;
             }
         }
 
-        private static bool IsToday(DateTime date)
+        private bool IsToday(DateTime date)
         {
             return date.Date == DateTime.Now.Date;
         }
