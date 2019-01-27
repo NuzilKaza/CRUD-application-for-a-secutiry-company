@@ -9,8 +9,8 @@ namespace Security.Entities
     class Apartment
     {
         private int id;
-        private Client client;
-        private House house;
+        private int clientId;
+        private int houseId;
         private int numberInHouse;
         private byte floor;
         private string doorType;
@@ -18,12 +18,12 @@ namespace Security.Entities
         private bool hasBalcony;
         private string balconyType;
 
-        public Apartment(int id, Client client, House house, int numberInHouse, 
+        public Apartment(int id, int clientId, int houseId, int numberInHouse, 
             byte floor, string doorType, bool hasKeyCode, bool hasBalcony)
         {
             this.id = id;
-            this.client = client;
-            this.house = house;
+            this.clientId = clientId;
+            this.houseId = houseId;
             this.numberInHouse = numberInHouse;
             this.floor = floor;
             this.doorType = doorType;
@@ -38,7 +38,7 @@ namespace Security.Entities
         public bool HasKeyCode { get => hasKeyCode; }
         public bool HasBalcony { get => hasBalcony; }
         public string BalconyType { get => balconyType; set => balconyType = value; }
-        internal Client Client { get => client; }
-        internal House House { get => house; }
+        public int ClientId { get => clientId; }
+        public int HouseId { get => houseId; }
     }
 }

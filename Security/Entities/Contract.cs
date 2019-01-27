@@ -9,7 +9,7 @@ namespace Security.Entities
     class Contract : Entity
     {
         private int id;
-        private Apartment apartment;
+        private int apartmentId;
         private int payment; // Payment per month in rubles
         private int compensation; // In rubles
         private int fine; // in rubles
@@ -18,11 +18,11 @@ namespace Security.Entities
         private DateTime extensionDate;
         private string additionalConditions;
 
-        public Contract(int id, Apartment apartment, int payment, int compensation, 
+        public Contract(int id, int apartmentId, int payment, int compensation, 
             int fine, DateTime commencementDate, DateTime expirationDate)
         {
             this.id = id;
-            this.apartment = apartment;
+            this.apartmentId = apartmentId;
             this.payment = payment;
             this.compensation = compensation;
             this.fine = fine;
@@ -38,6 +38,6 @@ namespace Security.Entities
         public DateTime ExpirationDate { get => expirationDate; }
         public DateTime ExtensionDate { get => extensionDate; set => extensionDate = value; }
         public string AdditionalConditions { get => additionalConditions; set => additionalConditions = value; }
-        internal Apartment Apartment { get => apartment; }
+        public int ApartmentId { get => apartmentId; }
     }
 }

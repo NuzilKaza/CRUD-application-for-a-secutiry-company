@@ -195,7 +195,7 @@ namespace Security
             string name = nameTextBox.Text;
             string address = contractAddressTextBox.Text;
 
-            DataTable dataTable = ContractController.SelectContracts(name, address);
+            DataTable dataTable = contractController.SelectContracts(name, address);
             contractsDataGridView.DataSource = dataTable;
             ShowRowsCount(contractsDataGridView, contractsCountLabel);
         }

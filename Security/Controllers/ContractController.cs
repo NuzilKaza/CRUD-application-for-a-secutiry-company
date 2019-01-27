@@ -115,7 +115,7 @@ namespace Security.Controllers
             return clientResult & houseResult & apartmentResult & contractResult;
         }
 
-        public static DataTable SelectContracts(string name, string address)
+        public DataTable SelectContracts(string name, string address)
         {
             int apartmentNumber = 0;
             string houseAddress = "";
@@ -134,17 +134,14 @@ namespace Security.Controllers
             return LoadContracts(name, houseAddress, apartmentNumber);
         }
 
-        private static DataTable LoadContracts(string name, string houseAddress, int apartmentNumber)
+        private DataTable LoadContracts(string name, string houseAddress, int apartmentNumber)
         {
-            SqlConnection connection = new SqlConnection(Properties.Settings.Default.connectionString);
-            DataController dataController = new DataController(connection);
-
             string[] paramNames = { "@client_name", "@house_address", "@apartment_number" };
             SqlDbType[] paramTypes = { SqlDbType.NChar, SqlDbType.NChar, SqlDbType.Int};
 
             if (name == "" && houseAddress == "" && apartmentNumber == 0)
             {
-                return dataController.CreateDataSource("Contracts_Select_All", CommandType.StoredProcedure);
+                return contractsDataTable;
             }
 
             object[] paramValues = { null, null, null };
